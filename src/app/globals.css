@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: var(--font-playfair);
+  --font-body: var(--font-inter);
+
+  --color-primary: #0A2647;
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #D4AF37;
+  --color-secondary-foreground: #0A2647;
+
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  /* slate-900 */
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    @apply font-body;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-bold text-primary;
+  }
+
+  /* ===== GLOBAL CONTRAST FIX ===== */
+  .dark-section,
+  .bg-primary,
+  .bg-slate-900,
+  .bg-slate-800,
+  .bg-\[\#0B1F3A\] {
+      color: var(--color-primary-foreground) !important;
+  }
+
+  /* Auto-convert primary/dark text into white on dark backgrounds */
+  .bg-primary h1, .bg-primary h2, .bg-primary h3, .bg-primary h4, .bg-primary h5, .bg-primary h6, .dark-section h1, .dark-section h2, .dark-section h3, .dark-section h4, .dark-section h5, .dark-section h6,
+  .bg-slate-900 h1, .bg-slate-900 h2, .bg-slate-900 h3, .bg-slate-900 h4, .bg-slate-900 h5, .bg-slate-900 h6,
+  .bg-\[\#0B1F3A\] h1, .bg-\[\#0B1F3A\] h2, .bg-\[\#0B1F3A\] h3, .bg-\[\#0B1F3A\] h4, .bg-\[\#0B1F3A\] h5, .bg-\[\#0B1F3A\] h6,
+  .bg-primary .text-primary, .bg-slate-900 .text-primary, .bg-\[\#0B1F3A\] .text-primary, .dark-section .text-primary,
+  .bg-primary .text-slate-800, .bg-slate-900 .text-slate-800, .bg-\[\#0B1F3A\] .text-slate-800, .dark-section .text-slate-800 {
+      color: var(--color-primary-foreground) !important;
+  }
+
+  /* Auto-convert slate descriptive text to lighter visible text on dark backgrounds */
+  .bg-primary .text-slate-600, .bg-slate-900 .text-slate-600, .bg-\[\#0B1F3A\] .text-slate-600, .dark-section .text-slate-600,
+  .bg-primary .text-slate-700, .bg-slate-900 .text-slate-700, .bg-\[\#0B1F3A\] .text-slate-700, .dark-section .text-slate-700 {
+      color: #cbd5e1 !important; /* text-slate-300 */
+  }
+
+  .bg-primary .text-slate-500, .bg-slate-900 .text-slate-500, .bg-\[\#0B1F3A\] .text-slate-500, .dark-section .text-slate-500 {
+      color: #cbd5e1 !important;
+  }
+
+  /* Auto-convert white text onto gold buttons if previously incorrectly mapped */
+  .bg-secondary .text-white {
+      color: var(--color-primary) !important;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
