@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 
-export default function AuthCallbackPage() {
+function AuthCallbackContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const { login } = useAuth();
@@ -45,5 +45,13 @@ export default function AuthCallbackPage() {
             <h2 className="text-xl font-heading font-bold text-primary mb-2">Synchronizing Credentials</h2>
             <p className="text-slate-500 font-medium animate-pulse">{status}</p>
         </div>
+    );
+}
+
+export default function AuthCallbackPage() {
+    return (
+        <Suspense fallback={null}>
+            <AuthCallbackContent />
+        </Suspense>
     );
 }

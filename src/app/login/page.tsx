@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import Button from '@/components/ui/Button';
 import { useAuth } from '@/context/AuthContext';
 import { authService } from '@/services/authService';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function LoginPage() {
+function LoginContent() {
     const { login, isAuthenticated } = useAuth();
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -135,5 +135,13 @@ export default function LoginPage() {
                 </div>
             </div>
         </section>
+    );
+}
+
+export default function LoginPage() {
+    return (
+        <Suspense fallback={null}>
+            <LoginContent />
+        </Suspense>
     );
 }
