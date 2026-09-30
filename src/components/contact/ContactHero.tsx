@@ -8,7 +8,7 @@ export default function ContactHero() {
 
             <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
                 <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-white">
-                    Let's Start Your <span className="text-secondary">Journey</span>
+                    Let's Start Your <span className="text-accent">Journey</span>
                 </h1>
                 <p className="text-xl text-slate-200 max-w-2xl mx-auto mb-4">
                     Ready to take the first step towards your global career? We are here to guide you.

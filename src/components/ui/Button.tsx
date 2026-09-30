@@ -22,13 +22,11 @@ export default function Button({
     const baseStyles = "inline-flex items-center justify-center rounded-md font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-95 group hover:-translate-y-0.5";
 
     const variants = {
-        // Primary: Gold background, Navy text (Premium call to action)
-        primary: "bg-secondary text-primary font-bold hover:bg-[#bfa13a] focus:ring-secondary shadow-md hover:shadow-lg",
-        // Secondary: Navy background, White text
-        secondary: "bg-primary text-white font-medium hover:bg-[#0f3057] focus:ring-primary shadow-md",
-        // Outline: Navy border, Navy text
+        primary: "bg-secondary text-white font-bold hover:bg-[#742493] focus:ring-secondary shadow-md hover:shadow-lg",
+        secondary: "bg-primary text-white font-medium hover:bg-[#32163E] focus:ring-primary shadow-md",
+        // Outline: deep plum border and text
         outline: "border-2 border-primary text-white hover:bg-primary/5 focus:ring-primary",
-        // Ghost: Transparent, Navy text
+        // Ghost: transparent treatment for dark sections
         ghost: "text-white hover:bg-primary/5"
     };
 

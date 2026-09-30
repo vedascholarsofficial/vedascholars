@@ -32,9 +32,9 @@ export default function PartnershipProcess() {
     ];
 
     return (
-        <section className="py-24 bg-slate-900 text-white overflow-hidden relative">
+        <section className="py-24 bg-primary text-white overflow-hidden relative">
             {/* Decorative Background */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/25 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
                 <div className="flex flex-col lg:flex-row gap-16 items-center">
@@ -47,10 +47,10 @@ export default function PartnershipProcess() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
                         >
-                            A Partnership Built on <span className="text-secondary">Trust & Quality</span>
+                            A Partnership Built on <span className="text-accent">Trust & Quality</span>
                         </motion.h2>
                         <motion.p
-                            className="text-slate-300 mb-12 text-lg leading-relaxed"
+                            className="text-white/80 mb-12 text-lg leading-relaxed"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -70,7 +70,7 @@ export default function PartnershipProcess() {
                                     transition={{ duration: 0.5, delay: index * 0.15 + 0.2 }}
                                 >
                                     <div className="relative">
-                                        <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center border border-white/10 relative z-10">
+                                        <div className="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center border border-white/10 relative z-10">
                                             {step.icon}
                                         </div>
                                         {index !== steps.length - 1 && (
@@ -85,7 +85,7 @@ export default function PartnershipProcess() {
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                                        <p className="text-slate-400 leading-relaxed text-sm">
+                                        <p className="text-white/70 leading-relaxed text-sm">
                                             {step.description}
                                         </p>
                                     </div>
@@ -106,7 +106,7 @@ export default function PartnershipProcess() {
                                 <p className="text-white font-heading text-2xl">
                                     "Veda Scholars brings us students who are not just academically sound, but culturally prepared."
                                 </p>
-                                <p className="text-secondary mt-2 text-sm font-bold uppercase tracking-wider">
+                                <p className="text-accent mt-2 text-sm font-bold uppercase tracking-wider">
                                     - Dean of Admissions, UK University Partner
                                 </p>
                             </div>

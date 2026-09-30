@@ -46,7 +46,7 @@ export default function StudentServices() {
             <div className="container mx-auto px-4 md:px-6">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
-                        Key <span className="text-[#B8860B]">Services</span>
+                        Key <span className="text-[#8B2BB4]">Services</span>
                     </h2>
                     <p className="text-slate-600 max-w-2xl mx-auto">
                         End-to-end support to ensure your journey from application to admission is smooth and successful.
@@ -57,7 +57,7 @@ export default function StudentServices() {
                     {services.map((service, index) => (
                         <FadeIn key={index} delay={index * 0.1}>
                             <div className="bg-slate-50 p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
-                                <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-[#B8860B] shadow-sm mb-6">
+                                <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-[#8B2BB4] shadow-sm mb-6">
                                     <service.icon size={28} />
                                 </div>
                                 <h3 className="text-xl font-bold text-primary mb-3">{service.title}</h3>

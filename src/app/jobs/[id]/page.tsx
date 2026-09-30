@@ -63,8 +63,8 @@ export default function JobDetailsPage() {
     if (!job) {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 text-center">
-                 <h2 className="text-2xl font-bold text-[#0B1F3A] mb-4">Job Not Found</h2>
-                 <Link href="/jobs" className="text-[#C6A94A] hover:underline">Return to job board</Link>
+                 <h2 className="text-2xl font-bold text-[#24112D] mb-4">Job Not Found</h2>
+                 <Link href="/jobs" className="text-[#8B2BB4] hover:underline">Return to job board</Link>
             </div>
         );
     }
@@ -72,9 +72,9 @@ export default function JobDetailsPage() {
     return (
         <div className="bg-slate-50 min-h-screen pb-24">
              {/* Header Banner Context */}
-             <div className="bg-[#0B1F3A] pt-28 pb-16 text-white text-center rounded-b-[40px] shadow-lg">
+             <div className="bg-[#24112D] pt-28 pb-16 text-white text-center rounded-b-[40px] shadow-lg">
                  <div className="container mx-auto px-4 md:px-6">
-                     <span className="inline-block py-1 px-3 rounded-full bg-[#C6A94A]/20 border border-[#C6A94A]/40 text-[#C6A94A] text-xs font-bold uppercase tracking-wider mb-6">
+                     <span className="inline-block py-1 px-3 rounded-full bg-[#8B2BB4]/20 border border-[#8B2BB4]/40 text-[#8B2BB4] text-xs font-bold uppercase tracking-wider mb-6">
                          {job.type || 'Full-Time'}
                      </span>
                      <h1 className="text-3xl md:text-5xl font-heading font-bold mb-4">{job.title}</h1>
@@ -93,14 +93,14 @@ export default function JobDetailsPage() {
                       {/* Main Job Body */}
                       <div className="lg:col-span-2 space-y-8">
                            <div className="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-100">
-                               <h2 className="text-2xl font-bold text-[#0B1F3A] mb-6 border-b border-slate-100 pb-4">Job Description</h2>
+                               <h2 className="text-2xl font-bold text-[#24112D] mb-6 border-b border-slate-100 pb-4">Job Description</h2>
                                <div className="text-slate-300 leading-relaxed whitespace-pre-wrap">
                                    {job.description || 'No description provided for this role.'}
                                </div>
 
                                {job.requirements && job.requirements.length > 0 && (
                                    <div className="mt-10">
-                                       <h3 className="text-xl font-bold text-[#0B1F3A] mb-4">Role Requirements</h3>
+                                       <h3 className="text-xl font-bold text-[#24112D] mb-4">Role Requirements</h3>
                                        <div className="flex flex-wrap gap-2">
                                            {job.requirements.map((req: string, index: number) => (
                                                <span key={index} className="bg-slate-100 text-slate-700 px-4 py-2 rounded-xl text-sm font-medium">
@@ -115,8 +115,8 @@ export default function JobDetailsPage() {
 
                       {/* Sticky Application Drawer */}
                       <div className="lg:col-span-1">
-                           <div className="sticky top-28 bg-white p-8 rounded-3xl shadow-xl shadow-[#0B1F3A]/5 border border-slate-100 text-center">
-                                <h3 className="text-xl font-bold text-[#0B1F3A] mb-2">Apply for this Role</h3>
+                           <div className="sticky top-28 bg-white p-8 rounded-3xl shadow-xl shadow-[#24112D]/5 border border-slate-100 text-center">
+                                <h3 className="text-xl font-bold text-[#24112D] mb-2">Apply for this Role</h3>
                                 <p className="text-sm text-slate-300 mb-8 border-b border-slate-100 pb-6">
                                     Our platform automatically bridges your verified profile securely to the recruiter parameters bound to {job.company}.
                                 </p>
@@ -131,12 +131,12 @@ export default function JobDetailsPage() {
                                 <Button 
                                     onClick={handleApply} 
                                     disabled={isApplying || alreadyApplied}
-                                    className={`w-full justify-center h-14 text-lg transition-all font-bold tracking-wide shadow-lg border-none ${alreadyApplied ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-[#C6A94A] text-[#0B1F3A] hover:bg-[#bfa13a] disabled:opacity-60'}`}
+                                    className={`w-full justify-center h-14 text-lg transition-all font-bold tracking-wide shadow-lg border-none ${alreadyApplied ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-[#8B2BB4] text-white hover:bg-[#742493] disabled:opacity-60'}`}
                                 >
                                     {isApplying ? 'Submitting...' : alreadyApplied ? 'Application Sent' : 'Apply Now'}
                                 </Button>
                                 
-                                <Link href="/jobs" className="flex items-center justify-center gap-2 mt-6 text-sm text-slate-300 hover:text-[#0B1F3A]">
+                                <Link href="/jobs" className="flex items-center justify-center gap-2 mt-6 text-sm text-slate-300 hover:text-[#24112D]">
                                     <Navigation className="w-4 h-4 rotate-[-90deg]" /> Return to Listings
                                 </Link>
                            </div>

@@ -57,9 +57,9 @@ export default function EmployersContent() {
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
-                            What We Offer <span className="text-[#B8860B]">Employers</span>
+                            What We Offer <span className="text-[#8B2BB4]">Employers</span>
                         </h2>
-                        <p className="text-slate-300 max-w-2xl mx-auto">
+                        <p className="text-slate-600 max-w-2xl mx-auto">
                             Tailored recruitment and training solutions to meet your workforce needs.
                         </p>
                     </div>
@@ -68,11 +68,11 @@ export default function EmployersContent() {
                         {offerings.map((offer, index) => (
                             <FadeIn key={index} delay={index * 0.1}>
                                 <div className="bg-slate-50 p-8 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 h-full group">
-                                    <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300 text-[#B8860B]">
+                                    <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300 text-[#8B2BB4]">
                                         <offer.icon size={28} />
                                     </div>
                                     <h3 className="text-xl font-bold text-slate-900 mb-3 text-center">{offer.title}</h3>
-                                    <p className="text-slate-300 leading-relaxed text-center text-sm">{offer.desc}</p>
+                                    <p className="text-slate-600 leading-relaxed text-center text-sm">{offer.desc}</p>
                                 </div>
                             </FadeIn>
                         ))}
@@ -85,7 +85,7 @@ export default function EmployersContent() {
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">
-                            Why Employers Choose <span className="text-[#B8860B]">Us</span>
+                            Why Employers Choose <span className="text-[#8B2BB4]">Us</span>
                         </h2>
                     </div>
 
@@ -93,32 +93,32 @@ export default function EmployersContent() {
                         {advantages.map((adv, index) => (
                             <FadeIn key={index} delay={index * 0.2}>
                                 <div className="flex flex-col items-center text-center p-8 bg-white rounded-2xl shadow-sm border border-slate-100">
-                                    <div className="mb-6 p-4 bg-[#B8860B]/10 rounded-full text-[#B8860B]">
+                                    <div className="mb-6 p-4 bg-[#8B2BB4]/10 rounded-full text-[#8B2BB4]">
                                         <adv.icon size={32} />
                                     </div>
                                     <h3 className="text-xl font-bold text-slate-900 mb-3">{adv.title}</h3>
-                                    <p className="text-slate-300">{adv.desc}</p>
+                                    <p className="text-slate-600">{adv.desc}</p>
                                 </div>
                             </FadeIn>
                         ))}
                     </div>
 
                     <div className="mt-16 text-center">
-                        <div className="p-8 bg-slate-900 rounded-2xl max-w-4xl mx-auto text-white relative overflow-hidden">
+                        <div className="p-8 bg-primary bg-gradient-to-br from-[#3A1A48] via-primary to-[#170A1D] rounded-2xl max-w-4xl mx-auto text-white relative overflow-hidden">
                             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
                                 <div className="text-left">
                                     <h3 className="text-2xl font-bold font-heading mb-2 text-white">Ready to build your team?</h3>
-                                    <p className="text-white font-medium">Start hiring exceptional talent today.</p>
+                                    <p className="text-white/80 font-medium">Start hiring exceptional talent today.</p>
                                 </div>
                                 <Link
                                     href="/contact?type=employer"
-                                    className="bg-[#B8860B] hover:bg-[#9a7009] text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-colors whitespace-nowrap"
+                                    className="bg-[#8B2BB4] hover:bg-[#742493] text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-colors whitespace-nowrap"
                                 >
                                     Get In Touch
                                 </Link>
                             </div>
                             {/* Decor */}
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-[#B8860B]/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-[#8B2BB4]/30 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
                         </div>
                     </div>
                 </div>

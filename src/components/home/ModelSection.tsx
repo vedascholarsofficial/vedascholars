@@ -7,25 +7,25 @@ export default function ModelSection() {
         {
             id: 1,
             title: "Career Guidance",
-            icon: <Compass className="w-8 h-8 text-secondary" />,
+            icon: <Compass className="w-8 h-8 text-white" />,
             description: "Personalized pathfinding based on aptitude and market trends."
         },
         {
             id: 2,
             title: "Education Pathway",
-            icon: <GraduationCap className="w-8 h-8 text-secondary" />,
+            icon: <GraduationCap className="w-8 h-8 text-white" />,
             description: "Admission to top-tier universities worldwide."
         },
         {
             id: 3,
             title: "Skill Development",
-            icon: <Zap className="w-8 h-8 text-secondary" />,
+            icon: <Zap className="w-8 h-8 text-white" />,
             description: "Industry-relevant training and certifications."
         },
         {
             id: 4,
             title: "Employment",
-            icon: <Briefcase className="w-8 h-8 text-secondary" />,
+            icon: <Briefcase className="w-8 h-8 text-white" />,
             description: "Placement support with global recruiters."
         }
     ];
@@ -49,7 +49,7 @@ export default function ModelSection() {
     ];
 
     return (
-        <section className="py-20 bg-white">
+        <section className="py-20 md:py-24 bg-white">
             <div className="container mx-auto px-4 md:px-6">
 
                 {/* Section Header */}
@@ -63,7 +63,7 @@ export default function ModelSection() {
                         <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
                             Our Education to Employment Model
                         </h2>
-                        <p className="text-lg text-slate-300">
+                        <p className="text-lg text-slate-600 leading-relaxed">
                             A comprehensive ecosystem designed to bridge the gap between academic potential and professional success.
                         </p>
                     </motion.div>
@@ -81,26 +81,26 @@ export default function ModelSection() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.2 }}
                             >
-                                <div className="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-primary/10 group-hover:-translate-y-2 transition-transform duration-300 relative z-10">
+                                <div className="w-20 h-20 bg-gradient-to-br from-secondary to-primary rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-secondary/25 group-hover:-translate-y-2 transition-transform duration-300 relative z-10">
                                     {step.icon}
                                     {/* Connector Line (Desktop) */}
                                     {index < steps.length - 1 && (
                                         <motion.div
-                                            className="hidden md:block absolute top-1/2 left-full bg-slate-200 -z-10 transform translate-x-4 origin-left"
+                                            className="hidden md:block absolute top-1/2 left-full bg-secondary/25 -z-10 transform translate-x-4 origin-left"
                                             style={{ height: '2px', width: '100%' }}
                                             initial={{ scaleX: 0, opacity: 0 }}
                                             whileInView={{ scaleX: 1, opacity: 1 }}
                                             viewport={{ once: true }}
                                             transition={{ duration: 0.5, delay: (index * 0.2) + 0.4 }}
                                         >
-                                            <div className="absolute right-0 -top-1.5 text-slate-300">
+                                            <div className="absolute right-0 -top-[7px] text-secondary/60">
                                                 <ChevronRight className="w-4 h-4" />
                                             </div>
                                         </motion.div>
                                     )}
                                 </div>
-                                <h3 className="text-xl font-bold text-slate-800 mb-2">{step.title}</h3>
-                                <p className="text-slate-300 leading-relaxed text-sm px-4">
+                                <h3 className="text-xl font-bold text-primary mb-2">{step.title}</h3>
+                                <p className="text-slate-600 leading-relaxed text-[15px] px-4">
                                     {step.description}
                                 </p>
                             </motion.div>
@@ -110,7 +110,7 @@ export default function ModelSection() {
 
                 {/* Stakeholder Benefits */}
                 <motion.div
-                    className="bg-slate-50 rounded-3xl p-8 md:p-12"
+                    className="bg-[#F7F1FA] border border-[#EADCF1] rounded-3xl p-8 md:p-12"
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -122,13 +122,13 @@ export default function ModelSection() {
                                 <h3 className="text-2xl font-heading font-bold text-secondary mb-4">
                                     For {benefit.role}
                                 </h3>
-                                <p className="text-slate-300 mb-6 flex-grow">
+                                <p className="text-slate-600 leading-relaxed mb-6 flex-grow">
                                     {benefit.description}
                                 </p>
                                 <ul className="space-y-3 mt-auto">
                                     {benefit.points.map((point) => (
-                                        <li key={point} className="flex items-center gap-3 text-sm font-medium text-slate-700">
-                                            <CheckCircle2 className="w-5 h-5 text-primary/60" />
+                                        <li key={point} className="flex items-center gap-3 text-[15px] font-semibold text-primary">
+                                            <CheckCircle2 className="w-5 h-5 text-secondary shrink-0" />
                                             {point}
                                         </li>
                                     ))}

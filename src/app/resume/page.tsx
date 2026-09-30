@@ -164,23 +164,23 @@ export default function ResumeBuilderPage() {
         <section className="py-20 min-h-screen bg-slate-50">
             <div className="container mx-auto px-4 md:px-6 max-w-5xl">
 
-                 <div className="bg-[#0B1F3A] p-8 md:p-12 rounded-t-3xl text-white shadow-lg flex flex-col md:flex-row justify-between md:items-center gap-6 mb-1">
+                 <div className="bg-[#24112D] p-8 md:p-12 rounded-t-3xl text-white shadow-lg flex flex-col md:flex-row justify-between md:items-center gap-6 mb-1">
                      <div>
                          <h1 className="text-3xl font-heading font-bold mb-2 text-white">Resume Builder Engine</h1>
                          <p className="text-slate-300">Construct your professional profile dynamically for Veda recruiters.</p>
                      </div>
                      {scoreData && (
-                         <div className="bg-[#122A4F] border border-[#1C3A69] p-5 rounded-2xl md:min-w-[300px]">
+                         <div className="bg-[#32163E] border border-[#3B1A48] p-5 rounded-2xl md:min-w-[300px]">
                              <div className="flex justify-between items-center mb-3">
                                   <span className="font-bold text-white">Algorithmic Score</span>
-                                  <span className={`text-2xl font-black ${scoreData.score >= 80 ? 'text-green-400' : scoreData.score >= 50 ? 'text-[#C6A94A]' : 'text-red-400'}`}>
+                                  <span className={`text-2xl font-black ${scoreData.score >= 80 ? 'text-green-400' : scoreData.score >= 50 ? 'text-[#8B2BB4]' : 'text-red-400'}`}>
                                       {scoreData.score}<span className="text-sm text-slate-300 font-medium">/100</span>
                                   </span>
                              </div>
                              {scoreData.suggestions.length > 0 ? (
                                   <ul className="text-xs text-slate-300 space-y-1 mt-2">
-                                      {scoreData.suggestions.slice(0, 2).map((s, i) => <li key={i} className="flex gap-2 leading-relaxed"><span className="text-[#C6A94A] shrink-0">♦</span> <span>{s}</span></li>)}
-                                      {scoreData.suggestions.length > 2 && <li className="text-slate-300 italic ml-4 border-t border-[#1C3A69] mt-2 pt-2">+ {scoreData.suggestions.length - 2} more suggestions (Save document to refresh)</li>}
+                                      {scoreData.suggestions.slice(0, 2).map((s, i) => <li key={i} className="flex gap-2 leading-relaxed"><span className="text-[#8B2BB4] shrink-0">♦</span> <span>{s}</span></li>)}
+                                      {scoreData.suggestions.length > 2 && <li className="text-slate-300 italic ml-4 border-t border-[#3B1A48] mt-2 pt-2">+ {scoreData.suggestions.length - 2} more suggestions (Save document to refresh)</li>}
                                   </ul>
                              ) : (
                                   <p className="text-xs text-green-400 font-medium mt-2 flex items-center gap-1">
@@ -195,12 +195,12 @@ export default function ResumeBuilderPage() {
                  <div className="bg-white rounded-b-3xl p-8 shadow-sm border border-slate-100 mb-8">
                      
                      <div className="mb-8 border border-slate-200 p-6 rounded-2xl bg-slate-50 relative overflow-hidden group">
-                           <div className="absolute top-0 right-0 w-32 h-32 bg-[#C6A94A]/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
-                           <h3 className="text-xl font-bold mb-2 text-[#0B1F3A] relative z-10">Fast Track: PDF Import</h3>
+                           <div className="absolute top-0 right-0 w-32 h-32 bg-[#8B2BB4]/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                           <h3 className="text-xl font-bold mb-2 text-[#24112D] relative z-10">Fast Track: PDF Import</h3>
                            <p className="text-sm text-slate-300 mb-4 relative z-10">Automatically extract text blocks natively from your existing resume.</p>
                            
                            <div className="flex items-center gap-4 relative z-10">
-                                <label className={`cursor-pointer border-none font-bold text-sm h-12 px-6 shadow-md rounded-xl flex items-center justify-center transition-all ${isUploading ? 'bg-slate-300 text-slate-300' : 'bg-[#C6A94A] text-[#0B1F3A] hover:bg-[#bfa13a]'}`}>
+                                <label className={`cursor-pointer border-none font-bold text-sm h-12 px-6 shadow-md rounded-xl flex items-center justify-center transition-all ${isUploading ? 'bg-slate-300 text-slate-300' : 'bg-[#8B2BB4] text-white hover:bg-[#742493]'}`}>
                                     {isUploading ? 'Extracting Node Matrix...' : 'Upload PDF Document'}
                                     <input type="file" accept=".pdf" className="hidden" onChange={handleFileUpload} disabled={isUploading} />
                                 </label>
@@ -224,22 +224,22 @@ export default function ResumeBuilderPage() {
                          
                          {/* SUMMARY */}
                          <div className="border border-slate-100 p-6 rounded-2xl bg-slate-50/50">
-                             <h3 className="text-xl font-bold mb-4 text-[#0B1F3A]">Professional Summary *</h3>
+                             <h3 className="text-xl font-bold mb-4 text-[#24112D]">Professional Summary *</h3>
                              <textarea name="summary" required value={resumeData.summary} onChange={handleChange} placeholder="A brief overview of your professional background and goals..."
-                                 className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#C6A94A] outline-none transition-all min-h-[120px]" />
+                                 className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#8B2BB4] outline-none transition-all min-h-[120px]" />
                          </div>
 
                          {/* SKILLS */}
                          <div className="border border-slate-100 p-6 rounded-2xl bg-slate-50/50">
-                             <h3 className="text-xl font-bold mb-4 text-[#0B1F3A]">Core Competencies & Skills *</h3>
+                             <h3 className="text-xl font-bold mb-4 text-[#24112D]">Core Competencies & Skills *</h3>
                              <input type="text" name="skills" required value={resumeData.skills} onChange={handleChange} placeholder="React, Python, Project Management, Agile (Comma separated)"
-                                 className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#C6A94A] outline-none transition-all" />
+                                 className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#8B2BB4] outline-none transition-all" />
                          </div>
 
                          {/* EDUCATION */}
                          <div className="border border-slate-100 p-6 rounded-2xl bg-slate-50/50">
                              <div className="flex justify-between items-center mb-6 border-b border-slate-200 pb-4">
-                                 <h3 className="text-xl font-bold text-[#0B1F3A]">Education History</h3>
+                                 <h3 className="text-xl font-bold text-[#24112D]">Education History</h3>
                                  <Button type="button" onClick={() => addArrayItem('education', emptyEducation)} className="bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs py-1 px-4 h-8">+ Add Row</Button>
                              </div>
                              {resumeData.education.map((edu, idx) => (
@@ -257,7 +257,7 @@ export default function ResumeBuilderPage() {
                          {/* EXPERIENCE */}
                          <div className="border border-slate-100 p-6 rounded-2xl bg-slate-50/50">
                              <div className="flex justify-between items-center mb-6 border-b border-slate-200 pb-4">
-                                 <h3 className="text-xl font-bold text-[#0B1F3A]">Professional Experience</h3>
+                                 <h3 className="text-xl font-bold text-[#24112D]">Professional Experience</h3>
                                  <Button type="button" onClick={() => addArrayItem('experience', emptyExperience)} className="bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs py-1 px-4 h-8">+ Add Block</Button>
                              </div>
                              {resumeData.experience.map((exp, idx) => (
@@ -276,7 +276,7 @@ export default function ResumeBuilderPage() {
                          {/* PROJECTS */}
                          <div className="border border-slate-100 p-6 rounded-2xl bg-slate-50/50">
                              <div className="flex justify-between items-center mb-6 border-b border-slate-200 pb-4">
-                                 <h3 className="text-xl font-bold text-[#0B1F3A]">Key Projects</h3>
+                                 <h3 className="text-xl font-bold text-[#24112D]">Key Projects</h3>
                                  <Button type="button" onClick={() => addArrayItem('projects', emptyProject)} className="bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs py-1 px-4 h-8">+ Add Project</Button>
                              </div>
                              {resumeData.projects.map((proj, idx) => (
@@ -296,7 +296,7 @@ export default function ResumeBuilderPage() {
                          </div>
 
                          <div className="flex justify-end pt-4">
-                             <Button type="submit" variant="primary" className="bg-[#C6A94A] border-none text-[#0B1F3A] font-bold hover:bg-[#bfa13a] h-14 px-12 shadow-xl" disabled={isSaving}>
+                             <Button type="submit" variant="primary" className="bg-[#8B2BB4] border-none text-white font-bold hover:bg-[#742493] h-14 px-12 shadow-xl" disabled={isSaving}>
                                  {isSaving ? 'Compiling Resume...' : 'Save Document Stack'}
                              </Button>
                          </div>

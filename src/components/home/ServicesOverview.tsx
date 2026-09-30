@@ -28,39 +28,39 @@ export default function ServicesOverview() {
     ];
 
     return (
-        <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <section className="py-20 md:py-24 bg-primary text-white relative overflow-hidden">
             {/* Background Decor */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+            <div className="absolute top-0 right-0 w-[32rem] h-[32rem] bg-secondary/25 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-secondary/15 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
 
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                     <div className="max-w-2xl">
                         <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
-                            Comprehensive Services for <span className="text-secondary">Lifelong Success</span>
+                            Comprehensive Services for <span className="text-accent">Lifelong Success</span>
                         </h2>
-                        <p className="text-slate-400 text-lg">
+                        <p className="text-white/75 text-lg leading-relaxed">
                             We support the entire journey from academic planning to professional placement.
                         </p>
                     </div>
-                    <Button variant="outline" href="/services" className="border-secondary text-secondary hover:bg-secondary hover:text-slate-900 shrink-0">
+                    <Button variant="outline" href="/services" className="border-accent/60 text-white hover:bg-white hover:text-primary hover:border-white shrink-0">
                         Explore All Services
                     </Button>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {services.map((service) => (
-                        <div key={service.id} className="bg-slate-800/50 border border-slate-700 p-8 rounded-2xl hover:bg-slate-800 transition-colors duration-300 group">
-                            <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-6 group-hover:bg-secondary transition-colors duration-300 shadow-lg shadow-black/20">
+                        <div key={service.id} className="bg-white/[0.04] border border-white/10 p-8 rounded-2xl hover:bg-white/[0.08] hover:border-accent/40 hover:-translate-y-1 transition-all duration-300 group">
+                            <div className="w-16 h-16 bg-gradient-to-br from-secondary to-[#5E1D7A] rounded-xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105 shadow-lg shadow-secondary/30">
                                 {service.icon}
                             </div>
                             <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
-                            <p className="text-slate-300 mb-6 leading-relaxed">
+                            <p className="text-white/75 mb-6 leading-relaxed">
                                 {service.description}
                             </p>
-                            <div className="flex items-center gap-2 text-sm font-medium text-secondary">
-                                <span className="w-2 h-2 rounded-full bg-secondary"></span>
+                            <div className="flex items-center gap-2 text-sm font-semibold text-accent">
+                                <span className="w-2 h-2 rounded-full bg-accent shrink-0"></span>
                                 {service.outcome}
                             </div>
                         </div>
@@ -68,7 +68,7 @@ export default function ServicesOverview() {
                 </div>
 
                 <div className="mt-12 text-center md:hidden">
-                    <Button variant="outline" href="/services" className="w-full border-secondary text-secondary hover:bg-secondary hover:text-slate-900">
+                    <Button variant="outline" href="/services" className="w-full border-accent/60 text-white hover:bg-white hover:text-primary hover:border-white">
                         Explore All Services
                     </Button>
                 </div>

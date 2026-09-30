@@ -11,7 +11,7 @@ const roles = [
         label: 'Student',
         description: 'Explore universities, build your resume, apply for jobs, and get AI career advice.',
         icon: '🎓',
-        color: 'hover:border-[#C6A94A] hover:bg-amber-50/30',
+        color: 'hover:border-[#8B2BB4] hover:bg-amber-50/30',
         badge: 'Most Popular'
     },
     {
@@ -55,7 +55,7 @@ export default function AuthPage() {
             <div className="container mx-auto px-4 md:px-6 max-w-2xl">
 
                 {/* Header Card */}
-                <div className="bg-[#0B1F3A] rounded-t-3xl px-8 py-10 text-white text-center shadow-xl">
+                <div className="bg-[#24112D] rounded-t-3xl px-8 py-10 text-white text-center shadow-xl">
                     <h1 className="text-3xl md:text-4xl font-heading font-bold mb-3">
                         Welcome to Veda Scholars
                     </h1>
@@ -76,18 +76,18 @@ export default function AuthPage() {
                                 <span className="text-4xl">{role.icon}</span>
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-center gap-3 mb-1">
-                                        <span className="text-lg font-bold text-[#0B1F3A] group-hover:text-[#0B1F3A]">
+                                        <span className="text-lg font-bold text-[#24112D] group-hover:text-[#24112D]">
                                             {role.label}
                                         </span>
                                         {role.badge && (
-                                            <span className="text-[10px] font-bold uppercase tracking-wider bg-[#C6A94A] text-[#0B1F3A] px-2.5 py-0.5 rounded-full">
+                                            <span className="text-[10px] font-bold uppercase tracking-wider bg-[#8B2BB4] text-white px-2.5 py-0.5 rounded-full">
                                                 {role.badge}
                                             </span>
                                         )}
                                     </div>
                                     <p className="text-slate-300 text-sm leading-relaxed">{role.description}</p>
                                 </div>
-                                <span className="text-slate-300 group-hover:text-[#C6A94A] text-2xl transition-colors shrink-0 mt-1">→</span>
+                                <span className="text-slate-300 group-hover:text-[#8B2BB4] text-2xl transition-colors shrink-0 mt-1">→</span>
                             </div>
                         </button>
                     ))}
@@ -95,7 +95,7 @@ export default function AuthPage() {
                     <div className="pt-4 border-t border-slate-100 text-center">
                         <p className="text-slate-300 text-sm">
                             Already have an account?{' '}
-                            <Link href="/login" className="text-[#C6A94A] font-semibold hover:underline">
+                            <Link href="/login" className="text-[#8B2BB4] font-semibold hover:underline">
                                 Sign In
                             </Link>
                         </p>

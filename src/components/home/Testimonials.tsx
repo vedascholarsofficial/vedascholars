@@ -27,7 +27,7 @@ export default function Testimonials() {
     ];
 
     return (
-        <section className="py-24 bg-slate-50">
+        <section className="py-24 bg-gradient-to-b from-white to-[#F7F1FA]">
             <div className="container mx-auto px-4 md:px-6">
 
                 {/* Section Header */}
@@ -41,13 +41,13 @@ export default function Testimonials() {
                 {/* Testimonials Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {testimonials.map((t) => (
-                        <div key={t.id} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-100 relative">
-                            <div className="absolute top-8 right-8 text-slate-200">
+                        <div key={t.id} className="bg-white p-8 rounded-2xl shadow-[0_8px_30px_rgba(36,17,45,0.06)] hover:shadow-[0_16px_40px_rgba(139,43,180,0.12)] hover:-translate-y-1 transition-all duration-300 border border-[#EADCF1] border-t-4 border-t-secondary relative">
+                            <div className="absolute top-8 right-8 text-secondary/15">
                                 <Quote className="w-10 h-10" />
                             </div>
 
                             <div className="relative z-10 h-full flex flex-col">
-                                <p className="text-slate-600 mb-8 leading-relaxed italic">
+                                <p className="text-slate-700 mb-8 leading-relaxed italic pr-8">
                                     "{t.quote}"
                                 </p>
 
@@ -58,7 +58,7 @@ export default function Testimonials() {
                                     <p className="text-sm font-semibold text-secondary mb-0.5">
                                         {t.institution}
                                     </p>
-                                    <p className="text-xs text-slate-400 uppercase tracking-wider">
+                                    <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">
                                         {t.role}
                                     </p>
                                 </div>

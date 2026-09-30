@@ -24,7 +24,7 @@ export default function ProgramsAndScholarships() {
                     <FadeIn direction="right">
                         <div>
                             <h2 className="text-3xl font-heading font-bold text-slate-900 mb-6">
-                                Programs <span className="text-[#B8860B]">Offered</span>
+                                Programs <span className="text-[#8B2BB4]">Offered</span>
                             </h2>
                             <p className="text-slate-600 mb-8">
                                 We assist with applications to a wide range of study programs across various disciplines.
@@ -35,7 +35,7 @@ export default function ProgramsAndScholarships() {
                                         key={idx}
                                         className="px-4 py-2 bg-white rounded-lg border border-slate-200 shadow-sm text-slate-700 font-medium text-sm flex items-center gap-2"
                                     >
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#B8860B]"></div>
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#8B2BB4]"></div>
                                         {program}
                                     </span>
                                 ))}
@@ -47,7 +47,7 @@ export default function ProgramsAndScholarships() {
                     <FadeIn direction="left">
                         <div>
                             <h2 className="text-3xl font-heading font-bold text-slate-900 mb-6">
-                                Scholarship <span className="text-[#B8860B]">Guidance</span>
+                                Scholarship <span className="text-[#8B2BB4]">Guidance</span>
                             </h2>
                             <p className="text-slate-600 mb-8">
                                 Education shouldn't be a debt trap. We help you explore financial aid opportunities.

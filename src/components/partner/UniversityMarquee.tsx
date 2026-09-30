@@ -9,21 +9,21 @@ export default function UniversityMarquee() {
     ];
 
     return (
-        <section className="py-10 bg-slate-900 overflow-hidden border-y border-slate-800">
+        <section className="py-10 bg-primary overflow-hidden border-y border-white/10">
             <div className="relative w-full max-w-[100vw]">
                 {/* Gradient Masks */}
-                <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-slate-900 to-transparent z-10 pointer-events-none"></div>
-                <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-slate-900 to-transparent z-10 pointer-events-none"></div>
+                <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-primary to-transparent z-10 pointer-events-none"></div>
+                <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-primary to-transparent z-10 pointer-events-none"></div>
 
                 <div className="flex w-max animate-marquee">
                     {/* First Loop */}
                     <div className="flex items-center gap-12 px-6">
                         {universities.map((uni, index) => (
                             <div key={`uni-1-${index}`} className="flex items-center gap-4 group cursor-default">
-                                <span className="text-xl md:text-2xl font-heading font-bold text-slate-400 group-hover:text-[#B8860B] transition-colors duration-300 whitespace-nowrap">
+                                <span className="text-xl md:text-2xl font-heading font-bold text-white/60 group-hover:text-accent transition-colors duration-300 whitespace-nowrap">
                                     {uni}
                                 </span>
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#B8860B] opacity-50 block"></span>
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#8B2BB4] opacity-50 block"></span>
                             </div>
                         ))}
                     </div>
@@ -31,10 +31,10 @@ export default function UniversityMarquee() {
                     <div className="flex items-center gap-12 px-6">
                         {universities.map((uni, index) => (
                             <div key={`uni-2-${index}`} className="flex items-center gap-4 group cursor-default">
-                                <span className="text-xl md:text-2xl font-heading font-bold text-slate-400 group-hover:text-[#B8860B] transition-colors duration-300 whitespace-nowrap">
+                                <span className="text-xl md:text-2xl font-heading font-bold text-white/60 group-hover:text-accent transition-colors duration-300 whitespace-nowrap">
                                     {uni}
                                 </span>
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#B8860B] opacity-50 block"></span>
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#8B2BB4] opacity-50 block"></span>
                             </div>
                         ))}
                     </div>

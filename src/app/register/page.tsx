@@ -230,12 +230,12 @@ export default function RegisterPage() {
                         <div className="space-y-3">
                             <button
                                 onClick={() => { window.location.href = 'http://localhost:5000/api/auth/google?role=student'; }}
-                                className="w-full text-left px-5 py-4 rounded-xl border-2 border-slate-100 hover:border-[#C6A94A] hover:bg-amber-50/50 transition-all duration-200 group flex items-center gap-4"
+                                className="w-full text-left px-5 py-4 rounded-xl border-2 border-slate-100 hover:border-[#8B2BB4] hover:bg-amber-50/50 transition-all duration-200 group flex items-center gap-4"
                             >
                                 <span className="text-2xl">🎓</span>
                                 <div>
                                     <span className="block font-bold text-primary">Student</span>
-                                    <span className="text-xs text-slate-500 group-hover:text-[#C6A94A]">Seek Internships & Learn</span>
+                                    <span className="text-xs text-slate-500 group-hover:text-[#8B2BB4]">Seek Internships & Learn</span>
                                 </div>
                             </button>
 

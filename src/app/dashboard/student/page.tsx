@@ -90,7 +90,7 @@ export default function StudentDashboardPage() {
                             </h4>
                             <p className="text-slate-300 text-sm">To access all Veda Scholars opportunities, we need your education and career details.</p>
                         </div>
-                        <Button variant="primary" href="/profile" className="shrink-0 bg-secondary hover:bg-[#bfa13a] text-slate-900 border-none">
+                        <Button variant="primary" href="/profile" className="shrink-0 bg-secondary hover:bg-[#742493] text-slate-900 border-none">
                             Complete Profile
                         </Button>
                     </div>
@@ -113,7 +113,7 @@ export default function StudentDashboardPage() {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {/* Profile Summary */}
                             <div className="bg-white border border-slate-100 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative">
-                                <h3 className="text-xl font-bold mb-3 text-[#0B1F3A]">Your Profile</h3>
+                                <h3 className="text-xl font-bold mb-3 text-[#24112D]">Your Profile</h3>
                                 <p className="text-slate-300 mb-6 text-sm/relaxed">
                                     This holds your personal information synced directly with the Veda Scholars parsing system.
                                 </p>
@@ -122,28 +122,28 @@ export default function StudentDashboardPage() {
                                     <span className={`text-xs font-bold px-3 py-1 rounded-full ${profileCompleted ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-300'}`}>
                                         {profileCompleted ? 'Profile Complete' : 'Profile Incomplete'}
                                     </span>
-                                    <a href="/profile" className="text-sm font-medium text-[#C6A94A] hover:underline">Edit Profile →</a>
+                                    <a href="/profile" className="text-sm font-medium text-[#8B2BB4] hover:underline">Edit Profile →</a>
                                 </div>
                             </div>
 
                             {/* Resume Score */}
                             <div className="bg-slate-900 border border-slate-800 p-8 rounded-2xl shadow-lg relative overflow-hidden group flex flex-col justify-center items-center text-center">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-[#C6A94A]/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-[#8B2BB4]/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
                                 <h3 className="text-lg font-bold mb-1 text-white relative z-10">AI Resume Score</h3>
-                                <div className="relative z-10 my-4 flex items-center justify-center w-24 h-24 rounded-full border-4 border-[#C6A94A] shadow-[0_0_15px_rgba(198,169,74,0.3)]">
+                                <div className="relative z-10 my-4 flex items-center justify-center w-24 h-24 rounded-full border-4 border-[#8B2BB4] shadow-[0_0_15px_rgba(139,43,180,0.3)]">
                                     <span className="text-3xl font-black text-white">{isLoading ? '...' : resumeScore}</span>
                                 </div>
                                 <p className="text-slate-400 text-sm/relaxed relative z-10">
                                     Your profile matches highly with Top Tier IT companies.
                                 </p>
-                                <Link href="/resume" className="text-sm font-bold text-[#C6A94A] hover:underline relative z-10 block mt-4">
+                                <Link href="/resume" className="text-sm font-bold text-[#8B2BB4] hover:underline relative z-10 block mt-4">
                                     Improve Score →
                                 </Link>
                             </div>
 
                             {/* AI Suggestions */}
                             <div className="bg-white border border-slate-100 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col">
-                                <h3 className="text-xl font-bold mb-4 text-[#0B1F3A] flex items-center gap-2">
+                                <h3 className="text-xl font-bold mb-4 text-[#24112D] flex items-center gap-2">
                                     <span className="text-xl">✨</span> AI Insights
                                 </h3>
                                 <ul className="space-y-4 flex-grow">
@@ -152,13 +152,13 @@ export default function StudentDashboardPage() {
                                     ) : (
                                         aiSuggestions.map((suggestion, idx) => (
                                             <li key={idx} className="flex items-start gap-3">
-                                                <div className="w-2 h-2 rounded-full bg-[#C6A94A] mt-1.5 shrink-0"></div>
+                                                <div className="w-2 h-2 rounded-full bg-[#8B2BB4] mt-1.5 shrink-0"></div>
                                                 <p className="text-sm text-slate-300">{suggestion.replace(/^[-*]\s*/, '')}</p>
                                             </li>
                                         ))
                                     )}
                                 </ul>
-                                <Link href="/vedabot" className="text-sm font-medium text-[#C6A94A] hover:underline mt-4">
+                                <Link href="/vedabot" className="text-sm font-medium text-[#8B2BB4] hover:underline mt-4">
                                     Chat with VedaBot →
                                 </Link>
                             </div>
@@ -169,8 +169,8 @@ export default function StudentDashboardPage() {
                             {/* Recommended Jobs */}
                             <div className="bg-white border border-slate-100 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                                 <div className="flex justify-between items-center mb-6">
-                                    <h3 className="text-xl font-bold text-[#0B1F3A]">Recommended Jobs</h3>
-                                    <Link href="/jobs" className="text-sm text-[#C6A94A] font-medium hover:underline">View All</Link>
+                                    <h3 className="text-xl font-bold text-[#24112D]">Recommended Jobs</h3>
+                                    <Link href="/jobs" className="text-sm text-[#8B2BB4] font-medium hover:underline">View All</Link>
                                 </div>
                                 <div className="space-y-4">
                                     {isLoading ? (
@@ -179,14 +179,14 @@ export default function StudentDashboardPage() {
                                         <div className="text-sm text-slate-300 text-center py-4">Add skills to get matches.</div>
                                     ) : (
                                         recommendedJobs.map((job, i) => (
-                                            <div key={i} className="flex items-center justify-between p-4 rounded-xl border border-slate-100 hover:border-[#C6A94A]/30 transition-colors bg-slate-50/50">
+                                            <div key={i} className="flex items-center justify-between p-4 rounded-xl border border-slate-100 hover:border-[#8B2BB4]/30 transition-colors bg-slate-50/50">
                                                 <div>
-                                                    <h4 className="font-bold text-[#0B1F3A]">{job.title}</h4>
+                                                    <h4 className="font-bold text-[#24112D]">{job.title}</h4>
                                                     <p className="text-xs text-slate-300 mt-1">{job.company}</p>
                                                 </div>
                                                 <div className="flex flex-col items-end">
                                                     <span className="text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded uppercase tracking-wider mb-2">{job.matchPercentage}% Match</span>
-                                                    <Link href={`/jobs/${job._id}`} className="text-xs font-bold text-[#C6A94A] hover:underline">Apply Now</Link>
+                                                    <Link href={`/jobs/${job._id}`} className="text-xs font-bold text-[#8B2BB4] hover:underline">Apply Now</Link>
                                                 </div>
                                             </div>
                                         ))
@@ -197,8 +197,8 @@ export default function StudentDashboardPage() {
                             {/* Recent Applications */}
                             <div className="bg-white border border-slate-100 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                                 <div className="flex justify-between items-center mb-6">
-                                    <h3 className="text-xl font-bold text-[#0B1F3A]">Recent Applications</h3>
-                                    <Link href="/applications" className="text-sm text-[#C6A94A] font-medium hover:underline">View All</Link>
+                                    <h3 className="text-xl font-bold text-[#24112D]">Recent Applications</h3>
+                                    <Link href="/applications" className="text-sm text-[#8B2BB4] font-medium hover:underline">View All</Link>
                                 </div>
                                 <div className="space-y-4">
                                     {isLoading ? (
@@ -211,9 +211,9 @@ export default function StudentDashboardPage() {
                                                 app.status === 'rejected' ? 'text-red-700 bg-red-100' :
                                                     'text-amber-700 bg-amber-100';
                                             return (
-                                                <div key={i} className="flex items-center justify-between p-4 rounded-xl border border-slate-100 hover:border-[#C6A94A]/30 transition-colors bg-slate-50/50">
+                                                <div key={i} className="flex items-center justify-between p-4 rounded-xl border border-slate-100 hover:border-[#8B2BB4]/30 transition-colors bg-slate-50/50">
                                                     <div>
-                                                        <h4 className="font-bold text-[#0B1F3A]">{app.job?.title || 'Unknown Job'}</h4>
+                                                        <h4 className="font-bold text-[#24112D]">{app.job?.title || 'Unknown Job'}</h4>
                                                         <p className="text-xs text-slate-300 mt-1">{app.job?.company || ''}</p>
                                                     </div>
                                                     <span className={`text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider ${statusColor}`}>

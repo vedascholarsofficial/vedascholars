@@ -191,17 +191,17 @@ export default function AdminDashboardPage() {
     };
 
 
-    if (!user || user.role !== 'admin') return <section className="py-20 min-h-screen bg-slate-50 flex items-center justify-center"><p className="text-[#C6A94A] font-bold">Verifying Clearance...</p></section>;
+    if (!user || user.role !== 'admin') return <section className="py-20 min-h-screen bg-slate-50 flex items-center justify-center"><p className="text-[#8B2BB4] font-bold">Verifying Clearance...</p></section>;
 
     return (
         <section className="py-20 min-h-screen bg-slate-50 relative">
             
             {/* INLINE MODAL OVERLAYS */}
             {isJobModalOpen && (
-                <div className="fixed inset-0 bg-[#0B1F3A]/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                <div className="fixed inset-0 bg-[#24112D]/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
                     <div className="bg-white rounded-3xl shadow-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                         <div className="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
-                             <h2 className="text-2xl font-bold text-[#0B1F3A]">{currentJob ? 'Edit Architecture Job' : 'Deploy Global Job'}</h2>
+                             <h2 className="text-2xl font-bold text-[#24112D]">{currentJob ? 'Edit Architecture Job' : 'Deploy Global Job'}</h2>
                              <button onClick={() => setIsJobModalOpen(false)} className="text-slate-400 hover:text-red-500 font-bold text-xl">&times;</button>
                         </div>
                         <form onSubmit={submitJobForm} className="space-y-4">
@@ -217,23 +217,23 @@ export default function AdminDashboardPage() {
                             <input required placeholder="Requirements (comma separated)" value={jobForm.requirements} onChange={e => setJobForm({...jobForm, requirements: e.target.value})} className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" />
                             <div className="grid grid-cols-2 gap-4">
                                  <input placeholder="Salary Logic (e.g. $80k - $120k)" value={jobForm.salary} onChange={e => setJobForm({...jobForm, salary: e.target.value})} className="p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" />
-                                 <select value={jobForm.status} onChange={e => setJobForm({...jobForm, status: e.target.value})} className="p-3 bg-slate-50 border border-[2px] border-[#C6A94A] rounded-xl outline-none text-[#0B1F3A] font-bold uppercase text-xs">
+                                 <select value={jobForm.status} onChange={e => setJobForm({...jobForm, status: e.target.value})} className="p-3 bg-slate-50 border border-[2px] border-[#8B2BB4] rounded-xl outline-none text-[#24112D] font-bold uppercase text-xs">
                                      <option value="approved">Status: Approved</option>
                                      <option value="pending">Status: Pending</option>
                                      <option value="rejected">Status: Rejected</option>
                                  </select>
                             </div>
-                            <Button type="submit" variant="primary" className="bg-[#0B1F3A] w-full mt-4 h-12 text-white border-0 shadow-lg">Submit Override</Button>
+                            <Button type="submit" variant="primary" className="bg-[#24112D] w-full mt-4 h-12 text-white border-0 shadow-lg">Submit Override</Button>
                         </form>
                     </div>
                 </div>
             )}
 
             {isUniModalOpen && (
-                <div className="fixed inset-0 bg-[#0B1F3A]/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                <div className="fixed inset-0 bg-[#24112D]/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
                     <div className="bg-white rounded-3xl shadow-2xl p-8 max-w-xl w-full max-h-[90vh] overflow-y-auto">
                         <div className="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
-                             <h2 className="text-2xl font-bold text-[#0B1F3A]">{currentUni ? 'Edit University Block' : 'Bind New University Node'}</h2>
+                             <h2 className="text-2xl font-bold text-[#24112D]">{currentUni ? 'Edit University Block' : 'Bind New University Node'}</h2>
                              <button onClick={() => setIsUniModalOpen(false)} className="text-slate-400 hover:text-red-500 font-bold text-xl">&times;</button>
                         </div>
                         <form onSubmit={submitUniForm} className="space-y-4">
@@ -241,10 +241,10 @@ export default function AdminDashboardPage() {
                             <input required placeholder="Regional Location" value={uniForm.location} onChange={e => setUniForm({...uniForm, location: e.target.value})} className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" />
                             <textarea required placeholder="Brief Institution Description" rows={3} value={uniForm.description} onChange={e => setUniForm({...uniForm, description: e.target.value})} className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none" />
                             <div className="p-4 bg-slate-100/50 rounded-xl border border-slate-200">
-                                <label className="text-xs font-bold uppercase tracking-wider text-[#0B1F3A] block mb-2">Simulated Course Injection</label>
+                                <label className="text-xs font-bold uppercase tracking-wider text-[#24112D] block mb-2">Simulated Course Injection</label>
                                 <textarea placeholder="Course Titles (comma separated)" rows={3} value={uniForm.courses} onChange={e => setUniForm({...uniForm, courses: e.target.value})} className="w-full p-3 bg-white border border-slate-200 rounded-xl outline-none text-sm" />
                             </div>
-                            <Button type="submit" variant="primary" className="bg-[#C6A94A] w-full mt-4 h-12 text-[#0B1F3A] font-bold border-0 shadow-lg hover:bg-[#bfa13a] transition-all">Bind Structure Array</Button>
+                            <Button type="submit" variant="primary" className="bg-[#8B2BB4] w-full mt-4 h-12 text-white font-bold border-0 shadow-lg hover:bg-[#742493] transition-all">Bind Structure Array</Button>
                         </form>
                     </div>
                 </div>
@@ -254,13 +254,13 @@ export default function AdminDashboardPage() {
             <div className="container mx-auto px-4 md:px-6 relative z-10">
 
                 {/* Header Banner */}
-                <div className="bg-[#0B1F3A] rounded-3xl p-8 md:p-12 shadow-lg mb-8 relative border-b-4 border-[#C6A94A]">
+                <div className="bg-[#24112D] rounded-3xl p-8 md:p-12 shadow-lg mb-8 relative border-b-4 border-[#8B2BB4]">
                     <div className="relative z-10">
                         <h1 className="text-3xl md:text-4xl font-heading font-bold mb-2 text-white">
                             Control Panel, {user?.name || 'Director'}
                         </h1>
                         <p className="text-slate-300">
-                            Clearance Level: <span className="font-bold text-[#C6A94A] tracking-wider uppercase">System Administrator</span>
+                            Clearance Level: <span className="font-bold text-[#8B2BB4] tracking-wider uppercase">System Administrator</span>
                         </p>
                     </div>
                 </div>
@@ -271,7 +271,7 @@ export default function AdminDashboardPage() {
                         <button 
                             key={tab} 
                             onClick={() => setActiveTab(tab)} 
-                            className={`px-8 py-3.5 rounded-xl font-bold uppercase tracking-widest text-sm transition-all whitespace-nowrap ${activeTab === tab ? 'bg-[#0B1F3A] text-white shadow-xl translate-y-[-2px] border-b-2 border-[#C6A94A]' : 'bg-white text-slate-500 border border-slate-200 hover:bg-slate-50 hover:text-slate-800 shadow-sm'}`}
+                            className={`px-8 py-3.5 rounded-xl font-bold uppercase tracking-widest text-sm transition-all whitespace-nowrap ${activeTab === tab ? 'bg-[#24112D] text-white shadow-xl translate-y-[-2px] border-b-2 border-[#8B2BB4]' : 'bg-white text-slate-500 border border-slate-200 hover:bg-slate-50 hover:text-slate-800 shadow-sm'}`}
                         >
                             {tab} Terminal
                         </button>
@@ -285,8 +285,8 @@ export default function AdminDashboardPage() {
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                                 {[
                                     { label: 'Network Users', value: adminStats?.totalUsers, color: 'bg-indigo-600', icon: '👤' },
-                                    { label: 'Active Jobs', value: adminStats?.totalJobs, color: 'bg-[#0B1F3A]', icon: '💼' },
-                                    { label: 'Applications Routed', value: adminStats?.totalApplications, color: 'bg-[#C6A94A]', icon: '📋' },
+                                    { label: 'Active Jobs', value: adminStats?.totalJobs, color: 'bg-[#24112D]', icon: '💼' },
+                                    { label: 'Applications Routed', value: adminStats?.totalApplications, color: 'bg-[#8B2BB4]', icon: '📋' },
                                 ].map(card => (
                                     <div key={card.label} className={`${card.color} text-white p-8 rounded-2xl shadow-lg flex items-center gap-5 translate-y-0 hover:-translate-y-1 transition-transform`}>
                                         <span className="text-4xl">{card.icon}</span>
@@ -304,12 +304,12 @@ export default function AdminDashboardPage() {
                     {activeTab === 'users' && (
                         <div className="bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden fade-in">
                             <div className="bg-slate-50 p-6 border-b border-slate-200 flex justify-between items-center">
-                                <h3 className="font-bold text-xl text-[#0B1F3A]">User Registry</h3>
-                                <span className="bg-[#0B1F3A] text-white text-xs font-bold px-3 py-1 rounded-full">{users.length} Nodes</span>
+                                <h3 className="font-bold text-xl text-[#24112D]">User Registry</h3>
+                                <span className="bg-[#24112D] text-white text-xs font-bold px-3 py-1 rounded-full">{users.length} Nodes</span>
                             </div>
                             <div className="overflow-x-auto">
                                 <table className="w-full text-left">
-                                    <thead className="bg-[#0B1F3A] text-white">
+                                    <thead className="bg-[#24112D] text-white">
                                         <tr>
                                             <th className="p-5 font-bold whitespace-nowrap">Identity</th>
                                             <th className="p-5 font-bold whitespace-nowrap">Network Email</th>
@@ -326,7 +326,7 @@ export default function AdminDashboardPage() {
                                                     <select 
                                                         value={u.role} 
                                                         onChange={(e) => handleRoleChange(u._id, e.target.value)}
-                                                        className="text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-[#0B1F3A] outline-none hover:border-[#C6A94A] cursor-pointer"
+                                                        className="text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-[#24112D] outline-none hover:border-[#8B2BB4] cursor-pointer"
                                                     >
                                                         <option value="student">Student</option>
                                                         <option value="recruiter">Recruiter</option>
@@ -349,12 +349,12 @@ export default function AdminDashboardPage() {
                     {activeTab === 'jobs' && (
                         <div className="bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden fade-in">
                             <div className="bg-slate-50 p-6 border-b border-slate-200 flex justify-between items-center">
-                                <h3 className="font-bold text-xl text-[#0B1F3A]">Job Gateway Routing</h3>
-                                <button onClick={() => openJobModal()} className="bg-[#0B1F3A] text-white hover:bg-[#122A4F] px-4 py-2 rounded-lg text-sm font-bold shadow-md transition-colors">+ Deploy Master Job</button>
+                                <h3 className="font-bold text-xl text-[#24112D]">Job Gateway Routing</h3>
+                                <button onClick={() => openJobModal()} className="bg-[#24112D] text-white hover:bg-[#32163E] px-4 py-2 rounded-lg text-sm font-bold shadow-md transition-colors">+ Deploy Master Job</button>
                             </div>
                             <div className="overflow-x-auto">
                                 <table className="w-full text-left">
-                                    <thead className="bg-[#0B1F3A] text-white">
+                                    <thead className="bg-[#24112D] text-white">
                                         <tr>
                                             <th className="p-5 font-bold">Role Title</th>
                                             <th className="p-5 font-bold">Corporation</th>
@@ -365,7 +365,7 @@ export default function AdminDashboardPage() {
                                     <tbody>
                                         {jobs.map((j, i) => (
                                             <tr key={j._id} className={`${i % 2 === 0 ? 'bg-white' : 'bg-slate-50'} border-b border-slate-100 hover:bg-slate-100 transition-colors`}>
-                                                <td className="p-5 font-bold text-[#0B1F3A]">{j.title}</td>
+                                                <td className="p-5 font-bold text-[#24112D]">{j.title}</td>
                                                 <td className="p-5 text-slate-500 font-medium text-sm">{j.company}</td>
                                                 <td className="p-5 text-center">
                                                     <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-md border ${j.status === 'approved' ? 'bg-green-100 text-green-700 border-green-200' : j.status === 'rejected' ? 'bg-red-100 text-red-700 border-red-200' : 'bg-amber-100 text-amber-700 border-amber-200'}`}>
@@ -374,7 +374,7 @@ export default function AdminDashboardPage() {
                                                 </td>
                                                 <td className="p-5 flex justify-end gap-2">
                                                     <button onClick={() => openJobModal(j)} className="text-xs bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-2 rounded-lg font-bold shadow-sm transition-colors">Edit</button>
-                                                    {j.status !== 'approved' && <button onClick={() => handleJobStatus(j._id, 'approve')} className="text-xs bg-[#0B1F3A] hover:bg-[#122A4F] text-white px-3 py-2 rounded-lg font-bold shadow-sm transition-colors">Approve</button>}
+                                                    {j.status !== 'approved' && <button onClick={() => handleJobStatus(j._id, 'approve')} className="text-xs bg-[#24112D] hover:bg-[#32163E] text-white px-3 py-2 rounded-lg font-bold shadow-sm transition-colors">Approve</button>}
                                                     {j.status !== 'rejected' && <button onClick={() => handleJobStatus(j._id, 'reject')} className="text-xs border-2 border-amber-500 text-amber-600 hover:bg-amber-50 px-3 py-2 rounded-lg font-bold transition-colors">Reject</button>}
                                                     <button onClick={() => handleDeleteJob(j)} className="text-red-500 bg-red-50 hover:bg-red-500 hover:text-white px-3 py-2 rounded-lg text-xs font-bold transition-all shadow-sm">Delete</button>
                                                 </td>
@@ -390,12 +390,12 @@ export default function AdminDashboardPage() {
                     {activeTab === 'universities' && (
                         <div className="bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden fade-in">
                             <div className="bg-slate-50 p-6 border-b border-slate-200 flex justify-between items-center">
-                                <h3 className="font-bold text-xl text-[#0B1F3A]">University Integrations</h3>
-                                <button onClick={() => openUniModal()} className="bg-[#C6A94A] text-[#0B1F3A] hover:bg-[#bfa13a] px-4 py-2 rounded-lg text-sm font-bold shadow-md transition-colors">+ Bind Network Node</button>
+                                <h3 className="font-bold text-xl text-[#24112D]">University Integrations</h3>
+                                <button onClick={() => openUniModal()} className="bg-[#8B2BB4] text-white hover:bg-[#742493] px-4 py-2 rounded-lg text-sm font-bold shadow-md transition-colors">+ Bind Network Node</button>
                             </div>
                             <div className="overflow-x-auto">
                                 <table className="w-full text-left">
-                                    <thead className="bg-[#0B1F3A] text-white">
+                                    <thead className="bg-[#24112D] text-white">
                                         <tr>
                                             <th className="p-5 font-bold">Institution Name</th>
                                             <th className="p-5 font-bold">Regional Location</th>
@@ -406,7 +406,7 @@ export default function AdminDashboardPage() {
                                     <tbody>
                                         {universities.map((u, i) => (
                                             <tr key={u._id} className={`${i % 2 === 0 ? 'bg-white' : 'bg-slate-50'} border-b border-slate-100 hover:bg-slate-100 transition-colors`}>
-                                                <td className="p-5 font-bold text-[#0B1F3A]">{u.name}</td>
+                                                <td className="p-5 font-bold text-[#24112D]">{u.name}</td>
                                                 <td className="p-5 text-slate-500 text-sm font-medium">{u.location}</td>
                                                 <td className="p-5 text-center text-sm font-bold text-indigo-600">{u.courses?.length || 0}</td>
                                                 <td className="p-5 flex justify-end gap-2">

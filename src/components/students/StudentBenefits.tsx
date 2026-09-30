@@ -61,7 +61,7 @@ export default function StudentBenefits() {
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-primary mb-2">{benefit.title}</h3>
-                                        <p className="text-slate-300 text-sm leading-relaxed">
+                                        <p className="text-slate-600 text-sm leading-relaxed">
                                             {benefit.description}
                                         </p>
                                     </div>

@@ -28,7 +28,7 @@ export default function FounderStory() {
                         <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">
                             A Message from the Founder
                         </h2>
-                        <div className="space-y-6 text-slate-300 leading-relaxed text-lg">
+                        <div className="space-y-6 text-slate-600 leading-relaxed text-lg">
                             <p>
                                 "Education is not just about acquiring a degree; it is about building the foundation for a life of purpose and impact. Throughout my career, I have witnessed brilliant minds struggle not because of a lack of talent, but a lack of direction."
                             </p>

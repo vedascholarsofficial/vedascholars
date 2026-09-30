@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, Source_Serif_4 } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Analytics from "@/components/marketing/Analytics";
@@ -7,14 +7,24 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const serif = Source_Serif_4({
+  variable: "--font-serif-display",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+  display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -65,7 +75,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en" className={`${jakarta.variable} ${inter.variable} ${serif.variable}`}>
       <body
         className="antialiased bg-white text-slate-900 font-body flex flex-col min-h-screen"
       >

@@ -31,13 +31,13 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
     return (
         <div className="border border-slate-200 rounded-xl overflow-hidden transition-shadow hover:shadow-md">
             <button
-                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#C6A94A]"
+                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#8B2BB4]"
                 onClick={() => setOpen(!open)}
                 aria-expanded={open}
             >
-                <span className="text-base font-semibold text-[#0B1F3A] leading-snug">{question}</span>
+                <span className="text-base font-semibold text-[#24112D] leading-snug">{question}</span>
                 <ChevronDown
-                    className={`flex-shrink-0 w-5 h-5 text-[#C6A94A] transition-transform duration-300 ${open ? 'rotate-180' : ''
+                    className={`flex-shrink-0 w-5 h-5 text-[#8B2BB4] transition-transform duration-300 ${open ? 'rotate-180' : ''
                         }`}
                 />
             </button>

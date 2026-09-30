@@ -72,17 +72,17 @@ export default function ServiceDetailedList() {
                                     </h2>
                                 </div>
 
-                                <p className="text-lg text-slate-300 leading-relaxed mb-8">
+                                <p className="text-lg text-slate-600 leading-relaxed mb-8">
                                     {service.description}
                                 </p>
 
                                 <div className="mb-8 p-6 bg-white border border-slate-100 rounded-xl shadow-sm">
                                     <div className="mb-4">
-                                        <span className="text-sm font-bold text-slate-400 uppercase tracking-wider block mb-1">Who it is for</span>
+                                        <span className="text-xs font-bold text-slate-500 uppercase tracking-[0.15em] block mb-1">Who it is for</span>
                                         <p className="text-slate-700 font-medium">{service.target}</p>
                                     </div>
                                     <div>
-                                        <span className="text-sm font-bold text-slate-400 uppercase tracking-wider block mb-1">Outcome</span>
+                                        <span className="text-xs font-bold text-slate-500 uppercase tracking-[0.15em] block mb-1">Outcome</span>
                                         <p className="text-secondary font-bold flex items-center gap-2">
                                             <CheckCircle2 className="w-5 h-5" />
                                             {service.outcome}
@@ -92,8 +92,8 @@ export default function ServiceDetailedList() {
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                                     {service.points.map((point, idx) => (
-                                        <div key={idx} className="flex items-center gap-2 text-slate-300">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+                                        <div key={idx} className="flex items-center gap-2 text-slate-700">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></div>
                                             <span className="text-sm">{point}</span>
                                         </div>
                                     ))}

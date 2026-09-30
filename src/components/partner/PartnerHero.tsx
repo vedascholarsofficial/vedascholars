@@ -28,7 +28,7 @@ export default function PartnerHero({ activeTab, setActiveTab }: PartnerHeroProp
             <div className="absolute inset-0 z-0">
                 <div key={activeTab} className="absolute inset-0 animate-fade-in">
                     {/* Using key to trigger re-render and animation on tab change */}
-                    <div className="absolute inset-0 bg-slate-900/60 z-10" /> {/* Overlay */}
+                    <div className="absolute inset-0 bg-[#1A0C21]/65 z-10" /> {/* Overlay */}
                     <Image
                         src={activeTab === 'universities'
                             ? 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80'
@@ -46,7 +46,7 @@ export default function PartnerHero({ activeTab, setActiveTab }: PartnerHeroProp
                 <FadeIn>
                     <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 leading-tight drop-shadow-lg text-white">
                         Partnering with <br />
-                        <span className="text-[#B8860B]">
+                        <span className="text-accent">
                             {activeTab === 'universities' ? 'Global Universities' : 'Industry Leaders'}
                         </span>
                     </h1>
@@ -63,7 +63,7 @@ export default function PartnerHero({ activeTab, setActiveTab }: PartnerHeroProp
                         <button
                             onClick={() => setActiveTab('universities')}
                             className={`px-8 py-3 rounded-full text-base font-semibold transition-all duration-300 ${activeTab === 'universities'
-                                ? 'bg-[#B8860B] text-white shadow-lg'
+                                ? 'bg-[#8B2BB4] text-white shadow-lg'
                                 : 'text-slate-200 hover:text-white hover:bg-white/10'
                                 }`}
                         >
@@ -72,7 +72,7 @@ export default function PartnerHero({ activeTab, setActiveTab }: PartnerHeroProp
                         <button
                             onClick={() => setActiveTab('employers')}
                             className={`px-8 py-3 rounded-full text-base font-semibold transition-all duration-300 ${activeTab === 'employers'
-                                ? 'bg-[#B8860B] text-white shadow-lg'
+                                ? 'bg-[#8B2BB4] text-white shadow-lg'
                                 : 'text-slate-200 hover:text-white hover:bg-white/10'
                                 }`}
                         >
@@ -81,7 +81,7 @@ export default function PartnerHero({ activeTab, setActiveTab }: PartnerHeroProp
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button variant="primary" size="lg" href={`/contact?type=${activeTab === 'universities' ? 'partner' : 'employer'}`} className="shadow-lg shadow-gold/20 min-w-[200px]">
+                        <Button variant="primary" size="lg" href={`/contact?type=${activeTab === 'universities' ? 'partner' : 'employer'}`} className="shadow-lg shadow-secondary/20 min-w-[200px]">
                             {activeTab === 'universities' ? 'Partner With Us' : 'Hire Talent'}
                         </Button>
                     </div>

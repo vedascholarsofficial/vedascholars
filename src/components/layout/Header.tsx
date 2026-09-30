@@ -2,12 +2,12 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import Button from '../ui/Button';
 import { Menu, X, Bell, User, LogOut } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { notificationService } from '@/services/notificationService';
+import BrandWordmark from '../ui/BrandWordmark';
 
 export default function Header() {
     const pathname = usePathname();
@@ -18,6 +18,9 @@ export default function Header() {
     const [notifications, setNotifications] = useState<any[]>([]);
     const [showBell, setShowBell] = useState(false);
     const bellRef = useRef<HTMLDivElement>(null);
+
+    // On the home page the header floats transparently over the hero image
+    const overHero = pathname === '/' && !isScrolled && !isMobileMenuOpen;
 
     const unreadCount = notifications.filter(n => !n.isRead).length;
 
@@ -117,47 +120,30 @@ export default function Header() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/85 backdrop-blur-xl backdrop-saturate-150 border-b border-slate-200/60 shadow-[0_8px_30px_rgba(36,17,45,0.07)] py-2.5' : 'bg-transparent py-5'
                 }`}
         >
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
-                    {/* Brand Identity Block */}
-                    <Link href="/" className="flex items-center gap-3 z-50 group">
-                        {/* Logo Icon */}
-                        <div className="relative h-10 w-10 md:h-11 md:w-11 rounded-lg overflow-hidden shadow-sm transition-transform duration-300 ease-in-out group-hover:scale-105">
-                            <Image
-                                src="/images/veda-logo.png"
-                                alt="Veda Scholars Logo"
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                        </div>
-
-                        {/* Brand Text */}
-                        <div className="flex flex-col justify-center">
-                            <span className="font-heading font-bold text-xl md:text-2xl tracking-wide leading-none text-primary transition-colors duration-300">
-                                Veda Scholars
-                            </span>
-                        </div>
+                    <Link href="/" className="flex items-center z-50 group" aria-label="Veda Scholars home">
+                        <BrandWordmark priority inverted={overHero} className="transition-transform duration-300 ease-in-out group-hover:scale-[1.02]" />
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden md:flex items-center gap-8">
+                    <nav className="hidden xl:flex items-center gap-5 2xl:gap-8">
                         {currentNavLinks.map((link) => {
                             const isActive = pathname === link.href;
                             return (
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className={`relative text-sm font-medium transition-colors duration-300 group/nav
-                                        ${isActive ? 'text-[#B8860B]' : isScrolled ? 'text-primary hover:text-[#B8860B]' : 'text-primary hover:text-[#B8860B]'}
+                                    className={`relative text-sm 2xl:text-[15px] font-medium tracking-[0.01em] transition-colors duration-300 group/nav
+                                        ${overHero ? (isActive ? 'text-white' : 'text-white/85 hover:text-white') : (isActive ? 'text-[#8B2BB4]' : 'text-primary hover:text-[#8B2BB4]')}
                                     `}
                                 >
                                     {link.name}
-                                    <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-[#B8860B] transform origin-left transition-transform duration-300 ease-out
+                                    <span className={`absolute -bottom-1.5 left-0 w-full h-0.5 rounded-full ${overHero ? 'bg-[#E0A6EF]' : 'bg-[#8B2BB4]'} transform origin-left transition-transform duration-300 ease-out
                                         ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover/nav:scale-x-100'}
                                     `} />
                                 </Link>
@@ -168,12 +154,12 @@ export default function Header() {
                             <div className="relative" ref={bellRef}>
                                 <button
                                     onClick={() => setShowBell(prev => !prev)}
-                                    className="relative p-2 text-primary hover:text-[#B8860B] transition-colors"
+                                    className="relative p-2 text-primary hover:text-[#8B2BB4] transition-colors"
                                     aria-label="Notifications"
                                 >
                                     <Bell className="w-5 h-5" />
                                     {unreadCount > 0 && (
-                                        <span className="absolute top-0.5 right-0.5 min-w-[16px] h-4 bg-[#B8860B] text-white text-[10px] font-bold rounded-full flex items-center justify-center px-1">
+                                        <span className="absolute top-0.5 right-0.5 min-w-[16px] h-4 bg-[#8B2BB4] text-white text-[10px] font-bold rounded-full flex items-center justify-center px-1">
                                             {unreadCount > 9 ? '9+' : unreadCount}
                                         </span>
                                     )}
@@ -182,8 +168,8 @@ export default function Header() {
                                 {showBell && (
                                     <div className="absolute right-0 top-full mt-3 w-80 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden z-50">
                                         <div className="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
-                                            <p className="font-bold text-[#0B1F3A] text-sm">Notifications</p>
-                                            {unreadCount > 0 && <span className="text-xs text-[#B8860B] font-semibold">{unreadCount} unread</span>}
+                                            <p className="font-bold text-[#24112D] text-sm">Notifications</p>
+                                            {unreadCount > 0 && <span className="text-xs text-[#8B2BB4] font-semibold">{unreadCount} unread</span>}
                                         </div>
                                         <div className="max-h-72 overflow-y-auto">
                                             {notifications.length === 0 ? (
@@ -198,7 +184,7 @@ export default function Header() {
                                                         }`}
                                                     >
                                                         <div className="flex items-start gap-2">
-                                                            <span className={`mt-1 w-2 h-2 rounded-full shrink-0 ${n.isRead ? 'bg-slate-300' : 'bg-[#B8860B]'}`} />
+                                                            <span className={`mt-1 w-2 h-2 rounded-full shrink-0 ${n.isRead ? 'bg-slate-300' : 'bg-[#8B2BB4]'}`} />
                                                             <div>
                                                                 <p className="text-[13px] text-slate-700 leading-snug font-medium">{n.message}</p>
                                                                 <p className="text-[11px] text-slate-400 mt-1">{new Date(n.createdAt).toLocaleDateString()}</p>
@@ -209,7 +195,7 @@ export default function Header() {
                                             )}
                                         </div>
                                         <div className="px-4 py-2 border-t border-slate-100">
-                                            <Link href="/dashboard" className="text-xs text-[#B8860B] font-semibold hover:underline" onClick={() => setShowBell(false)}>View Dashboard →</Link>
+                                            <Link href="/dashboard" className="text-xs text-[#8B2BB4] font-semibold hover:underline" onClick={() => setShowBell(false)}>View Dashboard →</Link>
                                         </div>
                                     </div>
                                 )}
@@ -240,7 +226,7 @@ export default function Header() {
                                 variant="primary"
                                 size="sm"
                                 onClick={() => router.push('/login')}
-                                className="bg-[#B8860B] hover:bg-[#9a7009] text-white rounded-lg transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                                className="bg-[#8B2BB4] hover:bg-[#742493] text-white rounded-full px-6 transition-all duration-300 shadow-[0_8px_24px_rgba(139,43,180,0.35)] hover:shadow-[0_12px_30px_rgba(139,43,180,0.5)] hover:-translate-y-0.5"
                             >
                                 Get Started
                             </Button>
@@ -249,7 +235,7 @@ export default function Header() {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="md:hidden z-50 p-2 text-primary focus:outline-none"
+                        className={`xl:hidden z-50 p-2 -mr-2 focus:outline-none transition-colors ${overHero ? 'text-white' : 'text-primary'}`}
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         aria-label="Toggle menu"
                     >
@@ -262,7 +248,7 @@ export default function Header() {
 
                     {/* Mobile Navigation Overlay */}
                     <div
-                        className={`fixed inset-0 bg-white z-40 flex flex-col items-center justify-start pt-28 h-[100dvh] transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+                        className={`xl:hidden fixed inset-0 bg-white z-40 flex flex-col items-center justify-start pt-28 h-[100dvh] transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
                             }`}
                     >
                         <nav className="flex flex-col items-center gap-8 text-center">
@@ -294,7 +280,7 @@ export default function Header() {
                                         size="lg"
                                         href="/login"
                                         onClick={() => setIsMobileMenuOpen(false)}
-                                        className="bg-[#B8860B] hover:bg-[#9a7009] text-white rounded-lg shadow-md hover:shadow-lg"
+                                        className="bg-[#8B2BB4] hover:bg-[#742493] text-white rounded-lg shadow-md hover:shadow-lg"
                                     >
                                         Get Started
                                     </Button>

@@ -56,10 +56,10 @@ export default function RecruiterDashboardPage() {
                      <div className="bg-white border border-slate-100 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow mt-4">
                           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-6 border-b border-slate-100">
                               <div>
-                                  <h3 className="text-xl font-bold text-[#0B1F3A]">My Posted Jobs</h3>
+                                  <h3 className="text-xl font-bold text-[#24112D]">My Posted Jobs</h3>
                                   <p className="text-sm text-slate-500">Track and manage jobs you've forwarded to our admins for approval.</p>
                               </div>
-                              <Button href="/jobs/create" className="bg-[#C6A94A] text-[#0B1F3A] hover:bg-[#bfa13a] border-none font-bold text-sm h-12 px-6 shadow-md shrink-0">
+                              <Button href="/jobs/create" className="bg-[#8B2BB4] text-white hover:bg-[#742493] border-none font-bold text-sm h-12 px-6 shadow-md shrink-0">
                                    + Post a New Job
                               </Button>
                           </div>
@@ -75,9 +75,9 @@ export default function RecruiterDashboardPage() {
                           ) : (
                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                    {recruiterJobs.map(job => (
-                                        <div key={job._id} className="border border-slate-100 p-5 rounded-xl hover:border-[#C6A94A]/40 transition-colors flex flex-col h-full bg-slate-50/50">
+                                        <div key={job._id} className="border border-slate-100 p-5 rounded-xl hover:border-[#8B2BB4]/40 transition-colors flex flex-col h-full bg-slate-50/50">
                                              <div className="flex justify-between items-start mb-3">
-                                                 <p className="font-bold text-[#0B1F3A] line-clamp-1">{job.title}</p>
+                                                 <p className="font-bold text-[#24112D] line-clamp-1">{job.title}</p>
                                                  <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shrink-0 ${
                                                       job.status === 'approved' ? 'bg-green-100 text-green-700' :
                                                       job.status === 'rejected' ? 'bg-red-100 text-red-700' :
@@ -95,7 +95,7 @@ export default function RecruiterDashboardPage() {
                                              </div>
                                              
                                              <div className="mt-auto flex justify-end">
-                                                 <Link href={`/jobs/${job._id}`} className="text-[#C6A94A] text-sm hover:underline font-bold">
+                                                 <Link href={`/jobs/${job._id}`} className="text-[#8B2BB4] text-sm hover:underline font-bold">
                                                      View Posting →
                                                  </Link>
                                              </div>

@@ -29,11 +29,11 @@ export default function JobsListingPage() {
     return (
         <div className="bg-slate-50 min-h-screen pb-24">
              {/* Header Section mimicking /jobs/apply */}
-             <section className="relative py-20 bg-[#0B1F3A] text-white overflow-hidden">
+             <section className="relative py-20 bg-[#24112D] text-white overflow-hidden">
                 <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
                     <FadeIn>
                         <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-white leading-tight">
-                            Explore <span className="text-[#C6A94A]">Global Opportunities</span>
+                            Explore <span className="text-[#8B2BB4]">Global Opportunities</span>
                         </h1>
                         <p className="text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8">
                             Discover career defining roles across the network.
@@ -55,16 +55,16 @@ export default function JobsListingPage() {
                          {jobs.map((job, idx) => (
                               <FadeIn key={job._id} delay={idx * 0.05}>
                                   <Link href={`/jobs/${job._id}`} className="block h-full">
-                                      <article className="bg-white p-6 rounded-2xl border border-slate-100 hover:border-[#C6A94A]/40 hover:shadow-lg transition-all duration-300 h-full flex flex-col cursor-pointer group">
+                                      <article className="bg-white p-6 rounded-2xl border border-slate-100 hover:border-[#8B2BB4]/40 hover:shadow-lg transition-all duration-300 h-full flex flex-col cursor-pointer group">
                                           <div className="flex items-center justify-between mb-4">
                                               <span className="bg-blue-50 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
                                                   {job.type || 'Full-Time'}
                                               </span>
                                               {job.salary && (
-                                                   <span className="text-sm font-bold text-[#C6A94A]">{job.salary}</span>
+                                                   <span className="text-sm font-bold text-[#8B2BB4]">{job.salary}</span>
                                               )}
                                           </div>
-                                          <h3 className="text-xl font-bold text-[#0B1F3A] mb-2 group-hover:text-[#C6A94A] transition-colors">
+                                          <h3 className="text-xl font-bold text-[#24112D] mb-2 group-hover:text-[#8B2BB4] transition-colors">
                                               {job.title}
                                           </h3>
                                           <div className="flex items-center gap-2 text-slate-300 font-medium mb-4">
@@ -74,11 +74,11 @@ export default function JobsListingPage() {
                                           <div className="mt-auto space-y-2 text-sm text-slate-300 border-t border-slate-100 pt-4">
                                               {job.location && (
                                                    <div className="flex items-center gap-2">
-                                                       <MapPin className="w-4 h-4 text-[#C6A94A]" /> {job.location}
+                                                       <MapPin className="w-4 h-4 text-[#8B2BB4]" /> {job.location}
                                                    </div>
                                               )}
                                               <div className="flex items-center gap-2">
-                                                  <Clock className="w-4 h-4 text-[#C6A94A]" /> Posted {new Date(job.createdAt).toLocaleDateString()}
+                                                  <Clock className="w-4 h-4 text-[#8B2BB4]" /> Posted {new Date(job.createdAt).toLocaleDateString()}
                                               </div>
                                           </div>
                                       </article>

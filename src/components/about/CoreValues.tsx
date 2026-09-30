@@ -30,7 +30,7 @@ export default function CoreValues() {
     ];
 
     return (
-        <section className="py-16 md:py-20 bg-[#0A2647] text-white">
+        <section className="py-16 md:py-20 bg-[#24112D] text-white">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-white">Our Core Values</h2>
@@ -41,8 +41,8 @@ export default function CoreValues() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {values.map((v) => (
-                        <div key={v.id} className="bg-[#0F355A] p-8 rounded-xl border border-[#1E4D7B] hover:border-[#B8860B] transition-all duration-300 hover:-translate-y-1 shadow-lg group">
-                            <div className="w-14 h-14 bg-white/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#B8860B] transition-colors duration-300">
+                        <div key={v.id} className="bg-[#32163E] p-8 rounded-xl border border-[#472054] hover:border-[#8B2BB4] transition-all duration-300 hover:-translate-y-1 shadow-lg group">
+                            <div className="w-14 h-14 bg-white/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#8B2BB4] transition-colors duration-300">
                                 {v.icon}
                             </div>
                             <h3 className="text-xl font-bold mb-3 text-white">{v.name}</h3>

@@ -27,21 +27,21 @@ export default function TrustSignals() {
     ];
 
     return (
-        <section className="py-16 bg-slate-50 border-b border-slate-100">
+        <section id="impact" className="scroll-mt-0 py-16 md:py-20 bg-gradient-to-b from-[#F7F1FA] to-white border-b border-slate-100">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-200">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                     {metrics.map((metric) => (
-                        <div key={metric.id} className="flex flex-col items-center justify-center p-6 group hover:bg-white hover:shadow-sm transition-all duration-300 rounded-lg">
-                            <div className="mb-4 p-3 bg-primary/5 rounded-full group-hover:bg-primary/10 transition-colors">
+                        <div key={metric.id} className="flex flex-col items-center justify-center p-8 group bg-white border border-[#EADCF1] shadow-[0_8px_30px_rgba(36,17,45,0.05)] hover:shadow-[0_16px_40px_rgba(139,43,180,0.12)] hover:-translate-y-1 transition-all duration-300 rounded-2xl">
+                            <div className="mb-5 p-3.5 bg-secondary/10 rounded-2xl group-hover:bg-secondary/15 transition-colors">
                                 {metric.icon}
                             </div>
-                            <h3 className="text-4xl font-heading font-bold text-primary mb-2">
+                            <h3 className="text-4xl md:text-5xl font-heading font-extrabold text-primary mb-3">
                                 {metric.value}
                             </h3>
-                            <p className="text-sm font-bold uppercase tracking-wider text-slate-300 mb-1">
+                            <p className="text-xs font-bold uppercase tracking-[0.18em] text-secondary mb-2">
                                 {metric.label}
                             </p>
-                            <p className="text-sm text-slate-400 font-light">
+                            <p className="text-[15px] text-slate-600 leading-relaxed">
                                 {metric.description}
                             </p>
                         </div>

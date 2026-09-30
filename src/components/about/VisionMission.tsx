@@ -13,7 +13,7 @@ export default function VisionMission() {
                             <Target className="w-8 h-8 text-secondary" />
                         </div>
                         <h3 className="text-2xl font-heading font-bold text-primary mb-4">Our Vision</h3>
-                        <p className="text-slate-300 leading-relaxed text-lg">
+                        <p className="text-slate-600 leading-relaxed text-lg">
                             To be the world's most trusted partner in education-to-employment transitions, creating a future where every student's potential is fully realized through global opportunities.
                         </p>
                     </div>
@@ -24,7 +24,7 @@ export default function VisionMission() {
                             <Compass className="w-8 h-8 text-primary" />
                         </div>
                         <h3 className="text-2xl font-heading font-bold text-primary mb-4">Our Mission</h3>
-                        <p className="text-slate-300 leading-relaxed text-lg">
+                        <p className="text-slate-600 leading-relaxed text-lg">
                             We empower students by providing ethical, transparent, and personalized guidance. We commit to supporting them not just in admission, but throughout their journey to a meaningful career.
                         </p>
                     </div>

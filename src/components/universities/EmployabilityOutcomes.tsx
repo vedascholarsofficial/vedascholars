@@ -45,7 +45,7 @@ export default function EmployabilityOutcomes() {
                                 {stat.icon}
                             </div>
                             <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                            <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">{stat.label}</div>
+                            <div className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">{stat.label}</div>
                             <p className="text-slate-600 leading-relaxed">
                                 {stat.text}
                             </p>

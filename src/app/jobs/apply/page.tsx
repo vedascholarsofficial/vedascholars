@@ -165,14 +165,14 @@ export default function ApplyForJobsPage() {
                         itemType="https://schema.org/BreadcrumbList"
                     >
                         <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                            <Link href="/" className="hover:text-[#0B1F3A] transition-colors" itemProp="item">
+                            <Link href="/" className="hover:text-[#24112D] transition-colors" itemProp="item">
                                 <span itemProp="name">Home</span>
                             </Link>
                             <meta itemProp="position" content="1" />
                         </li>
                         <li aria-hidden="true" className="text-slate-300">/</li>
                         <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                            <span className="text-[#0B1F3A] font-medium" itemProp="name">
+                            <span className="text-[#24112D] font-medium" itemProp="name">
                                 Apply for Jobs
                             </span>
                             <meta itemProp="position" content="2" />
@@ -182,25 +182,25 @@ export default function ApplyForJobsPage() {
             </nav>
 
             {/* ── Section 1: Hero ─────────────────────────────────────────────────── */}
-            <section className="relative py-24 md:py-32 bg-[#0B1F3A] text-white overflow-hidden">
+            <section className="relative py-24 md:py-32 bg-[#24112D] text-white overflow-hidden">
                 <div
-                    className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C6A94A]/10 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                    className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#8B2BB4]/10 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2 pointer-events-none"
                     aria-hidden="true"
                 />
                 <div
-                    className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#C6A94A]/8 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3 pointer-events-none"
+                    className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#8B2BB4]/8 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3 pointer-events-none"
                     aria-hidden="true"
                 />
 
                 <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
                     <FadeIn>
-                        <span className="inline-block py-1.5 px-4 rounded-full bg-[#C6A94A]/20 border border-[#C6A94A]/40 text-[#C6A94A] text-sm font-medium mb-6 tracking-wide">
+                        <span className="inline-block py-1.5 px-4 rounded-full bg-[#8B2BB4]/20 border border-[#8B2BB4]/40 text-[#8B2BB4] text-sm font-medium mb-6 tracking-wide">
                             International Recruitment&nbsp;&nbsp;·&nbsp;&nbsp;India · UK · UAE
                         </span>
 
                         <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-white leading-tight">
                             Land Your Dream Job{' '}
-                            <span className="text-[#C6A94A]">Across the Globe</span>
+                            <span className="text-[#8B2BB4]">Across the Globe</span>
                         </h1>
 
                         <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-10">
@@ -213,13 +213,13 @@ export default function ApplyForJobsPage() {
                                 href={GOOGLE_FORM_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-md bg-[#C6A94A] text-[#0B1F3A] font-semibold text-lg shadow-lg hover:bg-[#bfa13a] active:scale-95 transition-all duration-300 hover:-translate-y-0.5"
+                                className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-md bg-[#8B2BB4] text-white font-semibold text-lg shadow-lg hover:bg-[#742493] active:scale-95 transition-all duration-300 hover:-translate-y-0.5"
                             >
                                 Apply Now <ArrowRight className="w-5 h-5" aria-hidden="true" />
                             </a>
                             <Link
                                 href="/counselling"
-                                className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-md border-2 border-white/30 text-white font-semibold text-lg hover:border-[#C6A94A] hover:text-[#C6A94A] active:scale-95 transition-all duration-300 hover:-translate-y-0.5"
+                                className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-md border-2 border-white/30 text-white font-semibold text-lg hover:border-[#8B2BB4] hover:text-[#8B2BB4] active:scale-95 transition-all duration-300 hover:-translate-y-0.5"
                             >
                                 Book Counselling
                             </Link>
@@ -228,7 +228,7 @@ export default function ApplyForJobsPage() {
                         <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-sm text-slate-400">
                             {trustBadges.map((item) => (
                                 <span key={item} className="flex items-center gap-2">
-                                    <CheckCircle className="w-4 h-4 text-[#C6A94A]" aria-hidden="true" />
+                                    <CheckCircle className="w-4 h-4 text-[#8B2BB4]" aria-hidden="true" />
                                     {item}
                                 </span>
                             ))}
@@ -244,7 +244,7 @@ export default function ApplyForJobsPage() {
                         <div className="text-center max-w-3xl mx-auto mb-16">
                             <h2
                                 id="why-apply-heading"
-                                className="text-3xl md:text-4xl font-heading font-bold text-[#0B1F3A] mb-4"
+                                className="text-3xl md:text-4xl font-heading font-bold text-[#24112D] mb-4"
                             >
                                 Why Apply Through Veda Scholars?
                             </h2>
@@ -260,13 +260,13 @@ export default function ApplyForJobsPage() {
                             const Icon = feature.icon;
                             return (
                                 <FadeIn key={feature.title} delay={idx * 0.08}>
-                                    <article className="bg-white p-8 rounded-2xl border border-slate-100 hover:border-[#C6A94A]/40 hover:shadow-lg transition-all duration-300 h-full group">
+                                    <article className="bg-white p-8 rounded-2xl border border-slate-100 hover:border-[#8B2BB4]/40 hover:shadow-lg transition-all duration-300 h-full group">
                                         <div
                                             className={`w-12 h-12 ${feature.color} rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}
                                         >
                                             <Icon className="w-6 h-6" aria-hidden="true" />
                                         </div>
-                                        <h3 className="text-lg font-bold text-[#0B1F3A] mb-3">{feature.title}</h3>
+                                        <h3 className="text-lg font-bold text-[#24112D] mb-3">{feature.title}</h3>
                                         <p className="text-slate-300 text-sm leading-relaxed">{feature.description}</p>
                                     </article>
                                 </FadeIn>
@@ -283,7 +283,7 @@ export default function ApplyForJobsPage() {
                         <div className="text-center max-w-3xl mx-auto mb-16">
                             <h2
                                 id="how-it-works-heading"
-                                className="text-3xl md:text-4xl font-heading font-bold text-[#0B1F3A] mb-4"
+                                className="text-3xl md:text-4xl font-heading font-bold text-[#24112D] mb-4"
                             >
                                 How Our Recruitment Process Works
                             </h2>
@@ -296,7 +296,7 @@ export default function ApplyForJobsPage() {
 
                     <div className="grid md:grid-cols-3 gap-8 relative">
                         <div
-                            className="hidden md:block absolute top-10 left-[calc(16.67%+24px)] right-[calc(16.67%+24px)] h-[2px] bg-gradient-to-r from-[#C6A94A]/20 via-[#C6A94A] to-[#C6A94A]/20 z-0"
+                            className="hidden md:block absolute top-10 left-[calc(16.67%+24px)] right-[calc(16.67%+24px)] h-[2px] bg-gradient-to-r from-[#8B2BB4]/20 via-[#8B2BB4] to-[#8B2BB4]/20 z-0"
                             aria-hidden="true"
                         />
                         {steps.map((step, idx) => {
@@ -305,17 +305,17 @@ export default function ApplyForJobsPage() {
                                 <FadeIn key={step.number} delay={idx * 0.15}>
                                     <div className="relative z-10 text-center flex flex-col items-center">
                                         <div className="relative mb-6">
-                                            <div className="w-20 h-20 rounded-full bg-[#0B1F3A] flex items-center justify-center shadow-xl border-4 border-white ring-2 ring-[#C6A94A]">
-                                                <Icon className="w-8 h-8 text-[#C6A94A]" aria-hidden="true" />
+                                            <div className="w-20 h-20 rounded-full bg-[#24112D] flex items-center justify-center shadow-xl border-4 border-white ring-2 ring-[#8B2BB4]">
+                                                <Icon className="w-8 h-8 text-[#8B2BB4]" aria-hidden="true" />
                                             </div>
                                             <span
-                                                className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[#C6A94A] text-[#0B1F3A] text-xs font-bold flex items-center justify-center shadow"
+                                                className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[#8B2BB4] text-white text-xs font-bold flex items-center justify-center shadow"
                                                 aria-hidden="true"
                                             >
                                                 {step.number}
                                             </span>
                                         </div>
-                                        <h3 className="text-xl font-bold text-[#0B1F3A] mb-3">{step.title}</h3>
+                                        <h3 className="text-xl font-bold text-[#24112D] mb-3">{step.title}</h3>
                                         <p className="text-slate-300 text-sm leading-relaxed max-w-xs mx-auto">
                                             {step.description}
                                         </p>
@@ -336,12 +336,12 @@ export default function ApplyForJobsPage() {
                 <div className="container mx-auto px-4 md:px-6">
                     <FadeIn>
                         <div className="text-center max-w-3xl mx-auto mb-12">
-                            <span className="inline-block py-1 px-3 rounded-full bg-[#C6A94A]/15 border border-[#C6A94A]/30 text-[#C6A94A] text-sm font-medium mb-4">
+                            <span className="inline-block py-1 px-3 rounded-full bg-[#8B2BB4]/15 border border-[#8B2BB4]/30 text-[#8B2BB4] text-sm font-medium mb-4">
                                 Step 1 of 3 — Submit Your Profile
                             </span>
                             <h2
                                 id="apply-cta-heading"
-                                className="text-3xl md:text-4xl font-heading font-bold text-[#0B1F3A] mb-4"
+                                className="text-3xl md:text-4xl font-heading font-bold text-[#24112D] mb-4"
                             >
                                 Submit Your Job Application
                             </h2>
@@ -356,16 +356,16 @@ export default function ApplyForJobsPage() {
                         <div className="max-w-2xl mx-auto">
                             {/* Application card */}
                             <div className="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
-                                {/* Gold accent bar */}
-                                <div className="h-1.5 bg-gradient-to-r from-[#0B1F3A] via-[#C6A94A] to-[#0B1F3A]" />
+                                {/* Brand accent bar */}
+                                <div className="h-1.5 bg-gradient-to-r from-[#24112D] via-[#8B2BB4] to-[#24112D]" />
 
                                 <div className="p-8 md:p-12 text-center">
                                     {/* Icon badge */}
-                                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#0B1F3A] mb-6 shadow-lg ring-4 ring-[#C6A94A]/20">
-                                        <FileText className="w-9 h-9 text-[#C6A94A]" aria-hidden="true" />
+                                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#24112D] mb-6 shadow-lg ring-4 ring-[#8B2BB4]/20">
+                                        <FileText className="w-9 h-9 text-[#8B2BB4]" aria-hidden="true" />
                                     </div>
 
-                                    <h3 className="text-2xl font-heading font-bold text-[#0B1F3A] mb-3">
+                                    <h3 className="text-2xl font-heading font-bold text-[#24112D] mb-3">
                                         Ready to Apply?
                                     </h3>
                                     <p className="text-slate-300 mb-8 max-w-md mx-auto leading-relaxed">
@@ -377,7 +377,7 @@ export default function ApplyForJobsPage() {
                                     <div className="grid grid-cols-2 gap-3 mb-10 text-left max-w-sm mx-auto">
                                         {applyBenefits.map(({ icon: Icon, text }) => (
                                             <div key={text} className="flex items-center gap-2 text-sm text-slate-300">
-                                                <Icon className="w-4 h-4 text-[#C6A94A] flex-shrink-0" aria-hidden="true" />
+                                                <Icon className="w-4 h-4 text-[#8B2BB4] flex-shrink-0" aria-hidden="true" />
                                                 {text}
                                             </div>
                                         ))}
@@ -388,7 +388,7 @@ export default function ApplyForJobsPage() {
                                         href={GOOGLE_FORM_URL}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center justify-center gap-3 h-14 px-10 rounded-md bg-[#C6A94A] text-[#0B1F3A] font-bold text-lg shadow-lg hover:bg-[#bfa13a] active:scale-95 transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto"
+                                        className="inline-flex items-center justify-center gap-3 h-14 px-10 rounded-md bg-[#8B2BB4] text-white font-bold text-lg shadow-lg hover:bg-[#742493] active:scale-95 transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto"
                                         aria-label="Open Veda Scholars job application form in a new tab"
                                     >
                                         Open Application Form
@@ -396,7 +396,7 @@ export default function ApplyForJobsPage() {
                                     </a>
 
                                     <p className="mt-5 text-xs text-slate-400 flex items-center justify-center gap-1.5">
-                                        <Shield className="w-3.5 h-3.5 text-[#C6A94A]" aria-hidden="true" />
+                                        <Shield className="w-3.5 h-3.5 text-[#8B2BB4]" aria-hidden="true" />
                                         Secured by Google Forms · Your data is used only for recruitment purposes
                                     </p>
                                 </div>
@@ -407,7 +407,7 @@ export default function ApplyForJobsPage() {
                                 Prefer to send your CV directly?{' '}
                                 <Link
                                     href="/contact"
-                                    className="text-[#C6A94A] font-semibold hover:underline underline-offset-4"
+                                    className="text-[#8B2BB4] font-semibold hover:underline underline-offset-4"
                                 >
                                     Contact our team →
                                 </Link>
@@ -424,7 +424,7 @@ export default function ApplyForJobsPage() {
                         <div className="text-center max-w-3xl mx-auto mb-14">
                             <h2
                                 id="faq-heading"
-                                className="text-3xl md:text-4xl font-heading font-bold text-[#0B1F3A] mb-4"
+                                className="text-3xl md:text-4xl font-heading font-bold text-[#24112D] mb-4"
                             >
                                 Frequently Asked Questions
                             </h2>
@@ -441,7 +441,7 @@ export default function ApplyForJobsPage() {
                             Still have questions?{' '}
                             <Link
                                 href="/contact"
-                                className="text-[#C6A94A] font-semibold hover:underline underline-offset-4"
+                                className="text-[#8B2BB4] font-semibold hover:underline underline-offset-4"
                             >
                                 Contact our team →
                             </Link>
@@ -452,11 +452,11 @@ export default function ApplyForJobsPage() {
 
             {/* ── Section 6: Final CTA Banner ─────────────────────────────────────── */}
             <section
-                className="py-20 md:py-28 bg-[#0B1F3A] relative overflow-hidden"
+                className="py-20 md:py-28 bg-[#24112D] relative overflow-hidden"
                 aria-labelledby="final-cta-heading"
             >
                 <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[#C6A94A]/10 rounded-full blur-[100px]" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[#8B2BB4]/10 rounded-full blur-[100px]" />
                 </div>
 
                 <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
@@ -466,7 +466,7 @@ export default function ApplyForJobsPage() {
                             className="text-3xl md:text-5xl font-heading font-bold text-white mb-5 leading-tight"
                         >
                             Ready to Start Your{' '}
-                            <span className="text-[#C6A94A]">International Career?</span>
+                            <span className="text-[#8B2BB4]">International Career?</span>
                         </h2>
                         <p className="text-slate-300 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
                             Join 500+ candidates who have trusted Veda Scholars to unlock global job
@@ -477,7 +477,7 @@ export default function ApplyForJobsPage() {
                                 href={GOOGLE_FORM_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-md bg-[#C6A94A] text-[#0B1F3A] font-bold text-lg shadow-xl hover:bg-[#bfa13a] active:scale-95 transition-all duration-300 hover:-translate-y-0.5"
+                                className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-md bg-[#8B2BB4] text-white font-bold text-lg shadow-xl hover:bg-[#742493] active:scale-95 transition-all duration-300 hover:-translate-y-0.5"
                                 aria-label="Submit your job application — opens in a new tab"
                             >
                                 Submit Your Application Today
@@ -485,7 +485,7 @@ export default function ApplyForJobsPage() {
                             </a>
                             <Link
                                 href="/services"
-                                className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-md border-2 border-white/25 text-white font-semibold text-lg hover:border-[#C6A94A]/60 hover:text-[#C6A94A] transition-all duration-300"
+                                className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-md border-2 border-white/25 text-white font-semibold text-lg hover:border-[#8B2BB4]/60 hover:text-[#8B2BB4] transition-all duration-300"
                             >
                                 Explore Our Services
                             </Link>

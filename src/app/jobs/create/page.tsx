@@ -53,7 +53,7 @@ export default function CreateJobPage() {
         <section className="py-24 min-h-screen bg-slate-50">
             <div className="container mx-auto px-4 md:px-6 max-w-4xl">
                 
-                <div className="bg-[#0B1F3A] p-8 md:p-12 rounded-t-3xl text-white shadow-lg">
+                <div className="bg-[#24112D] p-8 md:p-12 rounded-t-3xl text-white shadow-lg">
                      <h1 className="text-3xl md:text-4xl font-heading font-bold mb-3">Post a New Role</h1>
                      <p className="text-slate-300">Submit a job listing securely to the Veda network. All posts require Admin moderation.</p>
                 </div>
@@ -69,22 +69,22 @@ export default function CreateJobPage() {
                          
                          <div className="md:col-span-2">
                               <label className="block text-sm font-medium text-slate-700 mb-2">Job Title</label>
-                              <input type="text" placeholder="Senior Architect" required value={newJob.title} onChange={e => setNewJob({...newJob, title: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#C6A94A] outline-none transition-all" />
+                              <input type="text" placeholder="Senior Architect" required value={newJob.title} onChange={e => setNewJob({...newJob, title: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#8B2BB4] outline-none transition-all" />
                          </div>
 
                          <div>
                               <label className="block text-sm font-medium text-slate-700 mb-2">Company Name</label>
-                              <input type="text" placeholder="Veda Corp" required value={newJob.company} onChange={e => setNewJob({...newJob, company: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#C6A94A] outline-none transition-all" />
+                              <input type="text" placeholder="Veda Corp" required value={newJob.company} onChange={e => setNewJob({...newJob, company: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#8B2BB4] outline-none transition-all" />
                          </div>
 
                          <div>
                               <label className="block text-sm font-medium text-slate-700 mb-2">Location</label>
-                              <input type="text" placeholder="Dubai, UAE" required value={newJob.location} onChange={e => setNewJob({...newJob, location: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#C6A94A] outline-none transition-all" />
+                              <input type="text" placeholder="Dubai, UAE" required value={newJob.location} onChange={e => setNewJob({...newJob, location: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#8B2BB4] outline-none transition-all" />
                          </div>
 
                          <div>
                               <label className="block text-sm font-medium text-slate-700 mb-2">Job Type</label>
-                              <select value={newJob.type} onChange={e => setNewJob({...newJob, type: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#C6A94A] outline-none transition-all bg-white">
+                              <select value={newJob.type} onChange={e => setNewJob({...newJob, type: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#8B2BB4] outline-none transition-all bg-white">
                                   <option value="full-time">Full-Time</option>
                                   <option value="part-time">Part-Time</option>
                                   <option value="internship">Internship</option>
@@ -93,22 +93,22 @@ export default function CreateJobPage() {
 
                          <div>
                               <label className="block text-sm font-medium text-slate-700 mb-2">Salary Estimate</label>
-                              <input type="text" placeholder="$80k - $120k" value={newJob.salary} onChange={e => setNewJob({...newJob, salary: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#C6A94A] outline-none transition-all" />
+                              <input type="text" placeholder="$80k - $120k" value={newJob.salary} onChange={e => setNewJob({...newJob, salary: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#8B2BB4] outline-none transition-all" />
                          </div>
 
                          <div className="md:col-span-2">
                               <label className="block text-sm font-medium text-slate-700 mb-2">Requirements (Comma separated)</label>
-                              <input type="text" placeholder="React, Node.js, 3+ Years XP" required value={newJob.requirements} onChange={e => setNewJob({...newJob, requirements: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#C6A94A] outline-none transition-all" />
+                              <input type="text" placeholder="React, Node.js, 3+ Years XP" required value={newJob.requirements} onChange={e => setNewJob({...newJob, requirements: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#8B2BB4] outline-none transition-all" />
                          </div>
 
                          <div className="md:col-span-2">
                               <label className="block text-sm font-medium text-slate-700 mb-2">Complete Description</label>
-                              <textarea placeholder="Describe the role responsibilities..." required value={newJob.description} onChange={e => setNewJob({...newJob, description: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#C6A94A] outline-none transition-all min-h-[150px]" />
+                              <textarea placeholder="Describe the role responsibilities..." required value={newJob.description} onChange={e => setNewJob({...newJob, description: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#8B2BB4] outline-none transition-all min-h-[150px]" />
                          </div>
 
                          <div className="md:col-span-2 flex justify-end gap-4 mt-4 pt-6 border-t border-slate-100">
                              <Button type="button" variant="outline" onClick={() => router.push('/dashboard')}>Cancel</Button>
-                             <Button type="submit" variant="primary" disabled={isCreating} className="bg-[#C6A94A] text-[#0B1F3A] border-none font-bold hover:bg-[#bfa13a] disabled:opacity-60">
+                             <Button type="submit" variant="primary" disabled={isCreating} className="bg-[#8B2BB4] text-white border-none font-bold hover:bg-[#742493] disabled:opacity-60">
                                  {isCreating ? 'Submitting for Review...' : 'Submit Job Listing'}
                              </Button>
                          </div>

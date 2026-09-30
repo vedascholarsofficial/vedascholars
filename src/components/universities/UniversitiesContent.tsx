@@ -65,7 +65,7 @@ export default function UniversitiesContent() {
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-heading font-bold text-slate-900 mb-4">
-                            What We Offer <span className="text-[#B8860B]">Universities</span>
+                            What We Offer <span className="text-[#8B2BB4]">Universities</span>
                         </h2>
                         <p className="text-slate-600">Comprehensive support to enhance your institution's global presence.</p>
                     </div>
@@ -74,7 +74,7 @@ export default function UniversitiesContent() {
                         {offers.map((offer, index) => (
                             <FadeIn key={index} delay={index * 0.1}>
                                 <div className="bg-white p-8 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 h-full">
-                                    <div className="w-12 h-12 bg-slate-50 rounded-lg flex items-center justify-center text-[#B8860B] mb-6">
+                                    <div className="w-12 h-12 bg-slate-50 rounded-lg flex items-center justify-center text-[#8B2BB4] mb-6">
                                         <offer.icon size={24} />
                                     </div>
                                     <h3 className="text-xl font-bold text-slate-900 mb-3">{offer.title}</h3>
@@ -111,12 +111,12 @@ export default function UniversitiesContent() {
 
                         <FadeIn direction="left">
                             <h2 className="text-3xl font-heading font-bold text-slate-900 mb-8">
-                                Why Partner with <br /><span className="text-[#B8860B]">Veda Scholars?</span>
+                                Why Partner with <br /><span className="text-[#8B2BB4]">Veda Scholars?</span>
                             </h2>
                             <ul className="space-y-4">
                                 {whyPartner.map((item, idx) => (
                                     <li key={idx} className="flex items-start gap-4">
-                                        <div className="mt-1 w-6 h-6 rounded-full bg-[#B8860B]/10 flex items-center justify-center text-[#B8860B] shrink-0">
+                                        <div className="mt-1 w-6 h-6 rounded-full bg-[#8B2BB4]/10 flex items-center justify-center text-[#8B2BB4] shrink-0">
                                             <ShieldCheck size={14} />
                                         </div>
                                         <p className="text-slate-700">{item}</p>

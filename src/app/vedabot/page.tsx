@@ -138,7 +138,7 @@ export default function VedaBotPage() {
                     
                     {/* Header Action */}
                     <div className="flex items-center justify-between mb-6 border-b border-slate-700 pb-4">
-                        <Button onClick={handleNewChat} className="bg-[#C6A94A] text-[#0B1F3A] hover:bg-[#b59837] w-full font-bold flex items-center justify-center gap-2 py-3 rounded-xl transition-all shadow-md border-none">
+                        <Button onClick={handleNewChat} className="bg-[#8B2BB4] text-white hover:bg-[#742493] w-full font-bold flex items-center justify-center gap-2 py-3 rounded-xl transition-all shadow-md border-none">
                             <span className="text-xl">+</span> New Generation
                         </Button>
                     </div>
@@ -154,14 +154,14 @@ export default function VedaBotPage() {
                             <div key={chat._id} className="relative group">
                                 <button 
                                     onClick={() => loadChat(chat._id)}
-                                    className={`w-full text-left px-4 py-3 rounded-xl transition-all font-medium text-sm flex items-center justify-between group-hover:bg-slate-800 ${activeChatId === chat._id ? 'bg-slate-800 border-l-[4px] border-[#C6A94A] text-white' : 'text-slate-300 border-l-[4px] border-transparent'}`}
+                                    className={`w-full text-left px-4 py-3 rounded-xl transition-all font-medium text-sm flex items-center justify-between group-hover:bg-slate-800 ${activeChatId === chat._id ? 'bg-slate-800 border-l-[4px] border-[#8B2BB4] text-white' : 'text-slate-300 border-l-[4px] border-transparent'}`}
                                 >
                                     <span className="truncate pr-12">{chat.title}</span>
                                 </button>
                                 
                                 {/* CRUD Icons (Hover Reveal) */}
                                 <div className={`absolute right-2 top-1/2 -translate-y-1/2 flex gap-1 ${activeChatId === chat._id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'} transition-opacity bg-slate-800 p-1 rounded-md`}>
-                                    <button onClick={(e) => { e.stopPropagation(); setRenamingId(chat._id); setNewTitle(chat.title); }} className="text-slate-400 hover:text-[#C6A94A] p-1" title="Rename Node">
+                                    <button onClick={(e) => { e.stopPropagation(); setRenamingId(chat._id); setNewTitle(chat.title); }} className="text-slate-400 hover:text-[#8B2BB4] p-1" title="Rename Node">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
                                     </button>
                                     <button onClick={(e) => handleDelete(e, chat._id)} className="text-slate-400 hover:text-red-400 p-1" title="Eradicate">
@@ -174,8 +174,8 @@ export default function VedaBotPage() {
 
                     {/* Branding */}
                     <div className="mt-4 border-t border-slate-700 pt-4 flex items-center justify-center opacity-80">
-                         <span className="bg-[#C6A94A] text-[#0B1F3A] w-6 h-6 rounded-full flex items-center justify-center font-black text-[10px] mr-2">VB</span>
-                         <span className="text-xs font-bold tracking-widest text-[#C6A94A]">GEMINI NEURAL LINK</span>
+                         <span className="bg-[#8B2BB4] text-white w-6 h-6 rounded-full flex items-center justify-center font-black text-[10px] mr-2">VB</span>
+                         <span className="text-xs font-bold tracking-widest text-[#8B2BB4]">GEMINI NEURAL LINK</span>
                     </div>
                 </div>
             </div>
@@ -200,8 +200,8 @@ export default function VedaBotPage() {
                             <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                                 
                                 {msg.role !== 'user' && (
-                                    <div className="w-8 h-8 rounded-full bg-[#0B1F3A] flex items-center justify-center shrink-0 mt-2 mr-4 shadow-md border border-[#C6A94A]">
-                                        <span className="text-[#C6A94A] text-[10px] font-black">VB</span>
+                                    <div className="w-8 h-8 rounded-full bg-[#24112D] flex items-center justify-center shrink-0 mt-2 mr-4 shadow-md border border-[#8B2BB4]">
+                                        <span className="text-[#8B2BB4] text-[10px] font-black">VB</span>
                                     </div>
                                 )}
 
@@ -222,9 +222,9 @@ export default function VedaBotPage() {
                                                 ul: ({node, ...props}) => <ul className="list-disc ml-5 mb-4 space-y-2 marker:text-slate-400" {...props} />,
                                                 ol: ({node, ...props}) => <ol className="list-decimal ml-5 mb-4 space-y-2 marker:text-slate-400" {...props} />,
                                                 li: ({node, ...props}) => <li className="leading-relaxed text-slate-800" {...props} />,
-                                                h1: ({node, ...props}) => <h1 className="text-xl font-bold mb-3 mt-4 text-[#0B1F3A]" {...props} />,
-                                                h2: ({node, ...props}) => <h2 className="text-lg font-bold mb-2 mt-4 text-[#0B1F3A]" {...props} />,
-                                                h3: ({node, ...props}) => <h3 className="font-bold mb-2 mt-3 text-[#0B1F3A]" {...props} />,
+                                                h1: ({node, ...props}) => <h1 className="text-xl font-bold mb-3 mt-4 text-[#24112D]" {...props} />,
+                                                h2: ({node, ...props}) => <h2 className="text-lg font-bold mb-2 mt-4 text-[#24112D]" {...props} />,
+                                                h3: ({node, ...props}) => <h3 className="font-bold mb-2 mt-3 text-[#24112D]" {...props} />,
                                                 code: ({node, ...props}) => <code className="bg-slate-100 px-2 py-1 rounded text-sm text-pink-600 font-mono" {...props} />
                                             }}
                                         >
@@ -237,13 +237,13 @@ export default function VedaBotPage() {
                         
                         {isTyping && (
                             <div className="flex justify-start items-center gap-4 text-slate-400 font-medium mt-4">
-                                <div className="w-8 h-8 rounded-full bg-[#0B1F3A] flex items-center justify-center shrink-0 shadow-md border border-[#C6A94A] animate-pulse">
-                                    <span className="text-[#C6A94A] text-[10px] font-black">VB</span>
+                                <div className="w-8 h-8 rounded-full bg-[#24112D] flex items-center justify-center shrink-0 shadow-md border border-[#8B2BB4] animate-pulse">
+                                    <span className="text-[#8B2BB4] text-[10px] font-black">VB</span>
                                 </div>
                                 <div className="flex gap-2 items-center h-4">
-                                    <div className="w-2 h-2 bg-[#C6A94A] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                                    <div className="w-2 h-2 bg-[#C6A94A] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                                    <div className="w-2 h-2 bg-[#C6A94A] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                                    <div className="w-2 h-2 bg-[#8B2BB4] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                                    <div className="w-2 h-2 bg-[#8B2BB4] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                                    <div className="w-2 h-2 bg-[#8B2BB4] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                                 </div>
                             </div>
                         )}
@@ -254,7 +254,7 @@ export default function VedaBotPage() {
                 {/* Command Input Dock */}
                 <div className="p-4 bg-white border-t border-slate-100 shrink-0">
                     <div className="max-w-4xl mx-auto relative">
-                        <form onSubmit={handleSend} className="relative flex items-center shadow-[0_0_25px_rgba(0,0,0,0.05)] rounded-2xl bg-white border border-slate-200 hover:border-slate-300 transition-colors focus-within:border-[#C6A94A] focus-within:shadow-[0_0_20px_rgba(198,169,74,0.15)] overflow-hidden">
+                        <form onSubmit={handleSend} className="relative flex items-center shadow-[0_0_25px_rgba(0,0,0,0.05)] rounded-2xl bg-white border border-slate-200 hover:border-slate-300 transition-colors focus-within:border-[#8B2BB4] focus-within:shadow-[0_0_20px_rgba(139,43,180,0.15)] overflow-hidden">
                             <textarea
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
@@ -273,7 +273,7 @@ export default function VedaBotPage() {
                             <button 
                                 type="submit" 
                                 disabled={isTyping || !input.trim()}
-                                className="absolute right-3 bottom-3 top-3 bg-[#0B1F3A] text-white w-10 h-10 rounded-xl flex items-center justify-center hover:bg-[#133054] disabled:bg-slate-200 disabled:text-slate-400 transition-all shadow-sm"
+                                className="absolute right-3 bottom-3 top-3 bg-[#24112D] text-white w-10 h-10 rounded-xl flex items-center justify-center hover:bg-[#32163E] disabled:bg-slate-200 disabled:text-slate-400 transition-all shadow-sm"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 -rotate-90"><path d="M3.478 2.404a.75.75 0 00-.926.941l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.404z" /></svg>
                             </button>
@@ -295,13 +295,13 @@ export default function VedaBotPage() {
                             autoFocus
                             required
                             type="text" 
-                            className="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl mb-4 outline-none font-medium focus:border-[#C6A94A]"
+                            className="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl mb-4 outline-none font-medium focus:border-[#8B2BB4]"
                             value={newTitle}
                             onChange={e => setNewTitle(e.target.value)}
                         />
                         <div className="flex gap-3 justify-end">
                             <button type="button" onClick={() => setRenamingId(null)} className="px-5 py-2 text-slate-500 font-bold text-sm tracking-wide">Cancel</button>
-                            <button type="submit" className="px-5 py-2 bg-[#C6A94A] text-[#0B1F3A] rounded-lg font-bold text-sm tracking-wide shadow-md hover:bg-[#b09540] transition-colors">Save Change</button>
+                            <button type="submit" className="px-5 py-2 bg-[#8B2BB4] text-white rounded-lg font-bold text-sm tracking-wide shadow-md hover:bg-[#742493] transition-colors">Save Change</button>
                         </div>
                     </form>
                 </div>

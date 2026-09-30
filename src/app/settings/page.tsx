@@ -83,20 +83,20 @@ export default function SettingsPage() {
                          <div className="space-y-6">
                              <div className="flex items-center justify-between">
                                  <div>
-                                     <h4 className="font-bold text-[#0B1F3A]">Email Alerts</h4>
+                                     <h4 className="font-bold text-[#24112D]">Email Alerts</h4>
                                      <p className="text-sm text-slate-500">Receive emails about application updates and invites.</p>
                                  </div>
-                                 <button type="button" onClick={() => handleToggle('emailAlerts')} className={`w-12 h-6 rounded-full transition-colors relative ${preferences.emailAlerts ? 'bg-[#C6A94A]' : 'bg-slate-300'}`}>
+                                 <button type="button" onClick={() => handleToggle('emailAlerts')} className={`w-12 h-6 rounded-full transition-colors relative ${preferences.emailAlerts ? 'bg-[#8B2BB4]' : 'bg-slate-300'}`}>
                                      <span className={`absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform ${preferences.emailAlerts ? 'translate-x-6' : 'translate-x-0'}`}></span>
                                  </button>
                              </div>
 
                              <div className="flex items-center justify-between">
                                  <div>
-                                     <h4 className="font-bold text-[#0B1F3A]">Job Recommendations</h4>
+                                     <h4 className="font-bold text-[#24112D]">Job Recommendations</h4>
                                      <p className="text-sm text-slate-500">Get weekly notifications about matches tailored to your profile.</p>
                                  </div>
-                                 <button type="button" onClick={() => handleToggle('jobRecommendations')} className={`w-12 h-6 rounded-full transition-colors relative ${preferences.jobRecommendations ? 'bg-[#C6A94A]' : 'bg-slate-300'}`}>
+                                 <button type="button" onClick={() => handleToggle('jobRecommendations')} className={`w-12 h-6 rounded-full transition-colors relative ${preferences.jobRecommendations ? 'bg-[#8B2BB4]' : 'bg-slate-300'}`}>
                                      <span className={`absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform ${preferences.jobRecommendations ? 'translate-x-6' : 'translate-x-0'}`}></span>
                                  </button>
                              </div>
@@ -127,7 +127,7 @@ export default function SettingsPage() {
 
                          <div className="flex items-center justify-between pt-6 border-t border-slate-100">
                              <div>
-                                 <h4 className="font-bold text-[#0B1F3A]">Two-Factor Authentication</h4>
+                                 <h4 className="font-bold text-[#24112D]">Two-Factor Authentication</h4>
                                  <p className="text-sm text-slate-500">Add an extra layer of security to your account.</p>
                              </div>
                              <button type="button" onClick={() => handleToggle('twoFactorAuth')} className={`w-12 h-6 rounded-full transition-colors relative ${preferences.twoFactorAuth ? 'bg-green-600' : 'bg-slate-300'}`}>
@@ -154,7 +154,7 @@ export default function SettingsPage() {
 
                      {/* Save Action */}
                      <div className="flex justify-end pt-4 pb-12">
-                         <Button type="submit" variant="primary" className="bg-[#C6A94A] border-none text-slate-900 font-bold hover:bg-[#bfa13a] h-14 px-10 shadow-xl" disabled={isSaving}>
+                         <Button type="submit" variant="primary" className="bg-[#8B2BB4] border-none text-slate-900 font-bold hover:bg-[#742493] h-14 px-10 shadow-xl" disabled={isSaving}>
                              {isSaving ? 'Applying Settings...' : 'Save Settings'}
                          </Button>
                      </div>

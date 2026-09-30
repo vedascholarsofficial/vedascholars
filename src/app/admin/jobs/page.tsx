@@ -75,7 +75,7 @@ export default function AdminJobsModeration() {
         <section className="py-24 min-h-screen bg-slate-50">
             <div className="container mx-auto px-4 md:px-6">
                  
-                 <div className="bg-[#0B1F3A] p-8 rounded-t-3xl text-white shadow-lg">
+                 <div className="bg-[#24112D] p-8 rounded-t-3xl text-white shadow-lg">
                      <h1 className="text-3xl font-heading font-bold mb-2">Admin Moderation Console</h1>
                      <p className="text-slate-300">Review pending job postings submitted by network recruiters.</p>
                  </div>
@@ -96,7 +96,7 @@ export default function AdminJobsModeration() {
                                           <div>
                                                <div className="flex items-center gap-3 mb-2">
                                                     <span className="text-xs font-bold uppercase tracking-wide bg-amber-100 text-amber-800 px-3 py-1 rounded-full">{job.status}</span>
-                                                    <h3 className="text-xl font-bold text-[#0B1F3A]">{job.title}</h3>
+                                                    <h3 className="text-xl font-bold text-[#24112D]">{job.title}</h3>
                                                </div>
                                                <p className="text-slate-300 font-medium">{job.company}</p>
                                                <p className="text-sm text-slate-300 mt-2 truncate max-w-lg">{job.description}</p>

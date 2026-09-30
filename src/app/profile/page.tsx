@@ -178,7 +178,7 @@ export default function ProfilePage() {
                      </div>
 
                      <div className="flex justify-end pt-4">
-                         <Button type="submit" variant="primary" className="bg-[#C6A94A] border-none text-slate-900 font-bold hover:bg-[#bfa13a] h-14 px-10 shadow-xl" disabled={isSaving}>
+                         <Button type="submit" variant="primary" className="bg-[#8B2BB4] border-none text-slate-900 font-bold hover:bg-[#742493] h-14 px-10 shadow-xl" disabled={isSaving}>
                              {isSaving ? 'Processing Securely...' : 'Lock My Profile'}
                          </Button>
                      </div>
