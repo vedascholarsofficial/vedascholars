@@ -2,6 +2,7 @@
 
 import React, { Suspense, useState, useEffect } from 'react';
 import Button from '@/components/ui/Button';
+import { API_BASE_URL } from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
 import { authService } from '@/services/authService';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -116,7 +117,7 @@ function LoginContent() {
                         </div>
 
                         <button
-                            onClick={(e) => { e.preventDefault(); window.location.href = 'http://localhost:5000/api/auth/google'; }}
+                            onClick={(e) => { e.preventDefault(); window.location.href = `${API_BASE_URL}/auth/google`; }}
                             className="mt-6 w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors font-medium text-slate-700 shadow-sm outline-none focus:ring-2 focus:ring-slate-200"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="w-6 h-6">

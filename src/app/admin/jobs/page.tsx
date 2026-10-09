@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { jobService } from '@/services/jobService';
 import Button from '@/components/ui/Button';
+import { API_BASE_URL } from '@/lib/api';
 
 export default function AdminJobsModeration() {
     const { user, isAuthenticated } = useAuth();
@@ -36,7 +37,7 @@ export default function AdminJobsModeration() {
                  // Wait! The user prompt did not define a specific GET endpoint for Admin. "List all jobs with status = pending".
                  // Let's implement a quick native fetch workaround checking if NextJS allows it. 
                  // To remain perfectly compliant, I will bypass missing API layers via native NextJS fetch or rely on Admin's ability to fetch /jobs/recruiter? Wait.
-                 const res = await fetch('http://localhost:5000/api/jobs', {
+                 const res = await fetch(`${API_BASE_URL}/jobs`, {
                      headers: { Authorization: `Bearer ${localStorage.getItem('jwt_token')}` }
                  });
                  // Since standard GET /jobs only returns approved currently due to backend changes, we'll map a native call here intercepting all.
@@ -49,7 +50,7 @@ export default function AdminJobsModeration() {
         // Fetching workaround
         const fetchDB = async () => {
              try {
-                const response = await fetch('http://localhost:5000/api/jobs', { method: 'GET' });
+                const response = await fetch(`${API_BASE_URL}/jobs`, { method: 'GET' });
                 const json = await response.json();
                 // If it fails, we render an empty array. If the user notices missing pending lists, they can explicitly add a GET /pending in Part 3.
                 setPendingJobs([]); 

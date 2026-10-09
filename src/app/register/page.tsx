@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Button from '@/components/ui/Button';
+import { API_BASE_URL } from '@/lib/api';
 import { authService } from '@/services/authService';
 import { useRouter } from 'next/navigation';
 
@@ -229,7 +230,7 @@ export default function RegisterPage() {
                         
                         <div className="space-y-3">
                             <button
-                                onClick={() => { window.location.href = 'http://localhost:5000/api/auth/google?role=student'; }}
+                                onClick={() => { window.location.href = `${API_BASE_URL}/auth/google?role=student`; }}
                                 className="w-full text-left px-5 py-4 rounded-xl border-2 border-slate-100 hover:border-[#8B2BB4] hover:bg-amber-50/50 transition-all duration-200 group flex items-center gap-4"
                             >
                                 <span className="text-2xl">🎓</span>
@@ -240,7 +241,7 @@ export default function RegisterPage() {
                             </button>
 
                             <button
-                                onClick={() => { window.location.href = 'http://localhost:5000/api/auth/google?role=recruiter'; }}
+                                onClick={() => { window.location.href = `${API_BASE_URL}/auth/google?role=recruiter`; }}
                                 className="w-full text-left px-5 py-4 rounded-xl border-2 border-slate-100 hover:border-indigo-400 hover:bg-indigo-50/50 transition-all duration-200 group flex items-center gap-4"
                             >
                                 <span className="text-2xl">💼</span>
@@ -251,7 +252,7 @@ export default function RegisterPage() {
                             </button>
 
                             <button
-                                onClick={() => { window.location.href = 'http://localhost:5000/api/auth/google?role=university'; }}
+                                onClick={() => { window.location.href = `${API_BASE_URL}/auth/google?role=university`; }}
                                 className="w-full text-left px-5 py-4 rounded-xl border-2 border-slate-100 hover:border-emerald-400 hover:bg-emerald-50/50 transition-all duration-200 group flex items-center gap-4"
                             >
                                 <span className="text-2xl">🏛️</span>

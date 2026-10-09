@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Veda Scholars frontend
 
-## Getting Started
+Next.js App Router frontend using React, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Local setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Use Node.js 22 and install dependencies with `npm ci`.
+Run `npm run dev` and open http://localhost:3000.
+Run `npm run build` to check the production build, then `npm start` to serve it.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## API configuration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The Express backend is a separate application in `server/`.
+Set `NEXT_PUBLIC_API_URL` in `.env.local` for development or in the hosting
+provider environment settings for production. Include `/api` in the URL,
+for example `https://api.example.com/api`, and rebuild after changing it.
+Development defaults to `http://localhost:5000/api`; production defaults to
+same-origin `/api`. Authentication, jobs, dashboards, and AI tools require the
+backend to be deployed and reachable at that URL.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The Next.js contact email endpoint additionally requires `EMAIL_USER` and
+`EMAIL_PASS` in the hosting provider server environment. Never commit secrets.
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+The existing GitHub repository is connected to Vercel. Updates to `main`
+trigger the production deployment.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Custom domain: https://www.vedascholars.com
+- Vercel domain: https://vedascholars.vercel.app
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For Netlify, `netlify.toml` uses `npm run build` and the `.next` publish directory
+for its Next.js adapter. This project uses route handlers, middleware, and
+dynamic routes, so it should be deployed with a Next.js runtime.
