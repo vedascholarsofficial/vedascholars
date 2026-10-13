@@ -62,8 +62,8 @@ export default function PsychometricCTA() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         <Reveal variant="scale" duration={1}>
-          <div className="relative max-w-5xl mx-auto bg-primary bg-gradient-to-br from-[#3A1A48] via-primary to-[#170A1D] rounded-3xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(36,17,45,0.45)] ring-1 ring-white/5">
-            <div className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 bg-secondary/30 rounded-full blur-3xl animate-float-slow" />
+          <div className="relative max-w-7xl mx-auto bg-primary bg-gradient-to-br from-[#3A1A48] via-primary to-[#170A1D] rounded-3xl overflow-hidden shadow-[0_18px_48px_-24px_rgba(36,17,45,0.3)] ring-1 ring-white/5">
+            <div className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 bg-secondary/10 rounded-full blur-3xl" />
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:20px_20px] [mask-image:radial-gradient(ellipse_at_right,black,transparent_70%)]" />
             <div className="relative flex flex-col md:flex-row items-center">
               {/* Left: text */}
@@ -111,7 +111,7 @@ export default function PsychometricCTA() {
               </div>
 
               {/* Right: visual */}
-              <div className="hidden md:flex items-center justify-center w-72 shrink-0 p-10">
+              <div className="hidden md:flex items-center justify-center w-80 shrink-0 p-10">
                 <div className="text-center space-y-4">
                   {DIMENSIONS.map((item, index) => (
                     <motion.div

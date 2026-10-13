@@ -30,6 +30,8 @@ export default function Header() {
 
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 10);
+        // A reload restores the previous scroll position without firing a scroll event.
+        handleScroll();
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);

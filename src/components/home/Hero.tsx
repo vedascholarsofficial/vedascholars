@@ -34,16 +34,16 @@ export default function Hero() {
             <motion.div className="absolute inset-0 z-0" style={reduce ? undefined : { y: bgY }}>
                 <motion.div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                    style={{ backgroundImage: 'url(/images/hero-bg.png)', filter: 'saturate(0.85) contrast(1.05)' }}
+                    style={{ backgroundImage: 'url(/images/hero-bg.png)', filter: 'saturate(0.95) contrast(1.02)' }}
                     initial={{ scale: 1.2 }}
                     animate={{ scale: 1.05 }}
                     transition={{ duration: 2.6, delay: base - 0.4, ease: EASE }}
                 />
             </motion.div>
             {/* Neutral deep base so the photo keeps its depth */}
-            <div className="absolute inset-0 z-0 bg-[#0D0612]/55" />
+            <div className="absolute inset-0 z-0 bg-[#0D0612]/40" />
             {/* Vignette: darker behind the copy, photo stays visible at the edges */}
-            <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_65%_55%_at_50%_48%,rgba(13,6,18,0.62),transparent_100%)]" />
+            <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_65%_55%_at_50%_48%,rgba(13,6,18,0.55),transparent_100%)]" />
             <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(13,6,18,0.7)_100%)]" />
             {/* Brand light: slowly drifting plum glows */}
             <div className="absolute -top-1/3 -right-1/4 z-0 h-[50vmax] w-[50vmax] rounded-full bg-[radial-gradient(circle,rgba(139,43,180,0.14),transparent_60%)] mix-blend-screen animate-float-slow" />

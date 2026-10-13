@@ -33,8 +33,8 @@ export default function CoreValues() {
     return (
         <section className="py-16 md:py-28 bg-[#24112D] text-white relative overflow-hidden">
             {/* Background Decor */}
-            <div className="absolute -bottom-40 -left-40 w-[32rem] h-[32rem] rounded-full bg-secondary/25 blur-3xl"></div>
-            <div className="absolute -top-40 -right-40 w-[26rem] h-[26rem] rounded-full bg-accent/10 blur-3xl"></div>
+            <div className="absolute -bottom-40 -left-40 w-[32rem] h-[32rem] rounded-full bg-secondary/10 blur-3xl"></div>
+            <div className="absolute -top-40 -right-40 w-[26rem] h-[26rem] rounded-full bg-accent/5 blur-3xl"></div>
             <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]"></div>
 
             <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
@@ -52,10 +52,10 @@ export default function CoreValues() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                     {values.map((v, index) => (
                         <Reveal key={v.id} delay={index * 0.1} className="h-full">
-                            <div className="group relative h-full overflow-hidden rounded-3xl p-6 md:p-8 bg-white/[0.04] border border-white/10 backdrop-blur-sm hover:bg-white/[0.07] hover:border-[#8B2BB4]/70 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_-20px_rgba(139,43,180,0.6)] transition-all duration-500">
+                            <div className="group relative h-full overflow-hidden rounded-3xl p-6 md:p-8 bg-white/[0.04] border border-white/10 backdrop-blur-sm hover:bg-white/[0.07] hover:border-[#8B2BB4]/70 hover:-translate-y-1.5 hover:shadow-[0_18px_40px_-24px_rgba(0,0,0,0.3)] transition-all duration-500">
                                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 <div className="flex items-center gap-4 sm:block">
-                                    <div className="w-14 h-14 shrink-0 rounded-2xl bg-white/10 text-white flex items-center justify-center sm:mb-6 group-hover:bg-[#8B2BB4] group-hover:scale-110 transition-all duration-500">
+                                    <div className="w-14 h-14 shrink-0 rounded-2xl bg-white/10 text-white flex items-center justify-center sm:mb-6 group-hover:bg-[#8B2BB4]  transition-all duration-500">
                                         {v.icon}
                                     </div>
                                     <h3 className="text-xl md:text-2xl font-heading font-bold text-white sm:mb-3">{v.name}</h3>

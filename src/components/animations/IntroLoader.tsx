@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useSyncExternalStore } from 'react';
+import React, { useLayoutEffect, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 
 // True once the intro has run in this tab, so client-side navigation back to
@@ -17,6 +17,20 @@ export function useIntroActive() {
 export default function IntroLoader() {
     const active = useIntroActive();
     const [done, setDone] = useState(false);
+
+    // The intro belongs at the top of the page. If a reload restores the
+    // visitor further down (now or a moment later), drop the curtain at once.
+    useLayoutEffect(() => {
+        if (!active || done) return;
+        const skipIfScrolled = () => {
+            if (window.scrollY <= 10) return;
+            introPlayed = true;
+            setDone(true);
+        };
+        skipIfScrolled();
+        window.addEventListener('scroll', skipIfScrolled, { passive: true });
+        return () => window.removeEventListener('scroll', skipIfScrolled);
+    }, [active, done]);
 
     if (!active || done) return null;
 

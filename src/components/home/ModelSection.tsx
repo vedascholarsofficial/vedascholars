@@ -1,9 +1,9 @@
 import React from 'react';
 import { Compass, GraduationCap, Zap, Briefcase, CheckCircle2 } from 'lucide-react';
-import * as motion from "framer-motion/client";
+import Image from 'next/image';
 import Reveal from '../animations/Reveal';
 
-const EASE = [0.16, 1, 0.3, 1] as const;
+
 
 export default function ModelSection() {
     const steps = [
@@ -52,13 +52,13 @@ export default function ModelSection() {
     ];
 
     return (
-        <section className="py-16 md:py-28 bg-white relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-[#fbf6ee] border-t border-[#efe4d4] relative overflow-hidden">
             <div className="absolute top-1/4 -right-48 w-[30rem] h-[30rem] rounded-full bg-accent/15 blur-3xl"></div>
 
             <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
 
                 {/* Section Header */}
-                <div className="text-center mb-12 md:mb-20 max-w-3xl mx-auto">
+                <div className="mb-9 md:mb-12 max-w-3xl">
                     <Reveal>
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-primary mb-4 md:mb-5 tracking-tight">
                             Our Education to Employment Model
@@ -71,68 +71,37 @@ export default function ModelSection() {
                     </Reveal>
                 </div>
 
-                {/* 4-Step Flow */}
-                <div className="relative mb-16 md:mb-24">
-                    {/* Connector: a vertical rail on mobile, a horizontal rail on desktop, drawn as you scroll in */}
-                    <motion.div
-                        aria-hidden="true"
-                        className="md:hidden absolute left-8 top-8 bottom-8 w-px bg-gradient-to-b from-secondary/50 via-secondary/25 to-transparent origin-top"
-                        initial={{ scaleY: 0 }}
-                        whileInView={{ scaleY: 1 }}
-                        viewport={{ once: true, margin: '0px 0px -15% 0px' }}
-                        transition={{ duration: 1.4, ease: EASE }}
-                    />
-                    <motion.div
-                        aria-hidden="true"
-                        className="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-secondary/40 via-secondary/30 to-secondary/40 origin-left"
-                        initial={{ scaleX: 0 }}
-                        whileInView={{ scaleX: 1 }}
-                        viewport={{ once: true, margin: '0px 0px -15% 0px' }}
-                        transition={{ duration: 1.6, delay: 0.2, ease: EASE }}
-                    />
-
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-8 relative z-10">
+                <div className="mb-12 grid items-stretch gap-8 lg:mb-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+                    <Reveal className="relative aspect-square overflow-hidden rounded-[2rem] bg-slate-100 lg:aspect-auto lg:min-h-[540px]">
+                        <Image src="/images/home/model-v2.webp" alt="University students collaborating on a practical project in a bright learning studio" fill sizes="(min-width: 1024px) 560px, (min-width: 640px) 720px, 100vw" className="object-cover" />
+                    </Reveal>
+                    <ol className="flex flex-col justify-center divide-y divide-slate-200/80">
                         {steps.map((step, index) => (
-                            <motion.div
-                                key={step.id}
-                                className="flex md:flex-col items-start md:items-center gap-5 md:gap-0 text-left md:text-center group"
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: '0px 0px -10% 0px' }}
-                                transition={{ duration: 0.8, delay: index * 0.15, ease: EASE }}
-                            >
-                                <div className="relative shrink-0 md:mb-6">
-                                    <div className="absolute inset-0 rounded-2xl bg-secondary/40 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <div className="relative w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-secondary to-primary rounded-2xl flex items-center justify-center shadow-lg shadow-secondary/25 ring-4 ring-white group-hover:-translate-y-2 group-hover:rotate-3 transition-transform duration-500">
-                                        {step.icon}
+                            <li key={step.id} className="py-5 first:pt-0 last:pb-0 md:py-7">
+                                <Reveal variant={index % 2 === 0 ? 'left' : 'right'} duration={0.9} delay={index * 0.07} className="flex items-start gap-5 md:gap-6">
+                                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-secondary/20 bg-muted/60 font-display text-lg text-secondary">{step.id}</span>
+                                    <div>
+                                        <h3 className="mb-2 text-xl md:text-2xl">{step.title}</h3>
+                                        <p className="max-w-lg text-base leading-relaxed text-slate-600">{step.description}</p>
                                     </div>
-                                    <span className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-white text-[11px] font-bold text-secondary shadow-md ring-1 ring-secondary/20">
-                                        {step.id}
-                                    </span>
-                                </div>
-                                <div className="pt-1 md:pt-0">
-                                    <h3 className="text-lg md:text-xl font-heading font-bold text-primary mb-1.5 md:mb-2">{step.title}</h3>
-                                    <p className="text-slate-600 leading-relaxed text-[15px] md:px-4">
-                                        {step.description}
-                                    </p>
-                                </div>
-                            </motion.div>
+                                </Reveal>
+                            </li>
                         ))}
-                    </div>
+                    </ol>
                 </div>
 
                 {/* Stakeholder Benefits */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                     {benefits.map((benefit, index) => (
                         <Reveal key={benefit.role} delay={index * 0.12} className="h-full">
-                            <div className="group h-full flex flex-col bg-[#F7F1FA] border border-[#EADCF1] rounded-3xl p-7 md:p-9 hover:bg-white hover:border-secondary/30 hover:shadow-[0_24px_60px_-20px_rgba(139,43,180,0.3)] hover:-translate-y-1 transition-all duration-500">
-                                <h3 className="text-2xl font-heading font-bold text-secondary mb-3 md:mb-4">
+                            <div className="group h-full flex flex-col bg-white border border-[#ecdfcc] rounded-3xl p-7 md:p-9 hover:bg-white hover:border-secondary/30 hover:shadow-[0_24px_60px_-20px_rgba(139,43,180,0.3)] hover:-translate-y-1 transition-all duration-500">
+                                <h3 className="text-2xl font-heading font-bold text-primary mb-3 md:mb-4">
                                     For {benefit.role}
                                 </h3>
                                 <p className="text-slate-600 leading-relaxed mb-6 flex-grow">
                                     {benefit.description}
                                 </p>
-                                <ul className="space-y-3 mt-auto pt-6 border-t border-[#EADCF1]">
+                                <ul className="space-y-3 mt-auto pt-6 border-t border-slate-200/80">
                                     {benefit.points.map((point) => (
                                         <li key={point} className="flex items-center gap-3 text-[15px] font-semibold text-primary">
                                             <CheckCircle2 className="w-5 h-5 text-secondary shrink-0" />

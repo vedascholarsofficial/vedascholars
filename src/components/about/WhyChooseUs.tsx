@@ -14,8 +14,8 @@ export default function WhyChooseUs() {
     ];
 
     return (
-        <section className="py-16 md:py-28 bg-slate-50 relative overflow-hidden">
-            <div className="absolute -top-32 -right-32 w-[28rem] h-[28rem] rounded-full bg-secondary/10 blur-3xl"></div>
+        <section className="py-16 md:py-24 bg-[#faf9f6] relative overflow-hidden">
+            <div className="absolute -top-32 -right-32 w-[28rem] h-[28rem] rounded-full bg-secondary/5 blur-3xl"></div>
 
             <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
                 <Reveal>
@@ -43,7 +43,7 @@ export default function WhyChooseUs() {
                     {/* Image Context */}
                     <Reveal variant="right" delay={0.15} className="lg:col-span-5 flex flex-col">
                         <figure className="flex flex-col h-full">
-                            <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:flex-1 lg:min-h-[400px] rounded-3xl overflow-hidden shadow-[0_30px_80px_-30px_rgba(36,17,45,0.45)] ring-1 ring-slate-200">
+                            <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:flex-1 lg:min-h-[400px] rounded-3xl overflow-hidden shadow-[0_20px_50px_-30px_rgba(36,17,45,0.25)] ring-1 ring-slate-200">
                                 <ZoomImage className="absolute inset-0">
                                     <Image
                                         src="/images/about/team.png"
