@@ -16,6 +16,71 @@ export type SmtpSettings = {
 
 const DEFAULT_SMTP_TIMEOUT_MS = 10_000;
 
+export type ResendSettings = {
+  apiKey: string;
+  from: string;
+  to: string;
+  timeoutMs?: number;
+};
+
+export function formatLeadConfirmation(lead: LeadRecord, reference: string) {
+  return {
+    subject: 'We have received your enquiry | Veda Scholars',
+    text: [
+      `Hi ${lead.name},`,
+      '',
+      'Thank you for contacting Veda Scholars. We have received your enquiry and our team will contact you shortly.',
+      '',
+      `Purpose: ${lead.interest}`,
+      `Reference: ${reference}`,
+      '',
+      'You can reply to this email or call +91 7708722334 if you need help.',
+      '',
+      'Veda Scholars',
+    ].join('\n'),
+  };
+}
+
+// Use the HTTPS API directly so no additional SDK or client-side secret is needed.
+export function createResendNotifier(
+  settings: ResendSettings,
+  request: typeof fetch = fetch,
+): LeadNotifier {
+  const send = async (message: Record<string, unknown>, key: string) => {
+    const response = await request('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${settings.apiKey}`,
+        'Content-Type': 'application/json',
+        'Idempotency-Key': key,
+      },
+      body: JSON.stringify({ from: settings.from, ...message }),
+      signal: AbortSignal.timeout(settings.timeoutMs ?? 8_000),
+    });
+    // Do not include provider error bodies: they can contain personal data.
+    if (!response.ok) throw new Error(`Resend email failed (HTTP ${response.status}).`);
+    const result = await response.json() as { id?: string };
+    if (!result.id) throw new Error('Resend did not confirm email acceptance.');
+  };
+
+  return {
+    async send(lead, reference) {
+      await send({
+        to: settings.to.split(',').map((email) => email.trim()).filter(Boolean),
+        reply_to: lead.email,
+        ...formatLeadEmail(lead, reference),
+      }, `lead-admin/${reference}`);
+    },
+    async sendConfirmation(lead, reference) {
+      await send({
+        to: [lead.email],
+        reply_to: settings.to.split(',')[0].trim(),
+        ...formatLeadConfirmation(lead, reference),
+      }, `lead-confirmation/${reference}`);
+    },
+  };
+}
+
 // Plain text only: submitted values are never rendered as HTML.
 export function formatLeadEmail(lead: LeadRecord, reference: string) {
   const lines = [

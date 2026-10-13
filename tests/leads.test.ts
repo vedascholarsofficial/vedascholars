@@ -156,7 +156,7 @@ test('storage failure falls back to the email notification and still confirms', 
   const res = await handler(post(validBody()));
   assert.equal(res.status, 201);
   assert.equal(sent.length, 1);
-  assert.equal(sent[0].reference, 'not-stored');
+  assert.match(sent[0].reference, /^[0-9a-f-]{36}$/, 'email-only enquiries get unique references');
 });
 
 test('when both storage and notification fail the client gets 503 with alternatives', async () => {

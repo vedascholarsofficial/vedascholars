@@ -2,7 +2,7 @@
 // variables. Nothing here is exposed to the browser.
 import type { LeadHandlerDeps } from './handler';
 import { createMongoLeadStore } from './mongoStore';
-import { createSmtpNotifier } from './notifier';
+import { createResendNotifier, createSmtpNotifier } from './notifier';
 
 const verifyTurnstile = (secret: string) => async (token: string, ip: string) => {
   const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
@@ -22,7 +22,14 @@ export function leadDepsFromEnv(env: NodeJS.ProcessEnv = process.env): LeadHandl
       : null;
 
   const smtpReady = env.SMTP_HOST && env.SMTP_USER && env.SMTP_PASS && env.LEADS_NOTIFY_TO;
-  const notifier = smtpReady
+  const resendReady = env.RESEND_API_KEY && env.LEADS_MAIL_FROM && env.LEADS_NOTIFY_TO;
+  const notifier = resendReady
+    ? createResendNotifier({
+        apiKey: env.RESEND_API_KEY as string,
+        from: env.LEADS_MAIL_FROM as string,
+        to: env.LEADS_NOTIFY_TO as string,
+      })
+    : smtpReady
     ? createSmtpNotifier({
         host: env.SMTP_HOST as string,
         port: Number(env.SMTP_PORT || 465),
@@ -35,7 +42,7 @@ export function leadDepsFromEnv(env: NodeJS.ProcessEnv = process.env): LeadHandl
     : null;
 
   if (!store) console.warn('Lead storage disabled: set LEADS_MONGODB_URI and LEADS_DB_NAME.');
-  if (!notifier) console.warn('Lead notifications disabled: set SMTP_HOST, SMTP_USER, SMTP_PASS and LEADS_NOTIFY_TO.');
+  if (!notifier) console.warn('Lead emails disabled: set RESEND_API_KEY, LEADS_MAIL_FROM and LEADS_NOTIFY_TO, or configure SMTP.');
 
   return {
     store,

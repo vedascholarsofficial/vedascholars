@@ -23,10 +23,23 @@ The API keeps its security fixes and has public sign-up closed by default
 (`PUBLIC_SIGNUP_ENABLED`); existing accounts can still sign in to it.
 
 The contact form posts to `/api/leads`, a server-side enquiry pipeline that
-validates, filters spam, stores the enquiry in MongoDB and emails the business
-inbox. It needs the `LEADS_*` and `SMTP_*` variables listed in `.env.example`;
-without them it refuses submissions (HTTP 503) rather than showing a false
-success. The frontend needs no backend secrets. Never commit secrets.
+validates, filters spam, stores the enquiry in MongoDB and emails the admin
+inbox plus a confirmation to the submitter. Set `RESEND_API_KEY`,
+`LEADS_MAIL_FROM` (a sender on a verified Resend domain), `LEADS_NOTIFY_TO`
+(the monitored admin inbox), and `LEADS_IP_HASH_SALT` (32+ random characters)
+in `.env` or hosting environment settings. Restart the development server
+after changing these settings; `.env.local` takes precedence over `.env`.
+Resend uses its server-side HTTPS API: https://resend.com/docs/api-reference/emails/send-email.
+The existing `SMTP_*` settings retain their admin-only behavior when Resend
+is not configured. No mail credentials are exposed to the browser.
+
+MongoDB storage is optional with working email, but recommended for durable
+records and rate limits across instances. Without storage, acceptance requires
+the admin email to succeed. With storage, email failures are logged and admin
+notification failures are recorded on the stored enquiry; confirmation failures
+do not reject an already accepted enquiry. There is no automatic retry worker.
+Without either storage or working email configuration, submissions are refused
+(HTTP 503). Never commit secrets.
 
 The API's variables are listed in `server/.env.example`. The API refuses to
 start without a strong `JWT_SECRET`.

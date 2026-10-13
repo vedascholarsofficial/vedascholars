@@ -1,6 +1,6 @@
 // POST /api/leads request handling, written against small interfaces so it
 // can be tested without a database, mail server or network.
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { CONSENT_TEXT, CONSENT_VERSION, validateLead, type LeadInput } from './schema';
 
 export type LeadRecord = LeadInput & {
@@ -22,6 +22,7 @@ export interface LeadStore {
 
 export interface LeadNotifier {
   send(lead: LeadRecord, reference: string): Promise<void>;
+  sendConfirmation?(lead: LeadRecord, reference: string): Promise<void>;
 }
 
 export type LeadHandlerDeps = {
@@ -90,7 +91,7 @@ export function createLeadHandler(deps: LeadHandlerDeps) {
 
   return async function handleLead(request: Request): Promise<Response> {
     if (!deps.ipHashSalt || (!deps.store && !deps.notifier)) {
-      log('Lead rejected: enquiry pipeline is not configured (LEADS_* / SMTP_* environment variables).');
+      log('Lead rejected: enquiry pipeline is not configured (LEADS_* / RESEND_API_KEY / SMTP_* environment variables).');
       return json(503, { ok: false, message: `We could not submit your enquiry right now. ${FALLBACK_CONTACT}` });
     }
 
@@ -184,10 +185,11 @@ export function createLeadHandler(deps: LeadHandlerDeps) {
     }
 
     // 2. Notify the business inbox.
+    const notificationReference = reference ?? randomUUID();
     let notified = false;
     if (deps.notifier) {
       try {
-        await deps.notifier.send(record, reference ?? 'not-stored');
+        await deps.notifier.send(record, notificationReference);
         notified = true;
       } catch {
         // The enquiry may be stored but unseen: staff must follow it up from
@@ -203,6 +205,16 @@ export function createLeadHandler(deps: LeadHandlerDeps) {
 
     if (!reference && !notified) {
       return json(503, { ok: false, message: `We could not submit your enquiry right now. ${FALLBACK_CONTACT}` });
+    }
+
+    // Confirmation is sent only after durable storage or admin email acceptance.
+    // Its failure must not reject an enquiry we have already received.
+    if (deps.notifier?.sendConfirmation) {
+      try {
+        await deps.notifier.sendConfirmation(record, notificationReference);
+      } catch {
+        log(`Lead confirmation email failed (enquiry ${notificationReference}).`);
+      }
     }
 
     return json(201, { ok: true, reference: reference ? reference.slice(-8).toUpperCase() : null });
