@@ -8,6 +8,7 @@ import { MotionProvider } from "@/components/animations/Reveal";
 import ScrollProgress from "@/components/animations/ScrollProgress";
 import { AuthProvider } from "@/context/AuthContext";
 import { SITE_URL } from "@/lib/site";
+import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_TAGLINE } from "@/lib/seo";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -30,34 +31,25 @@ const inter = Inter({
   display: "swap",
 });
 
+// Site-wide defaults. Indexable pages override title, description, canonical,
+// Open Graph and X tags with pageMetadata() (src/lib/seo.ts). No default
+// canonical or og:url here: a page without its own must not claim to be the
+// home page. Preview images come from opengraph-image.tsx / twitter-image.tsx.
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Veda Scholars | Education to Employment Consultancy",
-    template: "%s | Veda Scholars"
+    default: `${SITE_NAME} | ${SITE_TAGLINE}`,
+    template: `%s | ${SITE_NAME}`,
   },
-  description: "Veda Scholars helps students, universities, and employers bridge the gap between education and employment through global counselling, partnerships, and recruitment support.",
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
   openGraph: {
-    title: "Veda Scholars | Education to Employment Consultancy",
-    description: "Veda Scholars helps students, universities, and employers bridge the gap between education and employment through global counselling, partnerships, and recruitment support.",
-    url: SITE_URL,
-    siteName: 'Veda Scholars',
+    siteName: SITE_NAME,
     locale: 'en_US',
     type: 'website',
-    images: [
-      {
-        url: '/opengraph-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Veda Scholars – Education to Employment Consultancy',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Veda Scholars | Education to Employment Consultancy",
-    description: "Veda Scholars helps students, universities, and employers bridge the gap between education and employment through global counselling, partnerships, and recruitment support.",
-    images: ['/opengraph-image.png'],
   },
   robots: {
     index: true,

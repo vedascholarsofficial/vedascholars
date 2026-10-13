@@ -16,7 +16,7 @@ export default function ProgramsAndScholarships() {
     ];
 
     return (
-        <section className="py-16 md:py-24 bg-slate-50 border-t border-slate-200">
+        <section className="py-16 md:py-24 bg-slate-50 border-t border-slate-200 overflow-x-clip">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 

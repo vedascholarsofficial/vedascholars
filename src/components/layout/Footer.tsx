@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Facebook, Linkedin, Instagram, Youtube, Mail, Phone, Globe } from 'lucide-react';
 import BrandWordmark from '../ui/BrandWordmark';
+import { SITE_URL } from '@/lib/site';
 
 export default function Footer() {
     const pathname = usePathname();
@@ -64,7 +65,7 @@ export default function Footer() {
 
                         {/* Contact Info */}
                         <div className="space-y-3 mb-8">
-                            <a href="https://vedascholars.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/70 hover:text-accent transition-colors group/link">
+                            <a href={SITE_URL} className="flex items-center gap-3 text-white/70 hover:text-accent transition-colors group/link">
                                 <div className="h-8 w-8 rounded-full bg-white/10 flex items-center justify-center text-accent group-hover/link:bg-secondary group-hover/link:text-white transition-colors">
                                     <Globe size={16} />
                                 </div>

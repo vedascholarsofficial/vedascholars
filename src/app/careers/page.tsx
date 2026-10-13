@@ -5,16 +5,15 @@ import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import FadeIn from '@/components/animations/FadeIn';
 import { Heart, Zap, Globe, Users, ArrowRight, Briefcase, GraduationCap } from 'lucide-react';
+import JsonLd from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-    alternates: { canonical: '/careers' },
-    title: 'Careers',
-    description: 'Join our mission to democratize access to global education. Explore career opportunities at Veda Scholars.',
-};
+export const metadata: Metadata = pageMetadata('/careers');
 
 export default function CareersPage() {
     return (
         <div className="bg-slate-50 min-h-screen">
+            <JsonLd data={breadcrumbJsonLd('/careers')} />
             {/* 1. Careers Hero Section */}
             <section className="relative py-24 bg-primary text-white overflow-hidden">
                 {/* Abstract Background */}
@@ -46,7 +45,7 @@ export default function CareersPage() {
                     <FadeIn>
                         <div className="text-center max-w-3xl mx-auto mb-16">
                             <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Why Work With Us?</h2>
-                            <p className="text-slate-300 text-lg">
+                            <p className="text-slate-600 text-lg">
                                 We believe in growing together. At Veda Scholars, you're not just an employee; you're a partner in our vision.
                             </p>
                         </div>
@@ -59,7 +58,7 @@ export default function CareersPage() {
                                     <Users className="w-6 h-6" />
                                 </div>
                                 <h3 className="text-xl font-bold text-primary mb-3">Inclusive Culture</h3>
-                                <p className="text-slate-300 leading-relaxed">
+                                <p className="text-slate-600 leading-relaxed">
                                     A collaborative environment where every voice matters. We celebrate diversity and handle challenges as a team.
                                 </p>
                             </div>
@@ -71,7 +70,7 @@ export default function CareersPage() {
                                     <Zap className="w-6 h-6" />
                                 </div>
                                 <h3 className="text-xl font-bold text-primary mb-3">Accelerated Growth</h3>
-                                <p className="text-slate-300 leading-relaxed">
+                                <p className="text-slate-600 leading-relaxed">
                                     We are a fast-growing consultancy. High performers are rewarded with rapid career progression and leadership opportunities.
                                 </p>
                             </div>
@@ -83,7 +82,7 @@ export default function CareersPage() {
                                     <GraduationCap className="w-6 h-6" />
                                 </div>
                                 <h3 className="text-xl font-bold text-primary mb-3">Continuous Learning</h3>
-                                <p className="text-slate-300 leading-relaxed">
+                                <p className="text-slate-600 leading-relaxed">
                                     Access to global education resources, training sessions, and the chance to interact with top universities globally.
                                 </p>
                             </div>
@@ -158,7 +157,7 @@ export default function CareersPage() {
                     <FadeIn>
                         <div className="text-center mb-16">
                             <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Current Openings</h2>
-                            <p className="text-slate-300 text-lg">Find your role and make an impact.</p>
+                            <p className="text-slate-600 text-lg">Find your role and make an impact.</p>
                         </div>
                     </FadeIn>
 
@@ -168,7 +167,7 @@ export default function CareersPage() {
                             <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-secondary/50 transition-colors group">
                                 <div>
                                     <h3 className="text-xl font-bold text-primary group-hover:text-secondary transition-colors">Education Counsellor</h3>
-                                    <div className="flex gap-4 text-sm text-slate-300 mt-2">
+                                    <div className="flex gap-4 text-sm text-slate-600 mt-2">
                                         <span className="flex items-center gap-1"><Briefcase className="w-3 h-3" /> Full-time</span>
                                         <span className="flex items-center gap-1"><Globe className="w-3 h-3" /> Remote / Hybrid</span>
                                     </div>
@@ -184,7 +183,7 @@ export default function CareersPage() {
                             <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-secondary/50 transition-colors group">
                                 <div>
                                     <h3 className="text-xl font-bold text-primary group-hover:text-secondary transition-colors">Digital Marketing Executive</h3>
-                                    <div className="flex gap-4 text-sm text-slate-300 mt-2">
+                                    <div className="flex gap-4 text-sm text-slate-600 mt-2">
                                         <span className="flex items-center gap-1"><Briefcase className="w-3 h-3" /> Full-time</span>
                                         <span className="flex items-center gap-1"><Globe className="w-3 h-3" /> Remote</span>
                                     </div>
@@ -200,7 +199,7 @@ export default function CareersPage() {
                             <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-secondary/50 transition-colors group">
                                 <div>
                                     <h3 className="text-xl font-bold text-primary group-hover:text-secondary transition-colors">Student Success Associate</h3>
-                                    <div className="flex gap-4 text-sm text-slate-300 mt-2">
+                                    <div className="flex gap-4 text-sm text-slate-600 mt-2">
                                         <span className="flex items-center gap-1"><Briefcase className="w-3 h-3" /> Full-time</span>
                                         <span className="flex items-center gap-1"><Globe className="w-3 h-3" /> On-site</span>
                                     </div>
@@ -220,7 +219,7 @@ export default function CareersPage() {
                     <FadeIn>
                         <div className="max-w-2xl mx-auto bg-primary/5 p-8 rounded-2xl">
                             <h2 className="text-2xl font-bold text-primary mb-4">Don't see a role for you?</h2>
-                            <p className="text-slate-300 mb-6">
+                            <p className="text-slate-600 mb-6">
                                 We are always looking for talented individuals. If you share our values and vision, we'd love to hear from you.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -228,7 +227,7 @@ export default function CareersPage() {
                                     Send General Application
                                 </Button>
                             </div>
-                            <p className="text-slate-400 text-sm mt-4">
+                            <p className="text-slate-500 text-sm mt-4">
                                 Send your CV and a brief cover letter to <span className="font-medium text-slate-700">careers@vedascholars.com</span>
                             </p>
                         </div>

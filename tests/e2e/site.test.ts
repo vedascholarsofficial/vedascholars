@@ -138,7 +138,7 @@ test('Student Journey and For Parents pages render their content', async () => {
   const parentsHtml = await parents.text();
   assert.match(parentsHtml, /<h1[^>]*>Supporting your family(&#x27;|&apos;|')s decision<\/h1>/);
   assert.match(parentsHtml, /Privacy and support boundaries/);
-  assert.match(parentsHtml, /<title>For Parents \| Veda Scholars<\/title>/);
+  assert.match(parentsHtml, /<title>For Parents and Families \| Veda Scholars<\/title>/);
 });
 
 test('no internal link on any public page is broken or points to a retired route', async () => {

@@ -3,15 +3,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight, BookOpen, Wallet, FileCheck, House } from 'lucide-react';
 import JourneyReveal from '@/components/students/JourneyReveal';
+import JsonLd from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 
 // Copy from the client content brief (§1, §4, §6 "For Parents", §9). Services
 // the brief schedules for later phases are described as "where offered".
-export const metadata: Metadata = {
-    alternates: { canonical: '/for-parents' },
-    title: 'For Parents',
-    description:
-        'Clear information for parents and families on course suitability, costs, scholarships, accommodation and student wellbeing.',
-};
+export const metadata: Metadata = pageMetadata('/for-parents');
 
 const topics = [
     {
@@ -37,6 +34,7 @@ const topicIcons = [BookOpen, Wallet, FileCheck, House];
 export default function ForParentsPage() {
     return (
         <div className="min-h-screen bg-white">
+            <JsonLd data={breadcrumbJsonLd('/for-parents')} />
             <section className="bg-[#faf9f6] px-5 py-14 md:px-8 md:py-20">
                 <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
                     <JourneyReveal>

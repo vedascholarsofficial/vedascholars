@@ -6,16 +6,15 @@ import WhyChooseUs from '@/components/about/WhyChooseUs';
 import FinalCTA from '@/components/home/FinalCTA'; // Reusing Final CTA
 
 import { Metadata } from 'next';
+import JsonLd from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-    alternates: { canonical: '/about' },
-    title: 'About Us',
-    description: 'Learn about Veda Scholars, a trusted education-to-employment consultancy supporting students, universities, and employers worldwide.',
-};
+export const metadata: Metadata = pageMetadata('/about');
 
 export default function AboutPage() {
     return (
         <div className="min-h-screen bg-white">
+            <JsonLd data={breadcrumbJsonLd('/about')} />
             <AboutHero />
             <VisionMission />
             <FounderStory />

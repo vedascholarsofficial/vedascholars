@@ -59,6 +59,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Legacy consultation and partner URLs. Permanent (308) so search engines
+  // consolidate them into the contact page instead of indexing the aliases.
+  async redirects() {
+    return [
+      { source: "/counselling", destination: "/contact?type=student", permanent: true },
+      { source: "/book-counselling", destination: "/contact?type=student", permanent: true },
+      { source: "/get-started", destination: "/contact?type=student", permanent: true },
+      { source: "/partner", destination: "/contact?type=partner", permanent: true },
+    ];
+  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

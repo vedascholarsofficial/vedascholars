@@ -1,16 +1,15 @@
 import React from 'react';
 import { Metadata } from 'next';
 import FadeIn from '@/components/animations/FadeIn';
+import JsonLd from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-    alternates: { canonical: '/privacy-policy' },
-    title: 'Privacy Policy',
-    description: 'Learn how Veda Scholars collects, uses, and protects your personal information.',
-};
+export const metadata: Metadata = pageMetadata('/privacy-policy');
 
 export default function PrivacyPolicyPage() {
     return (
         <div className="min-h-screen bg-slate-50 py-12 md:py-24">
+            <JsonLd data={breadcrumbJsonLd('/privacy-policy')} />
             <div className="container mx-auto px-4 md:px-6">
                 <FadeIn>
                     <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm p-8 md:p-12">

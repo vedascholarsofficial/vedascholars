@@ -5,16 +5,13 @@ import Link from 'next/link';
 import { ArrowDown, ArrowUpRight, Compass, HeartHandshake, Sparkles } from 'lucide-react';
 import JourneyReveal from '@/components/students/JourneyReveal';
 import styles from './journey.module.css';
+import JsonLd from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 
 // Copy from the client content brief (§1–§3, §9). Stage 03 is titled "Apply"
 // to match the brief's journey line (Discover → Choose → Apply → …); the
 // brief's homepage section calls it "Achieve". Pending client confirmation.
-export const metadata: Metadata = {
-    alternates: { canonical: '/student-journey' },
-    title: 'Our Student Journey',
-    description:
-        'Discover, Choose, Apply, Settle, Connect, Advance: how Veda Scholars supports students before, during and after enrolment.',
-};
+export const metadata: Metadata = pageMetadata('/student-journey');
 
 const phases = [
     {
@@ -82,6 +79,7 @@ const phases = [
 export default function StudentJourneyPage() {
     return (
         <div className="min-h-screen bg-white">
+            <JsonLd data={breadcrumbJsonLd('/student-journey')} />
             <section className={`relative overflow-hidden ${styles.hero}`}>
                 <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-14 md:px-8 md:py-20 lg:grid-cols-2 lg:gap-16">
                     <JourneyReveal>

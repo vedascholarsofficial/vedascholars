@@ -7,17 +7,15 @@ import ProgramsAndScholarships from '@/components/students/ProgramsAndScholarshi
 import FinalCTA from '@/components/home/FinalCTA';
 
 import { Metadata } from 'next';
+import JsonLd from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-    alternates: { canonical: '/students' },
-    title: 'Study Abroad & Career Guidance for Students',
-    description: 'Get expert study abroad counselling, university selection, scholarships, visa support, and career guidance with Veda Scholars.',
-    keywords: ['Student Guidance', 'Scholarship Help', 'Study Abroad mentorship', 'Career Counselling', 'Pre-departure training'],
-};
+export const metadata: Metadata = pageMetadata('/students');
 
 export default function StudentsPage() {
     return (
         <div className="min-h-screen bg-white">
+            <JsonLd data={breadcrumbJsonLd('/students')} />
             <StudentsHero />
             <StudentAbout />
             <GlobalDestinations />

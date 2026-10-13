@@ -2,16 +2,15 @@ import React from 'react';
 import { Metadata } from 'next';
 import FadeIn from '@/components/animations/FadeIn';
 import Link from 'next/link';
+import JsonLd from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-    alternates: { canonical: '/cookie-policy' },
-    title: 'Cookie Policy',
-    description: 'Understand how Veda Scholars uses cookies to improve your experience.',
-};
+export const metadata: Metadata = pageMetadata('/cookie-policy');
 
 export default function CookiePolicyPage() {
     return (
         <div className="min-h-screen bg-slate-50 py-12 md:py-24">
+            <JsonLd data={breadcrumbJsonLd('/cookie-policy')} />
             <div className="container mx-auto px-4 md:px-6">
                 <FadeIn>
                     <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm p-8 md:p-12">

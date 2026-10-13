@@ -170,6 +170,6 @@ test('every sitemap page declares its own canonical URL', () => {
       .filter((file) => existsSync(file))
       .map((file) => readFileSync(file, 'utf8'))
       .join('\n');
-    assert.ok(sources.includes(`canonical: '${path}'`), `${path} has no canonical`);
+    assert.ok(sources.includes(`pageMetadata('${path}')`), `${path} does not use pageMetadata('${path}')`);
   }
 });

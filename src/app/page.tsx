@@ -7,17 +7,15 @@ import FinalCTA from "@/components/home/FinalCTA";
 import IntroLoader from "@/components/animations/IntroLoader";
 
 import { Metadata } from 'next';
+import JsonLd from '@/components/seo/JsonLd';
+import { organizationJsonLd, pageMetadata, websiteJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/' },
-  title: 'Veda Scholars | Education to Employment Consultancy',
-  description: 'Veda Scholars helps students, universities, and employers bridge the gap between education and employment through global counselling, partnerships, and recruitment support.',
-  keywords: ['Study Abroad', 'Education Consultant', 'Career Mapping', 'Global Recruitment', 'University Partners'],
-};
+export const metadata: Metadata = pageMetadata('/');
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
+      <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
       <IntroLoader />
       <Hero />
       <TrustSignals />

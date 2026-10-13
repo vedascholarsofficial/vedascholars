@@ -6,12 +6,10 @@ import OfferingHero from '@/components/offerings/OfferingHero';
 import OfferingCTA from '@/components/offerings/OfferingCTA';
 import JourneyReveal from '@/components/students/JourneyReveal';
 import { PROGRAMS } from '@/lib/student-offerings';
+import JsonLd from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-    alternates: { canonical: '/programs' },
-    title: 'Programs | A Connected Student Ecosystem',
-    description: 'Explore Veda 360° Student Journey, Student Passport, Before You Decide, Student Connect, Career & Internship Network, and Scholarship & Financial Access Initiative.',
-};
+export const metadata: Metadata = pageMetadata('/programs');
 
 const programIds = ['veda-360', 'student-passport', 'before-you-decide', 'student-connect', 'career-internship-network', 'scholarship-financial-access'];
 const icons = [Compass, NotebookPen, Map, Users, GraduationCap, Wallet];
@@ -25,6 +23,7 @@ const experiences = [
 export default function ProgramsPage() {
     return (
         <div className="min-h-screen bg-white">
+            <JsonLd data={breadcrumbJsonLd('/programs')} />
             <OfferingHero eyebrow="Our Programs" title="Your potential." emphasis="A world of possibilities." description="Six connected programmes bring your roadmap, decisions, student connections and career preparation into one student-centred ecosystem." image="/images/programs/hero.webp" imageAlt="A young student looking ahead with confidence on a university terrace" caption="Every chapter brings a new possibility." anchor="#our-programs" exploreLabel="Explore our Programs" />
 
             <section id="our-programs" aria-labelledby="programs-heading" className="scroll-mt-24 px-5 py-14 md:px-8">

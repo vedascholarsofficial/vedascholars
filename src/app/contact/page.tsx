@@ -5,16 +5,15 @@ import ContactInfo from '@/components/contact/ContactInfo';
 import StudentFAQ from '@/components/students/StudentFAQ'; // Reusing for efficiency
 
 import { Metadata } from 'next';
+import JsonLd from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-    alternates: { canonical: '/contact' },
-    title: 'Contact Us | Book a Free Consultation',
-    description: 'Contact Veda Scholars to book free counselling, explore partnerships, or discuss recruitment opportunities.',
-};
+export const metadata: Metadata = pageMetadata('/contact');
 
 export default function ContactPage() {
     return (
         <div className="min-h-screen bg-slate-50">
+            <JsonLd data={breadcrumbJsonLd('/contact')} />
             <ContactHero />
 
             <section className="py-16 md:py-24 -mt-16 sm:-mt-12 relative z-20 px-4 md:px-6">

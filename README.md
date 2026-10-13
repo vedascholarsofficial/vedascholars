@@ -44,9 +44,24 @@ Without either storage or working email configuration, submissions are refused
 The API's variables are listed in `server/.env.example`. The API refuses to
 start without a strong `JWT_SECRET`.
 
+## SEO
+
+Every indexable page is listed in `INDEXABLE_PAGES` in `src/lib/seo.ts` with
+its title, description and the date its content last changed. That list
+drives the sitemap, and each page exports `pageMetadata('<path>')` for its
+title, canonical URL, Open Graph and X tags. When you add a public page, add
+it there; when you change a page's content, update its `lastModified` date.
+Utility pages (such as `/thank-you`) are `noindex`; retired routes answer 410.
+`npm test` fails if a page is not classified.
+
+The social preview image is generated at build time by
+`src/app/opengraph-image.tsx`. `robots.txt` blocks Vercel preview builds, and
+`next.config.ts` sends `X-Robots-Tag: noindex` on every host except
+www.vedascholars.com. Search Console steps are in `outputs/seo/`.
+
 ## Tests
 
-- Frontend (lead pipeline, retired routes, navigation, internal links): `npm test`
+- Frontend (lead pipeline, retired routes, navigation, internal links, SEO metadata, sitemap, robots, structured data): `npm test`
 - API (auth, closed sign-up, permissions, data exposure): `cd server && npm test`
 - Runtime checks against a production build (410s, header, crawl for broken
   links, mobile menu keyboard behaviour, contact form): `npm run build`, start
