@@ -1,5 +1,6 @@
 import React from 'react';
 import { SITE_URL } from '@/lib/site';
+import { SOCIAL_IMAGE } from '@/lib/seo';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import FadeIn from '@/components/animations/FadeIn';
@@ -45,12 +46,7 @@ export const metadata: Metadata = {
         siteName: 'Veda Scholars',
         type: 'website',
         images: [
-            {
-                url: '/opengraph-image.png',
-                width: 1200,
-                height: 630,
-                alt: 'Apply for International Jobs — Veda Scholars Recruitment',
-            },
+            { ...SOCIAL_IMAGE, alt: 'Apply for International Jobs — Veda Scholars Recruitment' },
         ],
     },
     twitter: {
@@ -58,7 +54,7 @@ export const metadata: Metadata = {
         title: 'Apply for International Jobs | Veda Scholars',
         description:
             'Share your CV with Veda Scholars for career guidance and, where available, introductions to employers.',
-        images: ['/opengraph-image.png'],
+        images: [SOCIAL_IMAGE],
     },
     robots: { index: false, follow: true },
     alternates: {
