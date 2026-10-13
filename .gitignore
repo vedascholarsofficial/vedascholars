@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Example env files contain key names only
+!.env.example
+
+# Internal infrastructure notes: keep out of the public repository
+/Project verview.md
+/Project Doc2AI.md

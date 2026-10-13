@@ -12,7 +12,7 @@ export default function ProgramsAndScholarships() {
         { label: "Merit-based Scholarships", color: "bg-blue-50 text-blue-700 border-blue-100" },
         { label: "Government Funded", color: "bg-green-50 text-green-700 border-green-100" },
         { label: "University-specific", color: "bg-purple-50 text-purple-700 border-purple-100" },
-        { label: "Fully Funded Options", color: "bg-amber-50 text-amber-700 border-amber-100" }
+        { label: "Fully Funded (Highly Competitive)", color:"bg-amber-50 text-amber-700 border-amber-100" }
     ];
 
     return (

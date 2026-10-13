@@ -1,295 +1,216 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import Button from '../ui/Button';
-import { Menu, X, Bell, User, LogOut } from 'lucide-react';
-import { useAuth } from '@/context/AuthContext';
-import { notificationService } from '@/services/notificationService';
+import { usePathname } from 'next/navigation';
 import BrandWordmark from '../ui/BrandWordmark';
+import { HEADER_CTA, PRIMARY_NAV } from '@/lib/site';
+
+const MOBILE_MENU_ID = 'mobile-menu';
+// Matches Tailwind's lg breakpoint, where the desktop navigation appears.
+const DESKTOP_QUERY = '(min-width: 1024px)';
+
+const isActivePath = (pathname: string, href: string) =>
+    href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`);
 
 export default function Header() {
     const pathname = usePathname();
-    const router = useRouter();
-    const { isAuthenticated, user, logout } = useAuth();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [notifications, setNotifications] = useState<any[]>([]);
-    const [showBell, setShowBell] = useState(false);
-    const bellRef = useRef<HTMLDivElement>(null);
+    const toggleRef = useRef<HTMLButtonElement>(null);
+    const menuRef = useRef<HTMLDivElement>(null);
 
     // On the home page the header floats transparently over the hero image
     const overHero = pathname === '/' && !isScrolled && !isMobileMenuOpen;
 
-    const unreadCount = notifications.filter(n => !n.isRead).length;
-
-    useEffect(() => {
-        if (!isAuthenticated) return;
-        const fetchNotifications = async () => {
-            try {
-                const data = await notificationService.getNotifications();
-                setNotifications(data);
-            } catch (e) { /* silent */ }
-        };
-        fetchNotifications();
-        const interval = setInterval(fetchNotifications, 30000);
-        return () => clearInterval(interval);
-    }, [isAuthenticated]);
-
-    // Close dropdown on outside click
-    useEffect(() => {
-        const handler = (e: MouseEvent) => {
-            if (bellRef.current && !bellRef.current.contains(e.target as Node)) {
-                setShowBell(false);
-            }
-        };
-        document.addEventListener('mousedown', handler);
-        return () => document.removeEventListener('mousedown', handler);
+    const closeMenu = useCallback((returnFocus = false) => {
+        setIsMobileMenuOpen(false);
+        if (returnFocus) toggleRef.current?.focus();
     }, []);
 
-    const handleMarkRead = async (id: string) => {
-        try {
-            await notificationService.markAsRead(id);
-            setNotifications(prev => prev.map(n => n._id === id ? { ...n, isRead: true } : n));
-        } catch (e) { /* silent */ }
-    };
-
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 10);
-        };
-        window.addEventListener('scroll', handleScroll);
+        const handleScroll = () => setIsScrolled(window.scrollY > 10);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Lock body scroll when mobile menu is open
-    useEffect(() => {
-        if (isMobileMenuOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, [isMobileMenuOpen]);
-
-    const publicNavLinks = [
-        { name: 'Home', href: '/' },
-        { name: 'About Us', href: '/about' },
-        { name: 'Services', href: '/services' },
-        { name: 'Students', href: '/students' },
-        { name: 'Apply for Jobs', href: '/jobs/apply' },
-        { name: 'Partner With Us', href: '/partner-with-us' },
-        { name: 'Contact', href: '/contact' },
-    ];
-
-    const studentNavLinks = [
-        { name: 'Dashboard', href: '/dashboard' },
-        { name: 'Jobs', href: '/jobs' },
-        { name: 'Resume', href: '/resume' },
-        { name: 'Applications', href: '/applications' },
-        { name: 'Universities', href: '/universities' },
-        { name: 'VedaBot', href: '/vedabot' },
-    ];
-
-    const recruiterNavLinks = [
-        { name: 'Dashboard', href: '/dashboard' },
-        { name: 'My Jobs', href: '/jobs' },
-        { name: 'Applications', href: '/applications' },
-    ];
-
-    const adminNavLinks = [
-        { name: 'Dashboard', href: '/dashboard' } // Minimal access
-    ];
-
-    const universityNavLinks = [
-        { name: 'Dashboard', href: '/dashboard' },
-        { name: 'Courses', href: '/courses' },
-        { name: 'Students', href: '/students' }
-    ];
-
-    let currentNavLinks = publicNavLinks;
-    if (isAuthenticated && user) {
-        if (user.role === 'admin') currentNavLinks = adminNavLinks;
-        else if (user.role === 'recruiter') currentNavLinks = recruiterNavLinks;
-        else if (user.role === 'university') currentNavLinks = universityNavLinks;
-        else currentNavLinks = studentNavLinks;
+    // Close the menu after navigation (including Back/Forward)...
+    const [menuPathname, setMenuPathname] = useState(pathname);
+    if (menuPathname !== pathname) {
+        setMenuPathname(pathname);
+        setIsMobileMenuOpen(false);
     }
 
+    // ...and when the desktop layout takes over.
+    useEffect(() => {
+        const desktop = window.matchMedia(DESKTOP_QUERY);
+        const handleChange = (e: MediaQueryListEvent) => {
+            if (e.matches) setIsMobileMenuOpen(false);
+        };
+        desktop.addEventListener('change', handleChange);
+        return () => desktop.removeEventListener('change', handleChange);
+    }, []);
+
+    // While the menu is open: lock page scroll, move focus into the menu, close
+    // on Escape and keep Tab within the menu and its toggle button.
+    useEffect(() => {
+        if (!isMobileMenuOpen) return;
+
+        document.body.style.overflow = 'hidden';
+        menuRef.current?.querySelector<HTMLElement>('a[href]')?.focus();
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                closeMenu(true);
+                return;
+            }
+            if (e.key !== 'Tab' || !menuRef.current || !toggleRef.current) return;
+
+            const focusable = [toggleRef.current, ...menuRef.current.querySelectorAll<HTMLElement>('a[href], button')];
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            const active = document.activeElement as HTMLElement | null;
+            const inside = active ? focusable.includes(active) : false;
+
+            if (e.shiftKey && (active === first || !inside)) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && (active === last || !inside)) {
+                e.preventDefault();
+                first.focus();
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isMobileMenuOpen, closeMenu]);
+
     return (
-        <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/85 backdrop-blur-xl backdrop-saturate-150 border-b border-slate-200/60 shadow-[0_8px_30px_rgba(36,17,45,0.07)] py-2.5' : 'bg-transparent py-5'
+        <>
+            <header
+                className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color] duration-300 ${
+                    isScrolled || isMobileMenuOpen
+                        ? 'bg-white/95 backdrop-blur-xl backdrop-saturate-150 border-b border-slate-200/60 shadow-[0_8px_30px_rgba(36,17,45,0.07)]'
+                        : 'bg-transparent border-b border-transparent'
                 }`}
-        >
-            <div className="container mx-auto px-4 md:px-6">
-                <div className="flex items-center justify-between">
-                    {/* Logo */}
-                    <Link href="/" className="flex items-center z-50 group" aria-label="Veda Scholars home">
-                        <BrandWordmark priority inverted={overHero} className="transition-transform duration-300 ease-in-out group-hover:scale-[1.02]" />
-                    </Link>
+            >
+                <div className="container mx-auto px-4 md:px-6">
+                    <div className={`flex items-center gap-4 xl:gap-6 transition-[height] duration-300 ${isScrolled && !isMobileMenuOpen ? 'h-16' : 'h-20'}`}>
+                        {/* Logo */}
+                        <Link
+                            href="/"
+                            className="relative z-50 flex shrink-0 items-center rounded-md group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
+                            aria-label="Veda Scholars home"
+                        >
+                            <BrandWordmark priority inverted={overHero} className="transition-transform duration-300 ease-in-out group-hover:scale-[1.02]" />
+                        </Link>
 
-                    {/* Desktop Navigation */}
-                    <nav className="hidden xl:flex items-center gap-5 2xl:gap-8">
-                        {currentNavLinks.map((link) => {
-                            const isActive = pathname === link.href;
-                            return (
-                                <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    className={`relative text-sm 2xl:text-[15px] font-medium tracking-[0.01em] transition-colors duration-300 group/nav
-                                        ${overHero ? (isActive ? 'text-white' : 'text-white/85 hover:text-white') : (isActive ? 'text-[#8B2BB4]' : 'text-primary hover:text-[#8B2BB4]')}
-                                    `}
-                                >
-                                    {link.name}
-                                    <span className={`absolute -bottom-1.5 left-0 w-full h-0.5 rounded-full ${overHero ? 'bg-[#E0A6EF]' : 'bg-[#8B2BB4]'} transform origin-left transition-transform duration-300 ease-out
-                                        ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover/nav:scale-x-100'}
-                                    `} />
-                                </Link>
-                            );
-                        })}
-                        {/* Notification Bell - shown only when authenticated */}
-                        {isAuthenticated && (
-                            <div className="relative" ref={bellRef}>
-                                <button
-                                    onClick={() => setShowBell(prev => !prev)}
-                                    className="relative p-2 text-primary hover:text-[#8B2BB4] transition-colors"
-                                    aria-label="Notifications"
-                                >
-                                    <Bell className="w-5 h-5" />
-                                    {unreadCount > 0 && (
-                                        <span className="absolute top-0.5 right-0.5 min-w-[16px] h-4 bg-[#8B2BB4] text-white text-[10px] font-bold rounded-full flex items-center justify-center px-1">
-                                            {unreadCount > 9 ? '9+' : unreadCount}
-                                        </span>
-                                    )}
-                                </button>
-
-                                {showBell && (
-                                    <div className="absolute right-0 top-full mt-3 w-80 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden z-50">
-                                        <div className="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
-                                            <p className="font-bold text-[#24112D] text-sm">Notifications</p>
-                                            {unreadCount > 0 && <span className="text-xs text-[#8B2BB4] font-semibold">{unreadCount} unread</span>}
-                                        </div>
-                                        <div className="max-h-72 overflow-y-auto">
-                                            {notifications.length === 0 ? (
-                                                <p className="text-center text-slate-400 text-sm py-8">No notifications yet.</p>
-                                            ) : (
-                                                notifications.slice(0, 10).map(n => (
-                                                    <div
-                                                        key={n._id}
-                                                        onClick={() => handleMarkRead(n._id)}
-                                                        className={`px-4 py-3 border-b border-slate-50 cursor-pointer hover:bg-slate-50 transition-colors ${
-                                                            n.isRead ? 'opacity-60' : 'bg-amber-50/40'
-                                                        }`}
-                                                    >
-                                                        <div className="flex items-start gap-2">
-                                                            <span className={`mt-1 w-2 h-2 rounded-full shrink-0 ${n.isRead ? 'bg-slate-300' : 'bg-[#8B2BB4]'}`} />
-                                                            <div>
-                                                                <p className="text-[13px] text-slate-700 leading-snug font-medium">{n.message}</p>
-                                                                <p className="text-[11px] text-slate-400 mt-1">{new Date(n.createdAt).toLocaleDateString()}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                ))
-                                            )}
-                                        </div>
-                                        <div className="px-4 py-2 border-t border-slate-100">
-                                            <Link href="/dashboard" className="text-xs text-[#8B2BB4] font-semibold hover:underline" onClick={() => setShowBell(false)}>View Dashboard →</Link>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        )}
-
-                        {isAuthenticated ? (
-                            <div className="relative group">
-                                <button className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-50 text-slate-700 hover:bg-slate-100 transition-colors border border-slate-200">
-                                    <User className="w-4 h-4" />
-                                    <span className="text-sm font-medium">{user?.name?.split(' ')[0] || 'Profile'}</span>
-                                </button>
-                                {/* Padded boundary bridges the cursor gap so the hover state isn't lost */}
-                                <div className="absolute right-0 top-full pt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                                    <div className="bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden py-2 pointer-events-auto">
-                                        <Link href="/profile" className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">My Profile</Link>
-                                        <Link href="/settings" className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Settings</Link>
-                                        <div className="border-t border-slate-100 my-1"></div>
-                                        <button onClick={logout} className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2">
-                                            <LogOut className="w-4 h-4" /> Sign Out
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        ) : (
-                            <Button
-                                id="btn-nav-cta"
-                                variant="primary"
-                                size="sm"
-                                onClick={() => router.push('/login')}
-                                className="bg-[#8B2BB4] hover:bg-[#742493] text-white rounded-full px-6 transition-all duration-300 shadow-[0_8px_24px_rgba(139,43,180,0.35)] hover:shadow-[0_12px_30px_rgba(139,43,180,0.5)] hover:-translate-y-0.5"
-                            >
-                                Get Started
-                            </Button>
-                        )}
-                    </nav>
-
-                    {/* Mobile Menu Button */}
-                    <button
-                        className={`xl:hidden z-50 p-2 -mr-2 focus:outline-none transition-colors ${overHero ? 'text-white' : 'text-primary'}`}
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        aria-label="Toggle menu"
-                    >
-                        <div className="w-6 flex flex-col items-end gap-1.5">
-                            <span className={`block h-0.5 w-full bg-current transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                            <span className={`block h-0.5 w-full bg-current transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
-                            <span className={`block h-0.5 w-full bg-current transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
-                        </div>
-                    </button>
-
-                    {/* Mobile Navigation Overlay */}
-                    <div
-                        className={`xl:hidden fixed inset-0 bg-white z-40 flex flex-col items-center justify-start pt-28 h-[100dvh] transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-                            }`}
-                    >
-                        <nav className="flex flex-col items-center gap-8 text-center">
-                            {currentNavLinks.map((link) => (
-                                <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    className="font-heading text-2xl font-bold text-slate-800 hover:text-primary transition-colors"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                    {link.name}
-                                </Link>
-                            ))}
-                            <div className="mt-4">
-                                {isAuthenticated ? (
-                                    <button
-                                        onClick={() => {
-                                            setIsMobileMenuOpen(false);
-                                            logout();
-                                        }}
-                                        className="flex items-center gap-2 text-red-600 font-bold text-lg"
-                                    >
-                                        <LogOut className="w-5 h-5" /> Sign Out
-                                    </button>
-                                ) : (
-                                    <Button
-                                        id="btn-mobile-nav-cta"
-                                        variant="primary"
-                                        size="lg"
-                                        href="/login"
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                        className="bg-[#8B2BB4] hover:bg-[#742493] text-white rounded-lg shadow-md hover:shadow-lg"
-                                    >
-                                        Get Started
-                                    </Button>
-                                )}
-                            </div>
+                        {/* Desktop Navigation */}
+                        <nav aria-label="Main" className="hidden lg:flex items-center ml-auto">
+                            <ul className="flex items-center gap-4 xl:gap-7">
+                                {PRIMARY_NAV.map((link) => {
+                                    const isActive = isActivePath(pathname, link.href);
+                                    return (
+                                        <li key={link.href}>
+                                            <Link
+                                                href={link.href}
+                                                aria-current={isActive ? 'page' : undefined}
+                                                className={`relative inline-flex h-10 items-center whitespace-nowrap rounded-sm text-[15px] font-medium tracking-[0.01em] transition-colors duration-300 group/nav focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+                                                    overHero
+                                                        ? `focus-visible:ring-white focus-visible:ring-offset-transparent ${isActive ? 'text-white' : 'text-white/85 hover:text-white'}`
+                                                        : `focus-visible:ring-secondary ${isActive ? 'text-secondary' : 'text-primary hover:text-secondary'}`
+                                                }`}
+                                            >
+                                                {link.name}
+                                                <span
+                                                    aria-hidden="true"
+                                                    className={`absolute bottom-0.5 left-0 h-0.5 w-full rounded-full ${overHero ? 'bg-[#E0A6EF]' : 'bg-secondary'} origin-left transition-transform duration-300 ease-out ${
+                                                        isActive ? 'scale-x-100' : 'scale-x-0 group-hover/nav:scale-x-100'
+                                                    }`}
+                                                />
+                                            </Link>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
                         </nav>
+
+                        <Link
+                            id="btn-nav-cta"
+                            href={HEADER_CTA.href}
+                            aria-current={isActivePath(pathname, HEADER_CTA.href) ? 'page' : undefined}
+                            className="hidden lg:inline-flex h-10 shrink-0 items-center justify-center rounded-full bg-secondary px-6 text-sm font-bold text-white shadow-[0_8px_24px_rgba(139,43,180,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#742493] hover:shadow-[0_12px_30px_rgba(139,43,180,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2"
+                        >
+                            {HEADER_CTA.name}
+                        </Link>
+
+                        {/* Mobile Menu Button */}
+                        <button
+                            ref={toggleRef}
+                            type="button"
+                            className={`lg:hidden relative z-50 ml-auto -mr-2 inline-flex h-11 w-11 items-center justify-center rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary ${overHero ? 'text-white' : 'text-primary'}`}
+                            onClick={() => setIsMobileMenuOpen((open) => !open)}
+                            aria-expanded={isMobileMenuOpen}
+                            aria-controls={MOBILE_MENU_ID}
+                            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+                        >
+                            <span aria-hidden="true" className="w-6 flex flex-col items-end gap-1.5">
+                                <span className={`block h-0.5 w-full bg-current transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                                <span className={`block h-0.5 w-full bg-current transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
+                                <span className={`block h-0.5 w-full bg-current transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                            </span>
+                        </button>
                     </div>
                 </div>
+            </header>
+
+            {/* Mobile Navigation. Rendered outside <header>: the header's backdrop
+                filter would otherwise become the containing block of this fixed
+                panel and clip it to the header bar. */}
+            <div
+                id={MOBILE_MENU_ID}
+                ref={menuRef}
+                inert={!isMobileMenuOpen}
+                className={`lg:hidden fixed inset-x-0 bottom-0 top-20 z-40 overflow-y-auto bg-white transition-opacity duration-300 ${
+                    isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+                }`}
+            >
+                <nav aria-label="Mobile" className="container mx-auto px-4 md:px-6 pt-4 pb-10">
+                    <ul className="divide-y divide-slate-100 border-y border-slate-100">
+                        {PRIMARY_NAV.map((link) => {
+                            const isActive = isActivePath(pathname, link.href);
+                            return (
+                                <li key={link.href}>
+                                    <Link
+                                        href={link.href}
+                                        aria-current={isActive ? 'page' : undefined}
+                                        onClick={() => closeMenu()}
+                                        className={`flex min-h-14 items-center justify-between py-3 font-heading text-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-secondary ${
+                                            isActive ? 'text-secondary' : 'text-primary hover:text-secondary'
+                                        }`}
+                                    >
+                                        {link.name}
+                                        {isActive && <span aria-hidden="true" className="h-2 w-2 rounded-full bg-secondary" />}
+                                    </Link>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                    <Link
+                        id="btn-mobile-nav-cta"
+                        href={HEADER_CTA.href}
+                        aria-current={isActivePath(pathname, HEADER_CTA.href) ? 'page' : undefined}
+                        onClick={() => closeMenu()}
+                        className="mt-8 flex h-14 w-full items-center justify-center rounded-full bg-secondary px-8 text-lg font-bold text-white shadow-md transition-colors hover:bg-[#742493] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2"
+                    >
+                        {HEADER_CTA.name}
+                    </Link>
+                </nav>
             </div>
-        </header>
+        </>
     );
 }

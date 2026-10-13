@@ -3,13 +3,13 @@ import TrustSignals from "@/components/home/TrustSignals";
 import ModelSection from "@/components/home/ModelSection";
 import ServicesOverview from "@/components/home/ServicesOverview";
 import PsychometricCTA from "@/components/home/PsychometricCTA";
-import Testimonials from "@/components/home/Testimonials";
 import FinalCTA from "@/components/home/FinalCTA";
-import FadeIn from "@/components/animations/FadeIn";
+import IntroLoader from "@/components/animations/IntroLoader";
 
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/' },
   title: 'Veda Scholars | Education to Employment Consultancy',
   description: 'Veda Scholars helps students, universities, and employers bridge the gap between education and employment through global counselling, partnerships, and recruitment support.',
   keywords: ['Study Abroad', 'Education Consultant', 'Career Mapping', 'Global Recruitment', 'University Partners'],
@@ -18,12 +18,12 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
+      <IntroLoader />
       <Hero />
       <TrustSignals />
       <ModelSection />
       <ServicesOverview />
       <PsychometricCTA />
-      <Testimonials />
       <FinalCTA />
     </div>
   );

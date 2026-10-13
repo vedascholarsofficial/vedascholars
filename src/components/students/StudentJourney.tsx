@@ -45,7 +45,7 @@ export default function StudentJourney() {
                             Your Journey with <span className="text-accent">Veda Scholars</span>
                         </h2>
                         <p className="text-white/80 max-w-2xl mx-auto">
-                            A structured, transparent process to take you from confusion to your dream university.
+                            A structured, transparent process to take you from confusion to a confident, well-informed university choice.
                         </p>
                     </FadeIn>
                 </div>

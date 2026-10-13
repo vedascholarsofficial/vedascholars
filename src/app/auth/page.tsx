@@ -17,7 +17,7 @@ const roles = [
     {
         key: 'recruiter',
         label: 'Recruiter',
-        description: 'Post job listings, discover top talent, and manage your job openings.',
+        description: 'Recruiter accounts are set up by our team. Get in touch to discuss hiring partnerships.',
         icon: '💼',
         color: 'hover:border-indigo-300 hover:bg-indigo-50/30',
         badge: ''
@@ -25,7 +25,7 @@ const roles = [
     {
         key: 'university',
         label: 'University',
-        description: 'Connect with prospective students, manage your profile, and list academic programs.',
+        description: 'University partner accounts are set up by our team. Get in touch to discuss a partnership.',
         icon: '🏛️',
         color: 'hover:border-emerald-300 hover:bg-emerald-50/30',
         badge: ''
@@ -43,9 +43,14 @@ export default function AuthPage() {
         }
     }, [isAuthenticated, router]);
 
+    // Only student accounts can be self-registered. Partner roles are granted
+    // by an administrator after the team has verified the organisation.
     const handleRoleSelect = (role: string) => {
-        localStorage.setItem('selected_role', role);
-        router.push('/register');
+        if (role === 'student') {
+            router.push('/register');
+        } else {
+            router.push(role === 'recruiter' ? '/contact?type=employer' : '/contact?type=partner');
+        }
     };
 
     if (isAuthenticated) return null;

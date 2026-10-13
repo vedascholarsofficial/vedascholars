@@ -17,3 +17,15 @@ uploads/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Example env files contain key names only
+!.env.example
+
+# Local scratch files: not part of the deployed API
+/sample.pdf
+/test.pdf
+/test2.pdf
+/models.json
+/script-test-api.js
+/testmodels.js
+/test-pdf*.js

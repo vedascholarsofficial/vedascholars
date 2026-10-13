@@ -8,7 +8,8 @@ import FinalCTA from '@/components/home/FinalCTA'; // Reusing Final CTA
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'About Veda Scholars | Global Education & Career Experts',
+    alternates: { canonical: '/about' },
+    title: 'About Us',
     description: 'Learn about Veda Scholars, a trusted education-to-employment consultancy supporting students, universities, and employers worldwide.',
 };
 

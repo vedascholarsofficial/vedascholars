@@ -13,6 +13,13 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Matches the API's default token lifetime (JWT_EXPIRES_IN=7d).
+const COOKIE_OPTIONS: Cookies.CookieAttributes = {
+  expires: 7,
+  sameSite: 'lax',
+  secure: typeof window !== 'undefined' && window.location.protocol === 'https:',
+};
+
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<any | null>(null);
   const [token, setToken] = useState<string | null>(null);
@@ -30,7 +37,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setUser(JSON.parse(storedUser));
       
       if (!cookieToken) {
-         Cookies.set('jwt_token', storedToken, { expires: 30 }); // 30 days
+         Cookies.set('jwt_token', storedToken, COOKIE_OPTIONS);
       }
     } else if (cookieToken) {
       // Edge case: cookie exists but local storage is cleared
@@ -48,7 +55,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.setItem('user_data', JSON.stringify(userData));
     
     // 3. Set Cookie for NextJS Edge Middleware
-    Cookies.set('jwt_token', tokenData, { expires: 30 }); 
+    Cookies.set('jwt_token', tokenData, COOKIE_OPTIONS);
   };
 
   const logout = () => {

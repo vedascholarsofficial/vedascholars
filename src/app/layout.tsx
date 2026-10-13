@@ -4,7 +4,10 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Analytics from "@/components/marketing/Analytics";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import { MotionProvider } from "@/components/animations/Reveal";
+import ScrollProgress from "@/components/animations/ScrollProgress";
 import { AuthProvider } from "@/context/AuthContext";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -28,7 +31,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://vedascholars.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Veda Scholars | Education to Employment Consultancy",
     template: "%s | Veda Scholars"
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Veda Scholars | Education to Employment Consultancy",
     description: "Veda Scholars helps students, universities, and employers bridge the gap between education and employment through global counselling, partnerships, and recruitment support.",
-    url: 'https://vedascholars.com',
+    url: SITE_URL,
     siteName: 'Veda Scholars',
     locale: 'en_US',
     type: 'website',
@@ -80,13 +83,16 @@ export default function RootLayout({
         className="antialiased bg-white text-slate-900 font-body flex flex-col min-h-screen"
       >
         <Analytics />
-        <AuthProvider>
-          <Header />
-          <main className="flex-grow pt-20">
-            {children}
-          </main>
-          <Footer />
-        </AuthProvider>
+        <MotionProvider>
+          <ScrollProgress />
+          <AuthProvider>
+            <Header />
+            <main className="flex-grow pt-20">
+              {children}
+            </main>
+            <Footer />
+          </AuthProvider>
+        </MotionProvider>
         <WhatsAppButton />
       </body>
     </html>

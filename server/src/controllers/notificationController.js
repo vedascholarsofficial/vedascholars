@@ -1,4 +1,5 @@
 const Notification = require('../models/Notification');
+const { isObjectId } = require('../utils/validation');
 
 // Internal helper — not a route handler, called by other controllers
 const createNotification = async (userId, message, type = 'system') => {
@@ -29,6 +30,7 @@ const getNotifications = async (req, res) => {
 // @access  Private
 const markAsRead = async (req, res) => {
     try {
+        if (!isObjectId(req.params.id)) return res.status(404).json({ message: 'Notification not found.' });
         const notification = await Notification.findOneAndUpdate(
             { _id: req.params.id, user: req.user.id },
             { isRead: true },

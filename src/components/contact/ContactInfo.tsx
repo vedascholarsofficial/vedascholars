@@ -26,8 +26,8 @@ export default function ContactInfo() {
         },
         {
             icon: <MapPin className="w-6 h-6 text-secondary" />,
-            title: "Visit Us",
-            info: "India • United Kingdom • United Arab Emirates",
+            title: "Where We Work",
+            info: "Supporting students in India, the UK and the UAE",
             sub: "",
             link: null
         }
@@ -94,9 +94,9 @@ export default function ContactInfo() {
             <div className="mt-10 p-6 bg-slate-50 rounded-xl border border-slate-100 flex items-start gap-4">
                 <Clock className="w-6 h-6 text-primary shrink-0" />
                 <div>
-                    <h4 className="font-bold text-primary mb-1">Response Guarantee</h4>
+                    <h4 className="font-bold text-primary mb-1">Response Time</h4>
                     <p className="text-slate-600 text-sm">
-                        We understand anxiety. That's why we promise to respond to every student inquiry within 24 hours.
+                        We understand that waiting is stressful. We aim to respond to every enquiry within one working day.
                     </p>
                 </div>
             </div>

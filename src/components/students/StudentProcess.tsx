@@ -19,7 +19,7 @@ export default function StudentProcess() {
         {
             id: 3,
             title: "Application",
-            description: "Crafting a compelling narrative through your SOPs and essays ensuring flawless submissions.",
+            description: "Shaping a compelling narrative in your SOPs and essays, with careful checks before you submit.",
             icon: <GraduationCap className="w-6 h-6" />
         },
         {

@@ -1,0 +1,77 @@
+{
+  "tool": "Built-in image_gen",
+  "assets": [
+    {
+      "name": "services/hero",
+      "prompt": "Use case: editorial student website photography. Asset: Services hero, landscape 3:2. Photorealistic candid editorial photograph of two young Indian university students, a woman and a man aged 19-22, planning their education together at a bright contemporary library table with open notebooks and a laptop, engaged optimistic conversation, subtle plum clothing accent, natural afternoon window light, premium warm neutral aesthetic, realistic skin and hands. Medium-wide composition with faces in upper central area safe for a 5:4 crop and subtle bottom text overlay. No graduation robes, no campus lawn, no middle-aged counsellor, no legible text, logos or watermarks. One photograph.",
+      "source": "C:\\Users\\NEW\\.codex\\generated_images\\01a13467-0387-7722-a8a1-ee8883a64129\\exec-89134d0f-2946-4773-9d7b-d45557999d67.png",
+      "destination": "public/images/services/hero.webp"
+    },
+    {
+      "name": "services/discover-decide",
+      "prompt": "Use case: photorealistic premium editorial photography for a student education website. One standalone landscape 3:2 photograph. Scene: A young Indian woman aged 19-21 in a light plum shirt thoughtfully comparing open course brochures and a notebook at a bright home desk, laptop in background, three-quarter profile, individual career discovery, no counsellor. Style: natural window or daylight, warm neutral tones with restrained purple accents, realistic skin texture and anatomically natural hands, relaxed candid moment, youthful motivating mood, premium magazine photography. Keep key faces and activity in central 75% for responsive 4:3, 5:4 and 16:9 crops; allow bottom text overlay. Avoid legible text, logos, watermarks, university branding, graduation robes, exaggerated stock-photo poses or any collage.",
+      "source": "C:\\Users\\NEW\\.codex\\generated_images\\01a13467-0387-7722-a8a1-ee8883a64129\\exec-9964797f-082e-40e8-9690-7bd2b1873530.png",
+      "destination": "public/images/services/discover-decide.webp"
+    },
+    {
+      "name": "services/access-affordability",
+      "prompt": "Use case: photorealistic premium editorial photography for a student education website. One standalone landscape 3:2 photograph. Scene: A young Indian male student and his mother seated at a pale wood kitchen table working through education cost planning using a calculator, blank notebook and laptop. Supportive relaxed conversation, realistic ordinary home, medium wide shot. Style: natural window or daylight, warm neutral tones with restrained purple accents, realistic skin texture and anatomically natural hands, relaxed candid moment, youthful motivating mood, premium magazine photography. Keep key faces and activity in central 75% for responsive 4:3, 5:4 and 16:9 crops; allow bottom text overlay. Avoid legible text, logos, watermarks, university branding, graduation robes, exaggerated stock-photo poses or any collage.",
+      "source": "C:\\Users\\NEW\\.codex\\generated_images\\01a13467-0387-7722-a8a1-ee8883a64129\\exec-500d82b1-a68f-4480-a330-b3afaf32546c.png",
+      "destination": "public/images/services/access-affordability.webp"
+    },
+    {
+      "name": "services/prepare-settle",
+      "prompt": "Use case: photorealistic premium editorial photography for a student education website. One standalone landscape 3:2 photograph. Scene: A young Indian woman arriving at a contemporary student residence, setting a small potted plant onto a desk by the window, unpacked suitcase nearby, cheerful and independent. Welcoming cream and sage interior, medium wide shot. Style: natural window or daylight, warm neutral tones with restrained purple accents, realistic skin texture and anatomically natural hands, relaxed candid moment, youthful motivating mood, premium magazine photography. Keep key faces and activity in central 75% for responsive 4:3, 5:4 and 16:9 crops; allow bottom text overlay. Avoid legible text, logos, watermarks, university branding, graduation robes, exaggerated stock-photo poses or any collage.",
+      "source": "C:\\Users\\NEW\\.codex\\generated_images\\01a13467-0387-7722-a8a1-ee8883a64129\\exec-7e43fda7-be47-4cac-9ad8-7b2d5b0e40fe.png",
+      "destination": "public/images/services/prepare-settle.webp"
+    },
+    {
+      "name": "services/learn-connect-grow",
+      "prompt": "Use case: photorealistic premium editorial photography for a student education website. One standalone landscape 3:2 photograph. Scene: Three university students aged 20-23 of Indian, East Asian and African heritage collaborating on a small research prototype and laptop in a bright university makerspace, natural teamwork, notebooks and model parts. Medium-wide candid shot. Style: natural window or daylight, warm neutral tones with restrained purple accents, realistic skin texture and anatomically natural hands, relaxed candid moment, youthful motivating mood, premium magazine photography. Keep key faces and activity in central 75% for responsive 4:3, 5:4 and 16:9 crops; allow bottom text overlay. Avoid legible text, logos, watermarks, university branding, graduation robes, exaggerated stock-photo poses or any collage.",
+      "source": "C:\\Users\\NEW\\.codex\\generated_images\\01a13467-0387-7722-a8a1-ee8883a64129\\exec-533c6196-9134-44c0-bcbe-4f1423a7b7f8.png",
+      "destination": "public/images/services/learn-connect-grow.webp"
+    },
+    {
+      "name": "services/career-beyond",
+      "prompt": "Use case: photorealistic premium editorial photography for a student education website. One standalone landscape 3:2 photograph. Scene: A young Indian male university student in smart casual clothing showing his printed portfolio to a young woman mentor across a modern coworking table, encouraging career preparation discussion, realistic office, medium wide. Style: natural window or daylight, warm neutral tones with restrained purple accents, realistic skin texture and anatomically natural hands, relaxed candid moment, youthful motivating mood, premium magazine photography. Keep key faces and activity in central 75% for responsive 4:3, 5:4 and 16:9 crops; allow bottom text overlay. Avoid legible text, logos, watermarks, university branding, graduation robes, exaggerated stock-photo poses or any collage.",
+      "source": "C:\\Users\\NEW\\.codex\\generated_images\\01a13467-0387-7722-a8a1-ee8883a64129\\exec-4dac8eec-8c69-4af0-9b01-01180567d043.png",
+      "destination": "public/images/services/career-beyond.webp"
+    },
+    {
+      "name": "programs/hero",
+      "prompt": "Use case: photorealistic premium editorial photography for a student education website. One standalone landscape 3:2 photograph. Scene: A confident young Indian woman university student aged 21 standing on a sunny rooftop university terrace, holding a closed notebook and looking towards an open city horizon with quiet hopeful smile, friends softly out of focus behind her, breeze in hair, no graduation robe, medium wide portrait scene. Style: natural window or daylight, warm neutral tones with restrained purple accents, realistic skin texture and anatomically natural hands, relaxed candid moment, youthful motivating mood, premium magazine photography. Keep key faces and activity in central 75% for responsive 4:3, 5:4 and 16:9 crops; allow bottom text overlay. Avoid legible text, logos, watermarks, university branding, graduation robes, exaggerated stock-photo poses or any collage.",
+      "source": "C:\\Users\\NEW\\.codex\\generated_images\\01a13467-0387-7722-a8a1-ee8883a64129\\exec-dec5112a-821e-47de-be0b-021741c0c634.png",
+      "destination": "public/images/programs/hero.webp"
+    },
+    {
+      "name": "programs/veda-360",
+      "prompt": "Use case: photorealistic premium editorial photography for a student education website. One standalone landscape 3:2 photograph. Scene: Two young university students aged 19-23, Indian woman and East Asian man with backpacks, taking the broad steps up to a beautiful historic stone university entrance, photographed from the side, hopeful new beginning, leafy trees, warm afternoon sunshine, no lawn group. Style: natural window or daylight, warm neutral tones with restrained purple accents, realistic skin texture and anatomically natural hands, relaxed candid moment, youthful motivating mood, premium magazine photography. Keep key faces and activity in central 75% for responsive 4:3, 5:4 and 16:9 crops; allow bottom text overlay. Avoid legible text, logos, watermarks, university branding, graduation robes, exaggerated stock-photo poses or any collage.",
+      "source": "C:\\Users\\NEW\\.codex\\generated_images\\01a13467-0387-7722-a8a1-ee8883a64129\\exec-6cb29222-2714-41a9-bd23-9d6d78d81510.png",
+      "destination": "public/images/programs/veda-360.webp"
+    },
+    {
+      "name": "programs/before-you-decide",
+      "prompt": "Use case: photorealistic premium editorial photography for a student education website. One standalone landscape 3:2 photograph. Scene: Small group of Indian and international students aged 18-22 on an informal university tour inside a bright contemporary lecture theatre, a young female student guide gestures to the tiered seating while two visitors listen, natural candid excitement, medium wide. Style: natural window or daylight, warm neutral tones with restrained purple accents, realistic skin texture and anatomically natural hands, relaxed candid moment, youthful motivating mood, premium magazine photography. Keep key faces and activity in central 75% for responsive 4:3, 5:4 and 16:9 crops; allow bottom text overlay. Avoid legible text, logos, watermarks, university branding, graduation robes, exaggerated stock-photo poses or any collage.",
+      "source": "C:\\Users\\NEW\\.codex\\generated_images\\01a13467-0387-7722-a8a1-ee8883a64129\\exec-17e19039-8aa0-4992-b0ed-fa1ffe380ac8.png",
+      "destination": "public/images/programs/before-you-decide.webp"
+    },
+    {
+      "name": "programs/student-connect",
+      "prompt": "Use case: photorealistic premium editorial photography for a student education website. One standalone landscape 3:2 photograph. Scene: Four diverse young university students aged 20-24 seated around a round cafe table in a sunny courtyard, friendly peer mentoring conversation and laughter, one points to a notebook, genuine relaxed community, medium-wide candid. Style: natural window or daylight, warm neutral tones with restrained purple accents, realistic skin texture and anatomically natural hands, relaxed candid moment, youthful motivating mood, premium magazine photography. Keep key faces and activity in central 75% for responsive 4:3, 5:4 and 16:9 crops; allow bottom text overlay. Avoid legible text, logos, watermarks, university branding, graduation robes, exaggerated stock-photo poses or any collage.",
+      "source": "C:\\Users\\NEW\\.codex\\generated_images\\01a13467-0387-7722-a8a1-ee8883a64129\\exec-04e27af3-9843-43ca-b95d-b4ce78a1644f.png",
+      "destination": "public/images/programs/student-connect.webp"
+    },
+    {
+      "name": "programs/career-internship-network",
+      "prompt": "Use case: photorealistic premium editorial photography for a student education website. One standalone landscape 3:2 photograph. Scene: A young Indian female university student in casual-smart clothing participating in a creative design workshop at a modern studio table with a young professional mentor, discussing physical project sketches and a scale model, optimistic industry exposure, medium wide. Style: natural window or daylight, warm neutral tones with restrained purple accents, realistic skin texture and anatomically natural hands, relaxed candid moment, youthful motivating mood, premium magazine photography. Keep key faces and activity in central 75% for responsive 4:3, 5:4 and 16:9 crops; allow bottom text overlay. Avoid legible text, logos, watermarks, university branding, graduation robes, exaggerated stock-photo poses or any collage.",
+      "source": "C:\\Users\\NEW\\.codex\\generated_images\\01a13467-0387-7722-a8a1-ee8883a64129\\exec-309a8916-1f77-4d56-a66b-9ad13c5e1606.png",
+      "destination": "public/images/programs/career-internship-network.webp"
+    },
+    {
+      "name": "programs/scholarship-financial-access",
+      "prompt": "Use case: photorealistic premium editorial photography for a student education website. One standalone landscape 3:2 photograph. Scene: A focused young Indian woman aged 20 wearing glasses reviewing her scholarship application at a bright quiet library desk, laptop with an abstract unreadable form and open planner, carefully writing notes with pen, hopeful focused expression, medium-wide candid. Style: natural window or daylight, warm neutral tones with restrained purple accents, realistic skin texture and anatomically natural hands, relaxed candid moment, youthful motivating mood, premium magazine photography. Keep key faces and activity in central 75% for responsive 4:3, 5:4 and 16:9 crops; allow bottom text overlay. Avoid legible text, logos, watermarks, university branding, graduation robes, exaggerated stock-photo poses or any collage.",
+      "source": "C:\\Users\\NEW\\.codex\\generated_images\\01a13467-0387-7722-a8a1-ee8883a64129\\exec-0436ac86-83c9-4685-b5d2-a525561b19ec.png",
+      "destination": "public/images/programs/scholarship-financial-access.webp"
+    }
+  ]
+}

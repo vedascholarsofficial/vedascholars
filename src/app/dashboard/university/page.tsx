@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
-import Button from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
 import { universityService } from '@/services/universityService';
 import Link from 'next/link';
@@ -140,9 +139,9 @@ export default function UniversityDashboardPage() {
                                 <div>
                                     <h3 className="text-xl font-bold text-[#24112D]">Courses Offered</h3>
                                 </div>
-                                <Button href="/courses/create" className="bg-[#8B2BB4] text-white hover:bg-[#742493] border-none font-bold text-sm h-10 px-4 shadow-sm shrink-0">
-                                    + Add Course
-                                </Button>
+                                <p className="text-xs text-slate-500 max-w-xs">
+                                    Course details are maintained by the Veda Scholars team. Contact us to update them.
+                                </p>
                             </div>
                             
                             <div className="space-y-4">
@@ -175,14 +174,14 @@ export default function UniversityDashboardPage() {
                         <div className="bg-white border border-slate-100 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                             <div className="flex justify-between items-center mb-6">
                                 <h3 className="text-xl font-bold text-[#24112D]">Top Students Matched</h3>
-                                <Link href="/students" className="text-sm text-[#8B2BB4] font-medium hover:underline">View Prospect Pool</Link>
+                                <span className="text-xs text-slate-400">Students who chose to share their profile</span>
                             </div>
                             
                             <div className="space-y-4">
                                 {isLoading ? (
                                     <div className="text-center py-6 text-sm text-slate-300">Running matchmaking algorithm...</div>
                                 ) : topMatches.length === 0 ? (
-                                    <div className="text-center py-6 text-sm text-slate-300">Wait for students to build profiles.</div>
+                                    <div className="text-center py-6 text-sm text-slate-300">No students have chosen to share a matching profile yet.</div>
                                 ) : topMatches.map((match: any) => (
                                     <div key={match.id} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-slate-100 hover:border-[#8B2BB4]/30 transition-colors bg-slate-50/50 gap-4">
                                         <div>
@@ -195,10 +194,7 @@ export default function UniversityDashboardPage() {
                                                     {match.matchScore} Match
                                                 </span>
                                             </div>
-                                            <Link href={`/students/${match.studentId}`} className="text-xs font-bold text-[#8B2BB4] hover:underline whitespace-nowrap">
-                                                Review
-                                            </Link>
-                                        </div>
+</div>
                                     </div>
                                 ))}
                             </div>

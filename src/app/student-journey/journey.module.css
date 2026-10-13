@@ -1,0 +1,31 @@
+.hero {
+    background: radial-gradient(ellipse at 85% 25%, #efe1f6 0%, transparent 55%),
+        linear-gradient(135deg, #fff 25%, #faf7fc 100%);
+}
+
+.stage {
+    transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .stage:hover {
+        transform: translateY(-3px);
+        border-color: #8b2bb440;
+        box-shadow: 0 12px 30px -16px #24112d30;
+    }
+}
+
+@keyframes portrait-entrance {
+    from { transform: translateY(16px) rotate(4deg); }
+    to { transform: translateY(0) rotate(-4deg); }
+}
+
+.portrait {
+    transform: rotate(-4deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .portrait {
+        animation: portrait-entrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+}

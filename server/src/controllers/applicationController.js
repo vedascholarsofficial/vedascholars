@@ -1,5 +1,6 @@
 const Application = require('../models/Application');
 const Job = require('../models/Job');
+const { isObjectId } = require('../utils/validation');
 
 // @desc    Apply to a specific job
 // @route   POST /api/applications
@@ -12,13 +13,13 @@ const applyToJob = async (req, res) => {
 
         const { jobId } = req.body;
 
-        if (!jobId) {
-             return res.status(400).json({ message: 'Job ID is required.' });
+        if (!isObjectId(jobId)) {
+             return res.status(400).json({ message: 'A valid job ID is required.' });
         }
 
-        // Verify the job actually exists
+        // Verify the job exists and is live
         const jobExists = await Job.findById(jobId);
-        if (!jobExists) {
+        if (!jobExists || jobExists.status !== 'approved') {
              return res.status(404).json({ message: 'Job not found.' });
         }
 
@@ -51,7 +52,7 @@ const applyToJob = async (req, res) => {
 const getUserApplications = async (req, res) => {
      try {
           const applications = await Application.find({ user: req.user.id })
-               .populate('job')
+               .populate({ path: 'job', populate: { path: 'postedBy', select: 'name' } })
                .sort({ createdAt: -1 });
                
           res.status(200).json(applications);

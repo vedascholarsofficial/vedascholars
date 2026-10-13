@@ -15,7 +15,7 @@ export default function ContactHero() {
                 </p>
                 <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
                     <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                    <span className="text-sm font-medium text-slate-200">Calls responded to within 24 hours</span>
+                    <span className="text-sm font-medium text-slate-200">We aim to respond within one working day</span>
                 </div>
             </div>
         </section>

@@ -3,40 +3,47 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
+import { authService } from '@/services/authService';
 
 function AuthCallbackContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const { login } = useAuth();
-    const [status, setStatus] = useState('Intercepting authentication payload...');
+    const [status, setStatus] = useState('Signing you in...');
 
     useEffect(() => {
-        // Automatically fires on load resolving the URL queries
-        const token = searchParams.get('token');
-        const userEncodedData = searchParams.get('user');
+        // The API redirects here with a short-lived, single-use code. The token
+        // itself is only ever returned in a POST response, never in the URL.
+        const code = searchParams.get('code');
+        let cancelled = false;
 
-        if (token && userEncodedData) {
-            try {
-                // Decode specifically formatted URL strings passed safely from Express Passport
-                const userObj = JSON.parse(decodeURIComponent(userEncodedData));
-                
-                // Immediately commit to Application Context & Session Storage
-                login(userObj, token);
-                setStatus('Identity validated. Routing securely to dashboard...');
-                
-                setTimeout(() => {
-                    router.replace('/dashboard');
-                }, 1000);
-            } catch (error) {
-                console.error("Payload Decoding Failed:", error);
-                setStatus('Fatal error: Authentication payload is inherently corrupted.');
-                setTimeout(() => router.replace('/login'), 3000);
-            }
-        } else {
-             // If accessed manually without payload vectors.
-             setStatus('Missing required OAuth payload arrays. Redirecting...');
-             setTimeout(() => router.replace('/login'), 2000);
+        // Remove the code from the address bar and browser history.
+        window.history.replaceState(null, '', '/auth/callback');
+
+        if (!code) {
+            setStatus('Sign-in link is missing or has expired. Redirecting...');
+            const timer = setTimeout(() => router.replace('/login'), 2000);
+            return () => clearTimeout(timer);
         }
+
+        authService
+            .exchangeOAuthCode(code)
+            .then((data) => {
+                if (cancelled) return;
+                const { token, ...userObj } = data;
+                login(userObj, token);
+                setStatus('Signed in. Taking you to your dashboard...');
+                router.replace('/dashboard');
+            })
+            .catch(() => {
+                if (cancelled) return;
+                setStatus('This sign-in link has expired. Please sign in again.');
+                setTimeout(() => router.replace('/login?auth=failed'), 2000);
+            });
+
+        return () => {
+            cancelled = true;
+        };
     }, [searchParams, router, login]);
 
     return (

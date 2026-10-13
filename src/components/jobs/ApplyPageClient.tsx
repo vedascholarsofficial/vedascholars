@@ -7,7 +7,7 @@ const faqs = [
     {
         question: 'Is applying through Veda Scholars free?',
         answer:
-            'Yes, submitting your application is completely free of charge. We do not levy any registration or processing fee from candidates. Our revenue comes from our employer partners, ensuring your journey with us is 100% cost-free.',
+            'Yes, submitting your application is completely free of charge. We do not levy any registration or processing fee from candidates. Our revenue comes from our employer partners, so applying costs you nothing.',
     },
     {
         question: 'Which countries do you recruit for?',
@@ -17,12 +17,12 @@ const faqs = [
     {
         question: 'Do you guarantee a job placement?',
         answer:
-            'While we do not guarantee placement — as hiring decisions ultimately rest with the employer — we do guarantee that every qualified candidate receives active representation, personalised matching, and dedicated support throughout the process.',
+            'No. We do not guarantee placement or visa sponsorship: hiring decisions rest with the employer and visa decisions with the authorities. We will review your profile and tell you honestly which opportunities, if any, are a good fit.',
     },
     {
         question: 'How long does the recruitment process take?',
         answer:
-            'From submission to first employer contact, the typical turnaround is 5–10 business days. The full process from application to offer can range from 3 to 8 weeks depending on the role, country, and employer timeline.',
+            'We aim to review applications within 5–10 business days. Where there is a suitable opening, the full process can take several weeks or longer, depending on the role, country and employer.',
     },
 ];
 

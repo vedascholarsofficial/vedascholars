@@ -9,12 +9,12 @@ export default function UniversitiesContent() {
         {
             icon: Users,
             title: "International Student Recruitment",
-            desc: "We connect you with high-potential students from diverse backgrounds, ensuring a steady intake of quality applicants."
+            desc: "We help you reach well-prepared, well-informed students from diverse backgrounds."
         },
         {
             icon: ShieldCheck,
             title: "Admission & Visa Guidance",
-            desc: "Our team manages the entire application and visa process, reducing administrative burden and ensuring compliance."
+            desc: "We guide students through applications and help them understand visa requirements, reducing the administrative load on your team."
         },
         {
             icon: Zap,
@@ -51,7 +51,7 @@ export default function UniversitiesContent() {
                                 Empowering Academic Excellence
                             </h2>
                             <p className="text-lg text-slate-600 leading-relaxed">
-                                Veda Scholars partners with world-class universities to streamline the admissions process and
+                                Veda Scholars works with universities to streamline the admissions process and
                                 ensure student success. We go beyond recruitment; we act as an extension of your team,
                                 upholding your standards and values while expanding your global reach.
                             </p>

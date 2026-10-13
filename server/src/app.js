@@ -1,49 +1,75 @@
 const express = require('express');
 const cors = require('cors');
-const session = require('express-session');
-const passport = require('./config/passport'); // Direct hook initialized
+const helmet = require('helmet');
+const multer = require('multer');
+const { getConfig } = require('./config/env');
+const { configurePassport } = require('./config/passport');
+const { rejectOperatorKeys, createLimiters } = require('./middlewares/securityMiddleware');
 
-const app = express();
+// Builds a configured Express app. Configuration is validated first, so a
+// missing or weak JWT_SECRET stops the server instead of weakening it.
+const createApp = () => {
+    const config = getConfig();
+    const limiters = createLimiters();
+    const passport = configurePassport();
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+    const app = express();
+    app.disable('x-powered-by');
+    // Number of reverse proxies in front of the API (0 when exposed directly).
+    // Needed for correct client IPs in rate limiting; see .env.example.
+    app.set('trust proxy', config.trustProxyHops);
 
-// Express Session requirement for Passport callbacks specifically
-app.use(session({
-    secret: process.env.JWT_SECRET || 'fallback-veda-secret-key-32',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false } // Only set true if HTTPS
-}));
+    app.use(helmet());
+    app.use(
+        cors({
+            origin(origin, callback) {
+                // Requests without an Origin header (server-to-server, curl,
+                // same-origin navigation) are not subject to CORS.
+                if (!origin || config.corsOrigins.includes(origin)) return callback(null, true);
+                callback(null, false);
+            },
+        })
+    );
+    app.use(express.json({ limit: '100kb' }));
+    app.use(rejectOperatorKeys);
+    app.use('/api', limiters.general);
+    app.use(passport.initialize());
 
-// Initialize Local Passport arrays physically
-app.use(passport.initialize());
-app.use(passport.session());
+    app.get('/api/health', (req, res) => {
+        res.status(200).send('Server is running');
+    });
 
-// Basic test route
-app.get('/api/health', (req, res) => {
-    res.status(200).send('Server is running');
-});
+    app.use('/api/auth', require('./routes/authRoutes')(limiters));
+    app.use('/api/user', require('./routes/userRoutes')(limiters));
+    app.use('/api/jobs', require('./routes/jobRoutes'));
+    app.use('/api/applications', require('./routes/applicationRoutes'));
+    app.use('/api/ai', require('./routes/aiRoutes')(limiters));
+    app.use('/api/notifications', require('./routes/notificationRoutes'));
+    app.use('/api/admin', require('./routes/analyticsRoutes'));
+    app.use('/api/universities', require('./routes/universityRoutes'));
 
-// Import other routes here as project grows
-const authRoutes = require('./routes/authRoutes');
-const userRoutes = require('./routes/userRoutes');
-const jobRoutes = require('./routes/jobRoutes');
-const applicationRoutes = require('./routes/applicationRoutes');
-const aiRoutes = require('./routes/aiRoutes');
-const notificationRoutes = require('./routes/notificationRoutes');
-const analyticsRoutes = require('./routes/analyticsRoutes');
-const universityRoutes = require('./routes/universityRoutes');
+    app.use('/api', (req, res) => {
+        res.status(404).json({ message: 'Not found.' });
+    });
 
-// Mount routes
-app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes);
-app.use('/api/jobs', jobRoutes);
-app.use('/api/applications', applicationRoutes);
-app.use('/api/ai', aiRoutes);
-app.use('/api/notifications', notificationRoutes);
-app.use('/api/admin', analyticsRoutes);
-app.use('/api/universities', universityRoutes);
+    // Central error handler: log the error type, never return internals.
+    // eslint-disable-next-line no-unused-vars
+    app.use((err, req, res, next) => {
+        if (err instanceof multer.MulterError) {
+            const message = err.code === 'LIMIT_FILE_SIZE' ? 'File is too large (max 5 MB).' : 'Invalid file upload.';
+            return res.status(400).json({ message });
+        }
+        if (err && err.expose && err.status && err.status < 500) {
+            return res.status(err.status).json({ message: err.type === 'entity.too.large' ? 'Request is too large.' : 'Invalid request.' });
+        }
+        if (err && err.statusCode === 400) {
+            return res.status(400).json({ message: err.message });
+        }
+        console.error('Unhandled error:', err && (err.name || err.code));
+        res.status(500).json({ message: 'Server Error' });
+    });
 
-module.exports = app;
+    return app;
+};
+
+module.exports = { createApp };

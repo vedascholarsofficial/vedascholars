@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import Button from '@/components/ui/Button';
-import { useAuth } from '@/context/AuthContext';
 import { psychometricQuestions, careerResults } from '@/data/psychometricQuestions';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -17,8 +15,6 @@ const totalQuestions = psychometricQuestions.length;
 
 // ─── Component ───────────────────────────────────────────────────────────────
 export default function PsychometricTestPage() {
-  const { isAuthenticated, user } = useAuth();
-
   // Phase: intro → test → result
   const [phase, setPhase] = useState<Phase>('intro');
 
@@ -98,8 +94,8 @@ export default function PsychometricTestPage() {
             <span className="text-secondary">Career Path</span>
           </h1>
           <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-            Answer 15 science-backed questions to find out whether you are naturally suited for
-            Engineering, Business Leadership, or Creative fields.
+            Answer 15 quick questions to explore whether your interests lean towards
+            technical, business leadership or creative fields.
           </p>
         </div>
       </div>
@@ -115,7 +111,7 @@ export default function PsychometricTestPage() {
               Ready to find your ideal career?
             </h2>
             <p className="text-slate-600 mb-8 max-w-xl mx-auto leading-relaxed">
-              This free psychometric assessment contains <strong>15 questions</strong> across three
+              This free interest check (not a formal psychometric assessment) contains <strong>15 questions</strong> across three
               dimensions — Technical aptitude, Management aptitude, and Creative aptitude — and takes
               about <strong>3–4 minutes</strong> to complete. No sign-up required.
             </p>
@@ -274,33 +270,6 @@ export default function PsychometricTestPage() {
                 ))}
               </div>
             </div>
-
-            {/* ── LOGIN CTA (unauthenticated users) ── */}
-            {!isAuthenticated && (
-              <div className="bg-slate-900 rounded-2xl p-8 text-center mb-8">
-                <div className="text-3xl mb-3">🔐</div>
-                <h3 className="text-xl font-heading font-bold text-white mb-2">
-                  Save Your Result
-                </h3>
-                <p className="text-slate-400 mb-6 max-w-md mx-auto">
-                  Create a free account to save your psychometric result, track your progress, and
-                  get personalised career counselling from our experts.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <Button variant="primary" size="md" href="/register">
-                    Create Free Account
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="md"
-                    href="/login"
-                    className="border-slate-500 text-slate-300 hover:bg-slate-800 hover:border-slate-400"
-                  >
-                    Login to Save
-                  </Button>
-                </div>
-              </div>
-            )}
 
             {/* ── COUNSELLING CTA ── */}
             <div className="bg-secondary/10 border border-secondary/30 rounded-2xl p-8 text-center mb-8">

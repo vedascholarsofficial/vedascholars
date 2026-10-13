@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from '@/components/ui/Button';
 import { API_BASE_URL } from '@/lib/api';
 import { authService } from '@/services/authService';
@@ -15,16 +15,10 @@ export default function RegisterPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [showGoogleModal, setShowGoogleModal] = useState(false);
 
-    // Form State — pre-fill role from /auth selection if present
-    const [formData, setFormData] = useState({ name: '', email: '', password: '', role: 'student' });
+    // Form State. Accounts created here are always student accounts; partner
+    // (recruiter / university) accounts are set up by the Veda Scholars team.
+    const [formData, setFormData] = useState({ name: '', email: '', password: '' });
     const [otp, setOtp] = useState('');
-
-    useEffect(() => {
-        const savedRole = localStorage.getItem('selected_role');
-        if (savedRole && ['student', 'recruiter', 'university'].includes(savedRole)) {
-            setFormData(prev => ({ ...prev, role: savedRole }));
-        }
-    }, []);
 
     const handleRegisterSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -49,8 +43,7 @@ export default function RegisterPage() {
 
         try {
              await authService.verifyOTP({ email: formData.email, otp });
-             localStorage.removeItem('selected_role'); // clean up
-             router.push('/login?verification=success');
+router.push('/login?verification=success');
         } catch (err: any) {
              setError(err.response?.data?.message || 'Invalid or expired OTP.');
         } finally {
@@ -68,7 +61,7 @@ export default function RegisterPage() {
                            {step === 1 ? 'Create Account' : 'Verify Email'}
                         </h2>
                         <p className="text-slate-600">
-                           {step === 1 ? 'Join the Veda Scholars platform.' : `Enter the 6-digit OTP sent to ${formData.email}`}
+                           {step === 1 ? 'Join the Veda Scholars platform.' : `If ${formData.email} can be registered, we have sent a 6-digit code to it.`}
                         </p>
                     </div>
 
@@ -112,26 +105,17 @@ export default function RegisterPage() {
                                     type="password"
                                     required
                                     className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
-                                    placeholder="••••••••"
+                                    placeholder="At least 8 characters"
+                                    minLength={8}
                                     value={formData.password}
                                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                     disabled={isLoading}
                                 />
                             </div>
 
-                            <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-2">I am a</label>
-                                <select
-                                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none bg-white"
-                                    value={formData.role}
-                                    onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                                    disabled={isLoading}
-                                >
-                                    <option value="student">Student</option>
-                                    <option value="recruiter">Recruiter</option>
-                                    <option value="university">University</option>
-                                </select>
-                            </div>
+                            <p className="text-xs text-slate-500">
+                                Recruiter or university partner? <a href="/contact?type=partner" className="text-primary underline">Contact our team</a> to set up a partner account.
+                            </p>
 
                             <Button
                                 type="submit"
@@ -226,11 +210,11 @@ export default function RegisterPage() {
                             ✕
                         </button>
                         <h3 className="text-2xl font-bold font-heading text-primary mb-2">Google Sign-Up</h3>
-                        <p className="text-sm text-slate-500 mb-6">Which type of account are you looking to create via Google today?</p>
+                        <p className="text-sm text-slate-500 mb-6">Google sign-up creates a student account. Partners should contact our team.</p>
                         
                         <div className="space-y-3">
                             <button
-                                onClick={() => { window.location.href = `${API_BASE_URL}/auth/google?role=student`; }}
+                                onClick={() => { window.location.href = `${API_BASE_URL}/auth/google`; }}
                                 className="w-full text-left px-5 py-4 rounded-xl border-2 border-slate-100 hover:border-[#8B2BB4] hover:bg-amber-50/50 transition-all duration-200 group flex items-center gap-4"
                             >
                                 <span className="text-2xl">🎓</span>
@@ -240,28 +224,7 @@ export default function RegisterPage() {
                                 </div>
                             </button>
 
-                            <button
-                                onClick={() => { window.location.href = `${API_BASE_URL}/auth/google?role=recruiter`; }}
-                                className="w-full text-left px-5 py-4 rounded-xl border-2 border-slate-100 hover:border-indigo-400 hover:bg-indigo-50/50 transition-all duration-200 group flex items-center gap-4"
-                            >
-                                <span className="text-2xl">💼</span>
-                                <div>
-                                    <span className="block font-bold text-primary">Recruiter</span>
-                                    <span className="text-xs text-slate-500 group-hover:text-indigo-400">Post Jobs & Hire</span>
-                                </div>
-                            </button>
-
-                            <button
-                                onClick={() => { window.location.href = `${API_BASE_URL}/auth/google?role=university`; }}
-                                className="w-full text-left px-5 py-4 rounded-xl border-2 border-slate-100 hover:border-emerald-400 hover:bg-emerald-50/50 transition-all duration-200 group flex items-center gap-4"
-                            >
-                                <span className="text-2xl">🏛️</span>
-                                <div>
-                                    <span className="block font-bold text-primary">University</span>
-                                    <span className="text-xs text-slate-500 group-hover:text-emerald-500">Manage Campus Profiles</span>
-                                </div>
-                            </button>
-                        </div>
+</div>
                     </div>
                 </div>
             )}

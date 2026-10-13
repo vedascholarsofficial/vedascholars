@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FinalCTA from '@/components/home/FinalCTA';
 import UniversitiesContent from '@/components/universities/UniversitiesContent';
-import UniversityMarquee from '@/components/partner/UniversityMarquee';
 import EmployersContent from '@/components/partner/EmployersContent';
 import PartnerHero from '@/components/partner/PartnerHero';
 
@@ -29,8 +28,7 @@ export default function PartnerWithUsPage() {
                         <>
                             {/* Universities Content */}
                             <UniversitiesContent />
-                            <UniversityMarquee />
-                            <FinalCTA />
+<FinalCTA />
                         </>
                     ) : (
                         <>

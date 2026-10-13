@@ -9,7 +9,7 @@ export default function EmployersContent() {
         {
             icon: Users,
             title: "Skilled Graduate Talent",
-            desc: "Access a diverse pool of pre-vetted graduates ready to contribute immediately."
+            desc: "Meet students and graduates we have helped prepare for the world of work."
         },
         {
             icon: Rocket,
@@ -31,7 +31,7 @@ export default function EmployersContent() {
     const advantages = [
         {
             icon: Clock,
-            title: "Reduced Hiring Time",
+            title: "Focused Shortlists",
             desc: "We filter candidates to match your specific requirements, saving you valuable time."
         },
         {

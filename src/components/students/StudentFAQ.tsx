@@ -9,7 +9,7 @@ export default function StudentFAQ() {
         },
         {
             question: "Do you help with scholarships?",
-            answer: "Yes, identifying and applying for scholarships is a core part of our service. We help you draft essays that highlight your merit and need."
+            answer: "Yes. We help you identify scholarships you may be eligible for and prepare strong applications, including essays. Scholarship decisions are made by the funders."
         },
         {
             question: "Which countries do you cover?",

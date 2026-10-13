@@ -1,9 +1,12 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
+const { getConfig } = require('../config/env');
 
 const generateResponse = async (prompt, historyArray = [], context) => {
     try {
-        if (!process.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY === 'your_api_key_here') {
-             throw new Error("GEMINI_API_KEY is missing or invalid in the .env configurations.");
+        if (!getConfig().geminiEnabled) {
+             const notConfigured = new Error('GEMINI_API_KEY is not configured.');
+             notConfigured.code = 'AI_NOT_CONFIGURED';
+             throw notConfigured;
         }
 
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -37,8 +40,8 @@ Give personalized, actionable advice.
         const result = await chatSession.sendMessage(prompt);
         return result.response.text();
     } catch (error) {
-        console.error("AI Service Generation Error: ", error);
-        throw new Error(error.message || "VedaBot is currently offline. Please check Node logs.");
+        if (error.code !== 'AI_NOT_CONFIGURED') console.error("AI Service Generation Error: ", error.name);
+        throw error;
     }
 };
 

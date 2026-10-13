@@ -3,7 +3,8 @@ import { Metadata } from 'next';
 import FadeIn from '@/components/animations/FadeIn';
 
 export const metadata: Metadata = {
-    title: 'Terms of Service | Veda Scholars',
+    alternates: { canonical: '/terms-of-service' },
+    title: 'Terms of Service',
     description: 'Terms and conditions governing the use of Veda Scholars services.',
 };
 

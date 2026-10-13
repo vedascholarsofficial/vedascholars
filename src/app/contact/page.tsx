@@ -7,7 +7,8 @@ import StudentFAQ from '@/components/students/StudentFAQ'; // Reusing for effici
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Contact Veda Scholars | Book Free Counselling',
+    alternates: { canonical: '/contact' },
+    title: 'Contact Us | Book a Free Consultation',
     description: 'Contact Veda Scholars to book free counselling, explore partnerships, or discuss recruitment opportunities.',
 };
 

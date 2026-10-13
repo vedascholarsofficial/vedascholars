@@ -7,7 +7,8 @@ import FadeIn from '@/components/animations/FadeIn';
 import { Heart, Zap, Globe, Users, ArrowRight, Briefcase, GraduationCap } from 'lucide-react';
 
 export const metadata: Metadata = {
-    title: 'Careers | Join Veda Scholars',
+    alternates: { canonical: '/careers' },
+    title: 'Careers',
     description: 'Join our mission to democratize access to global education. Explore career opportunities at Veda Scholars.',
 };
 

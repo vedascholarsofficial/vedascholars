@@ -12,32 +12,32 @@ export default function StudentServices() {
         {
             icon: GraduationCap,
             title: "University & Course Selection",
-            desc: "Get matched with top global universities that align with your academic goals and budget."
+            desc: "Shortlist universities that fit your academic goals, preferences and budget."
         },
         {
             icon: FileText,
             title: "SOP & Documentation",
-            desc: "Expert help to craft winning Statements of Purpose (SOPs), Resumes, and Letters of Recommendation."
+            desc: "Guidance on Statements of Purpose (SOPs) and CVs, and on how to request strong recommendation letters."
         },
         {
             icon: Banknote,
             title: "Scholarships & Finance",
-            desc: "We identify scholarship opportunities and assist with education loan applications to fund your dreams."
+            desc: "We help you identify scholarship opportunities and understand education loan options."
         },
         {
             icon: Plane,
             title: "Visa & Interview Prep",
-            desc: "End-to-end visa guidance and mock interviews to ensure a stress-free approval process."
+            desc: "Guidance on visa requirements and documents, with mock interviews where relevant. Visa decisions rest with the authorities."
         },
         {
             icon: BookOpen,
             title: "Test Preparation",
-            desc: "Comprehensive coaching for IELTS, TOEFL, PTE, GRE, and GMAT to help you score high."
+            desc: "Guidance on IELTS, TOEFL, PTE, GRE and GMAT requirements and how to prepare."
         },
         {
             icon: Home,
             title: "Accommodation & Pre-Departure",
-            desc: "We sort your housing, flights, and forex so you land ready to start your new life."
+            desc: "Guidance on housing, travel and money so you arrive prepared. Bookings are arranged with you or through partners where available."
         }
     ];
 

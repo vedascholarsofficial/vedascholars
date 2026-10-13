@@ -1,4 +1,5 @@
 import React from 'react';
+import { SITE_URL } from '@/lib/site';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import FadeIn from '@/components/animations/FadeIn';
@@ -23,9 +24,9 @@ import {
 // ── SEO Metadata ─────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-    title: 'Apply for Jobs | International Recruitment — Veda Scholars',
+    title: 'Apply for Jobs',
     description:
-        'Apply for international jobs through Veda Scholars. Access visa-sponsored roles in the UK, UAE, and India. Submit your resume today — free of charge. Trusted by 500+ candidates.',
+        'Share your CV with Veda Scholars for career guidance and, where available, introductions to employers. Free to apply. We do not guarantee placement or visa sponsorship.',
     keywords: [
         'apply for jobs',
         'international jobs',
@@ -39,8 +40,8 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Apply for International Jobs | Veda Scholars Recruitment',
         description:
-            'Submit your job application to Veda Scholars and get matched with verified employers in the UK, UAE, and India. Visa-sponsored roles. Free to apply.',
-        url: 'https://vedascholars.com/jobs/apply',
+            'Share your CV with Veda Scholars for career guidance and, where available, introductions to employers. Free to apply.',
+        url: `${SITE_URL}/jobs/apply`,
         siteName: 'Veda Scholars',
         type: 'website',
         images: [
@@ -56,11 +57,12 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: 'Apply for International Jobs | Veda Scholars',
         description:
-            'Join 500+ candidates. Submit your resume for visa-sponsored international jobs in the UK, UAE & India.',
+            'Share your CV with Veda Scholars for career guidance and, where available, introductions to employers.',
         images: ['/opengraph-image.png'],
     },
+    robots: { index: false, follow: true },
     alternates: {
-        canonical: 'https://vedascholars.com/jobs/apply',
+        canonical: `${SITE_URL}/jobs/apply`,
     },
 };
 
@@ -71,16 +73,16 @@ const GOOGLE_FORM_URL = 'https://forms.gle/jhHH8YBx1cfeT6ZX8';
 const features = [
     {
         icon: Globe,
-        title: 'Global Employer Network',
+        title: 'Employer Opportunities',
         description:
-            'Access thousands of verified job openings across India, the UK, UAE, and beyond through our curated international employer partnerships.',
+            'Where available, we share relevant openings from employers we work with. Availability varies by country, role and time of year.',
         color: 'bg-blue-100 text-blue-700',
     },
     {
         icon: ShieldCheck,
-        title: 'Visa-Sponsored Roles',
+        title: 'Work-Permission Awareness',
         description:
-            'We specialise in matching candidates with employers who offer full visa sponsorship for roles in the UK, UAE, and GCC countries.',
+            'Some roles may offer visa sponsorship; many do not. We help you understand the requirements and point you to official guidance. Visa decisions rest with the authorities.',
         color: 'bg-emerald-100 text-emerald-700',
     },
     {
@@ -92,23 +94,23 @@ const features = [
     },
     {
         icon: BadgeCheck,
-        title: 'Verified Recruiters',
+        title: 'Checked Opportunities',
         description:
-            'Every employer on our network is thoroughly vetted. No scams, no fake listings — only authentic, credible recruitment opportunities.',
+            'We check the employers and listings we share, and we never charge candidates a fee for a job. Please tell us about anything that looks suspicious.',
         color: 'bg-purple-100 text-purple-700',
     },
     {
         icon: Zap,
-        title: 'Fast Screening Process',
+        title: 'Clear Next Steps',
         description:
-            'Our assisted shortlisting ensures your profile reaches the right employer desk within days, not weeks.',
+            'We review applications and tell you what happens next. Timelines depend on the role and the employer.',
         color: 'bg-rose-100 text-rose-700',
     },
     {
         icon: HeadphonesIcon,
-        title: 'International Placement Support',
+        title: 'Application Support',
         description:
-            'From application to onboarding, our team provides end-to-end support including document preparation and pre-departure guidance.',
+            'Help with your CV, interview preparation and documents, plus pre-departure guidance if an offer involves relocation.',
         color: 'bg-cyan-100 text-cyan-700',
     },
 ];
@@ -133,14 +135,14 @@ const steps = [
         icon: Handshake,
         title: 'Employer Matching',
         description:
-            'You are introduced to verified employers seeking profiles like yours. We coordinate interviews and guide you through the offer stage.',
+            'Where there is a suitable opening, we may introduce you to the employer and help you prepare for interviews. Hiring decisions rest with the employer.',
     },
 ];
 
 const trustBadges: string[] = [
     'No Registration Fee',
-    'Trusted by 500+ Candidates',
-    'Verified Employers Only',
+    'Honest, Transparent Advice',
+    'No Placement Guarantees',
 ];
 
 const applyBenefits: { icon: React.ElementType; text: string }[] = [
@@ -199,13 +201,13 @@ export default function ApplyForJobsPage() {
                         </span>
 
                         <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 text-white leading-tight">
-                            Land Your Dream Job{' '}
-                            <span className="text-[#8B2BB4]">Across the Globe</span>
+                            Explore Career Opportunities{' '}
+                            <span className="text-[#8B2BB4]">in India and Abroad</span>
                         </h1>
 
                         <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-10">
-                            Veda Scholars connects talented candidates with top international employers offering
-                            visa‑sponsored roles in the UK, UAE, and beyond. Your career journey starts here.
+                            Share your CV for career guidance and, where available, introductions to employers in India,
+                            the UK, the UAE and beyond. We do not guarantee placement or visa sponsorship.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
@@ -249,8 +251,8 @@ export default function ApplyForJobsPage() {
                                 Why Apply Through Veda Scholars?
                             </h2>
                             <p className="text-slate-300 text-lg leading-relaxed">
-                                We are more than a recruitment agency. We are your international career partner —
-                                from application to arrival.
+                                We focus on preparing you well and being honest about your options, from your
+                                application to your first conversations with employers.
                             </p>
                         </div>
                     </FadeIn>
@@ -346,8 +348,8 @@ export default function ApplyForJobsPage() {
                                 Submit Your Job Application
                             </h2>
                             <p className="text-slate-300 text-lg leading-relaxed">
-                                Click the button below to open our secure application form. Our recruiters will
-                                review your profile within 5–10 business days.
+                                Click the button below to open our application form. We aim to review applications
+                                within 5–10 business days.
                             </p>
                         </div>
                     </FadeIn>
@@ -397,7 +399,7 @@ export default function ApplyForJobsPage() {
 
                                     <p className="mt-5 text-xs text-slate-400 flex items-center justify-center gap-1.5">
                                         <Shield className="w-3.5 h-3.5 text-[#8B2BB4]" aria-hidden="true" />
-                                        Secured by Google Forms · Your data is used only for recruitment purposes
+                                        Form hosted by Google Forms · Your details are used to assess and respond to your application
                                     </p>
                                 </div>
                             </div>
@@ -469,8 +471,8 @@ export default function ApplyForJobsPage() {
                             <span className="text-[#8B2BB4]">International Career?</span>
                         </h2>
                         <p className="text-slate-300 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-                            Join 500+ candidates who have trusted Veda Scholars to unlock global job
-                            opportunities. No fees. No risk. Just results.
+                            There is no fee to apply. We will be honest about your options and about what we
+                            can and cannot offer.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <a

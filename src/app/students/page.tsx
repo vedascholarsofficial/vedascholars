@@ -9,7 +9,8 @@ import FinalCTA from '@/components/home/FinalCTA';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Study Abroad & Career Guidance for Students | Veda Scholars',
+    alternates: { canonical: '/students' },
+    title: 'Study Abroad & Career Guidance for Students',
     description: 'Get expert study abroad counselling, university selection, scholarships, visa support, and career guidance with Veda Scholars.',
     keywords: ['Student Guidance', 'Scholarship Help', 'Study Abroad mentorship', 'Career Counselling', 'Pre-departure training'],
 };

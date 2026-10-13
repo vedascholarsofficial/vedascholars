@@ -1,0 +1,17 @@
+{
+  "tool": "Built-in image_gen",
+  "assets": [
+    {
+      "name": "family-planning",
+      "prompt": "Use case: premium photorealistic editorial photograph for a university education website's For Parents page. One landscape 3:2 photograph. Scene: An Indian family of three, mother and father in their late forties and their university-age daughter aged 19, sitting together at a light oak dining table in a bright welcoming contemporary home, discussing the daughter's education plans with open course brochures, a notebook and a closed laptop. Parents listen attentively while daughter smiles and gestures naturally. All three equally part of the conversation, medium-wide candid photograph, faces in central 75% safe for 5:4 crop. Lighting: soft warm natural daylight, realistic skin texture and anatomically natural hands, calm credible family-centred mood. Colour palette: cream, light oak, natural green and muted blue; no purple or lavender clothing, furniture, tint or colour grading. No legible text, brand logos, watermarks, graduation robes, collage or graphic overlays.",
+      "source": "C:\\Users\\NEW\\.codex\\generated_images\\01a13467-0387-7722-a8a1-ee8883a64129\\exec-8025c812-7c8d-4ab5-9284-ae1fafbe2cb7.png",
+      "destination": "public/images/parents/family-planning.webp"
+    },
+    {
+      "name": "family-check-in",
+      "prompt": "Use case: premium photorealistic editorial photograph for a university education website's For Parents page. One landscape 3:2 photograph. Scene: An Indian mother in her mid forties and her university-age son aged 21 sitting on a simple bench on a leafy home terrace, enjoying a calm reassuring conversation. Mother wears cream linen, son soft blue casual shirt, a small notebook resting closed on his lap. Natural plants and warm stone wall behind them, medium-wide candid photograph, affectionate supportive expressions, no exaggerated posing, faces in central area safe for 4:3 crop. Lighting: soft warm natural daylight, realistic skin texture and anatomically natural hands, calm credible family-centred mood. Colour palette: cream, light oak, natural green and muted blue; no purple or lavender clothing, furniture, tint or colour grading. No legible text, brand logos, watermarks, graduation robes, collage or graphic overlays.",
+      "source": "C:\\Users\\NEW\\.codex\\generated_images\\01a13467-0387-7722-a8a1-ee8883a64129\\exec-cbbacf86-c71e-4d80-b91f-f22738b611db.png",
+      "destination": "public/images/parents/family-check-in.webp"
+    }
+  ]
+}

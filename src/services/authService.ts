@@ -27,5 +27,11 @@ export const authService = {
   resetPassword: async (token: string, password: string) => {
     const response = await api.post(`/auth/reset-password/${token}`, { password });
     return response.data;
+  },
+
+  // Exchanges the one-time code from the Google sign-in redirect for a session.
+  exchangeOAuthCode: async (code: string) => {
+    const response = await api.post('/auth/oauth/exchange', { code });
+    return response.data;
   }
 };

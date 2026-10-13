@@ -113,3 +113,105 @@
 .animate-marquee {
   animation: marquee 30s linear infinite;
 }
+
+/* Homepage intro: the wordmark is drawn in, a hairline fills, then the curtain lifts. CSS-driven so it always clears, even before hydration. */
+@keyframes intro-curtain {
+  0%, 74% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+    visibility: hidden;
+  }
+}
+
+@keyframes intro-mark {
+  0%, 70% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes intro-wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.4;
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+@keyframes intro-tagline {
+  from {
+    opacity: 0;
+    letter-spacing: 0.6em;
+  }
+
+  to {
+    opacity: 1;
+    letter-spacing: 0.38em;
+  }
+}
+
+@keyframes intro-line {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(2%, -4%, 0) scale(1.06);
+  }
+}
+
+.intro-curtain {
+  animation: intro-curtain 1.6s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.intro-mark {
+  animation: intro-mark 1.3s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+.intro-wipe {
+  animation: intro-wipe 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.05s both;
+}
+
+.intro-tagline {
+  animation: intro-tagline 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+}
+
+.intro-line {
+  animation: intro-line 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.2s both;
+}
+
+.animate-float-slow {
+  animation: float-slow 16s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-curtain {
+    display: none;
+  }
+
+  .animate-float-slow {
+    animation: none;
+  }
+}

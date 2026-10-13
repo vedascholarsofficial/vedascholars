@@ -2,6 +2,12 @@ const { generateResponse } = require('../services/aiService');
 const User = require('../models/User');
 const Chat = require('../models/Chat');
 const { calculateResumeScore } = require('../services/resumeScoringService');
+const { isObjectId } = require('../utils/validation');
+
+const MAX_MESSAGE_LENGTH = 4000;
+// Only the most recent turns are sent to the model, which bounds token use
+// per request no matter how long a conversation grows.
+const MAX_HISTORY_MESSAGES = 20;
 
 const getAllChats = async (req, res) => {
     try {
@@ -17,6 +23,7 @@ const getAllChats = async (req, res) => {
 
 const getChatById = async (req, res) => {
     try {
+        if (!isObjectId(req.params.id)) return res.status(404).json({ message: 'Chat history block not found.' });
         const chat = await Chat.findOne({ _id: req.params.id, user: req.user.id });
         if (!chat) return res.status(404).json({ message: 'Chat history block not found.' });
         res.status(200).json(chat);
@@ -29,12 +36,15 @@ const getChatById = async (req, res) => {
 const renameChat = async (req, res) => {
     try {
         const { title } = req.body;
-        if (!title) return res.status(400).json({ message: 'Title constraint required.' });
+        if (typeof title !== 'string' || !title.trim() || title.length > 100) {
+            return res.status(400).json({ message: 'Please provide a title of up to 100 characters.' });
+        }
+        if (!isObjectId(req.params.id)) return res.status(404).json({ message: 'Access denied mapping chat node.' });
 
         const chat = await Chat.findOneAndUpdate(
             { _id: req.params.id, user: req.user.id },
-            { title },
-            { new: true, runValidators: true }
+            { title: title.trim() },
+            { returnDocument: 'after', runValidators: true }
         );
         if (!chat) return res.status(404).json({ message: 'Access denied mapping chat node.' });
 
@@ -47,6 +57,7 @@ const renameChat = async (req, res) => {
 
 const deleteChat = async (req, res) => {
     try {
+        if (!isObjectId(req.params.id)) return res.status(404).json({ message: 'No exact conversational tuple found to eradicate.' });
         const chat = await Chat.findOneAndDelete({ _id: req.params.id, user: req.user.id });
         if (!chat) return res.status(404).json({ message: 'No exact conversational tuple found to eradicate.' });
 
@@ -62,8 +73,14 @@ const chatWithBot = async (req, res) => {
     try {
         const { message, chatId } = req.body;
         
-        if (!message || message.trim() === '') {
+        if (typeof message !== 'string' || message.trim() === '') {
             return res.status(400).json({ message: "No prompt block provided to VedaBot." });
+        }
+        if (message.length > MAX_MESSAGE_LENGTH) {
+            return res.status(400).json({ message: `Messages are limited to ${MAX_MESSAGE_LENGTH} characters.` });
+        }
+        if (chatId !== undefined && chatId !== null && !isObjectId(chatId)) {
+            return res.status(404).json({ message: 'Historic mapping not found.' });
         }
 
         const user = await User.findById(req.user.id);
@@ -82,7 +99,9 @@ const chatWithBot = async (req, res) => {
         if (chatId) {
             chat = await Chat.findOne({ _id: chatId, user: req.user.id });
             if (!chat) return res.status(404).json({ message: 'Historic mapping not found.' });
-            historyArray = chat.messages.map(m => ({ role: m.role, text: m.text }));
+            historyArray = chat.messages
+                .slice(-MAX_HISTORY_MESSAGES)
+                .map(m => ({ role: m.role, text: m.text }));
         } else {
             // New conversation creates a dynamic title explicitly bounded to the physical string size limit.
             chat = new Chat({
@@ -105,8 +124,11 @@ const chatWithBot = async (req, res) => {
             chatId: chat._id
         });
     } catch (error) {
-        console.error("chatWithBot Controller Error: ", error);
-        res.status(500).json({ message: error.message || 'Server Error invoking AI pipeline proxy.' });
+        console.error("chatWithBot Controller Error: ", error.name);
+        const unavailable = error.code === 'AI_NOT_CONFIGURED';
+        res.status(unavailable ? 503 : 500).json({
+            message: unavailable ? 'VedaBot is not available right now.' : 'VedaBot could not answer just now. Please try again.',
+        });
     }
 };
 

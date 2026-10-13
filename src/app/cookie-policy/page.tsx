@@ -4,7 +4,8 @@ import FadeIn from '@/components/animations/FadeIn';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-    title: 'Cookie Policy | Veda Scholars',
+    alternates: { canonical: '/cookie-policy' },
+    title: 'Cookie Policy',
     description: 'Understand how Veda Scholars uses cookies to improve your experience.',
 };
 

@@ -26,26 +26,25 @@ export default function Footer() {
             title: "Company",
             links: [
                 { name: "About Us", href: "/about" },
-                { name: "Services", href: "/services" },
-                { name: "Careers", href: "/careers" },
-                { name: "Contact", href: "/contact" },
+                { name: "Careers at Veda", href: "/careers" },
+                { name: "Contact Us", href: "/contact" },
             ]
         },
         {
-            title: "For Students",
+            title: "Students & Families",
             links: [
+                { name: "Student Journey", href: "/student-journey" },
+                { name: "Services", href: "/services" },
+                { name: "Programs", href: "/programs" },
+                { name: "For Parents", href: "/for-parents" },
                 { name: "Study Abroad", href: "/students" },
-                { name: "Internships", href: "/students" },
-                { name: "Scholarships", href: "/students" },
-                { name: "Success Stories", href: "/students" },
+                { name: "Career Interest Check", href: "/psychometric-test" },
             ]
         },
         {
-            title: "For Universities",
+            title: "Partners",
             links: [
                 { name: "Partner With Us", href: "/partner-with-us" },
-                { name: "Our Network", href: "/partner-with-us" },
-                { name: "Recruitment", href: "/partner-with-us" },
             ]
         }
     ];

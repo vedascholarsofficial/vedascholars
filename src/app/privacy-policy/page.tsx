@@ -3,7 +3,8 @@ import { Metadata } from 'next';
 import FadeIn from '@/components/animations/FadeIn';
 
 export const metadata: Metadata = {
-    title: 'Privacy Policy | Veda Scholars',
+    alternates: { canonical: '/privacy-policy' },
+    title: 'Privacy Policy',
     description: 'Learn how Veda Scholars collects, uses, and protects your personal information.',
 };
 

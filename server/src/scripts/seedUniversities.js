@@ -82,6 +82,11 @@ const universities = [
 
 const seed = async () => {
     try {
+        // This script DELETES every University document before inserting the
+        // samples. Require an explicit confirmation so it is never run by accident.
+        if (process.env.CONFIRM_SEED_DELETE !== 'yes') {
+            throw new Error('Refusing to run: this deletes all universities. Set CONFIRM_SEED_DELETE=yes to proceed.');
+        }
         if (!process.env.MONGO_URI) {
             throw new Error('MONGO_URI is not defined in your .env file.');
         }

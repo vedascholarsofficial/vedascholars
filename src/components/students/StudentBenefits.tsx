@@ -13,19 +13,19 @@ export default function StudentBenefits() {
         {
             id: 2,
             title: "Scholarship Support",
-            description: "We have helped students secure over $5M in scholarships. We identify every financial aid opportunity.",
+            description: "We help you find scholarships and funding you may be eligible for, track deadlines and prepare applications. Awards are decided by the funders.",
             icon: <Banknote className="w-8 h-8 text-primary" />
         },
         {
             id: 3,
             title: "Post-Arrival Care",
-            description: "Our job isn't done when you fly. We help with accommodation, bank accounts, and settling in.",
+            description: "Our job isn't done when you fly. We guide you on accommodation, banking and settling in.",
             icon: <Home className="w-8 h-8 text-primary" />
         },
         {
             id: 4,
             title: "Global Network",
-            description: "Join an exclusive community of Veda Scholars alumni working in top companies worldwide.",
+            description: "Stay connected with a growing community of Veda Scholars students and alumni.",
             icon: <Network className="w-8 h-8 text-primary" />
         }
     ];
