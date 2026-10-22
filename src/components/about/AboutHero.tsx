@@ -9,7 +9,7 @@ export default function AboutHero() {
                     <h1 className="text-5xl leading-[1.08] tracking-tight text-primary sm:text-6xl lg:text-7xl">Who We Are</h1>
                     <div className="my-7 h-px w-16 bg-secondary/50" aria-hidden="true" />
                     <p className="max-w-xl text-lg leading-relaxed text-slate-600 sm:text-xl">
-                        Veda Scholars is a premier education consultancy dedicated to bridging the gap between academic aspirations and professional success. We are not just agents; we are career architects.
+                        Veda Scholars provides premier education-to-employment support, dedicated to bridging the gap between academic aspirations and professional success. We are not just agents; we are career architects.
                     </p>
                 </JourneyReveal>
                 <JourneyReveal delay={0.1} className="relative aspect-[5/4] overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl shadow-primary/5">

@@ -53,7 +53,7 @@ export default function CookiePolicyPage() {
                                     <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
                                         <h3 className="font-bold text-primary text-lg">Marketing Cookies</h3>
                                         <p className="text-sm mt-1">
-                                            These help us be relevant. If we advertise our consultancy services on other websites or social media, these cookies help us ensure
+                                            These help us be relevant. If we advertise our services on other websites or social media, these cookies help us ensure
                                             you see ads that actually match your educational interests, rather than random content.
                                         </p>
                                     </div>

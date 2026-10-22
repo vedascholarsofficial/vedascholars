@@ -22,7 +22,7 @@ export default function TermsOfServicePage() {
                             <section>
                                 <h2 className="text-2xl font-bold text-primary mb-4">1. Acceptance of Terms</h2>
                                 <p>
-                                    By accessing the Veda Scholars website or engaging our consultancy services, you agree to comply with and be bound by these Terms of Service.
+                                    By accessing the Veda Scholars website or engaging our services, you agree to comply with and be bound by these Terms of Service.
                                     If you do not agree to these terms, please do not use our services.
                                 </p>
                             </section>
@@ -31,7 +31,7 @@ export default function TermsOfServicePage() {
                             <section>
                                 <h2 className="text-2xl font-bold text-primary mb-4">2. Services Overview</h2>
                                 <p>
-                                    Veda Scholars provides education consultancy, career counselling, and recruitment support services. We assist students
+                                    Veda Scholars provides education guidance, career counselling, and recruitment support services. We assist students
                                     with university admissions, scholarship applications, and career mapping. We also partner with universities for student recruitment
                                     and with employers for placement support.
                                 </p>

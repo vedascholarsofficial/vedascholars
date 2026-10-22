@@ -71,7 +71,7 @@ export default function CareersPage() {
                                 </div>
                                 <h3 className="text-xl font-bold text-primary mb-3">Accelerated Growth</h3>
                                 <p className="text-slate-600 leading-relaxed">
-                                    We are a fast-growing consultancy. High performers are rewarded with rapid career progression and leadership opportunities.
+                                    We are a fast-growing team. High performers are rewarded with rapid career progression and leadership opportunities.
                                 </p>
                             </div>
                         </FadeIn>

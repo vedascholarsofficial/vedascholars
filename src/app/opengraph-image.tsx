@@ -7,7 +7,7 @@ import { join } from 'node:path';
 // build time from the brand wordmark, colours and typefaces; no runtime cost.
 // The fonts are OFL-licensed WOFF files (see src/assets/og) because the image
 // renderer cannot read the WOFF2 files that next/font serves to browsers.
-export const alt = 'Veda Scholars: education to employment consultancy';
+export const alt = 'Veda Scholars: education to employment support';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 

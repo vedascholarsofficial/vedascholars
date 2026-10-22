@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { SITE_URL } from '@/lib/site';
 
 export const SITE_NAME = 'Veda Scholars';
-export const SITE_TAGLINE = 'Education to Employment Consultancy';
+export const SITE_TAGLINE = 'Education to Employment Support';
 export const DEFAULT_DESCRIPTION =
   'Veda Scholars helps students, universities, and employers bridge the gap between education and employment through global counselling, partnerships, and recruitment support.';
 
@@ -31,7 +31,7 @@ export const INDEXABLE_PAGES = {
     name: 'About Us',
     title: 'About Us',
     description:
-      'Veda Scholars is an education-to-employment consultancy guiding students and families and working with universities and employers. Read our vision, values and story.',
+      'Veda Scholars provides education-to-employment support, guiding students and families and working with universities and employers. Read our vision, values and story.',
     lastModified: '2026-10-13',
   },
   '/student-journey': {
@@ -94,7 +94,7 @@ export const INDEXABLE_PAGES = {
     name: 'Careers',
     title: 'Careers: Join Our Team',
     description:
-      'Work with Veda Scholars, an education-to-employment consultancy. See our current openings and how to send us your application.',
+      'Work with Veda Scholars and help deliver education-to-employment support. See our current openings and how to send us your application.',
     lastModified: '2026-10-13',
   },
   '/privacy-policy': {
@@ -134,7 +134,7 @@ export const SOCIAL_IMAGE = {
   width: 1200,
   height: 630,
   type: 'image/png',
-  alt: 'Veda Scholars: education to employment consultancy',
+  alt: 'Veda Scholars: education to employment support',
 };
 
 // Metadata for an indexable page: title, description, canonical, Open Graph

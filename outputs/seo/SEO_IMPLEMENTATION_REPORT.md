@@ -46,11 +46,11 @@ Date: 13 October 2026. All changes are local and uncommitted on `main`; nothing 
 
 ## 3. Metadata
 
-Titles use `title.absolute` so the brand appears once: `<Page title> | Veda Scholars`, and the home page is `Veda Scholars | Education to Employment Consultancy`.
+Titles use `title.absolute` so the brand appears once: `<Page title> | Veda Scholars`, and the home page is `Veda Scholars | Education to Employment Support`.
 
 | Path | Title | Changed? |
 |---|---|---|
-| `/` | Veda Scholars \| Education to Employment Consultancy | No |
+| `/` | Veda Scholars \| Education to Employment Support | No |
 | `/about` | About Us \| Veda Scholars | Description rewritten (removed "trusted … worldwide") |
 | `/student-journey` | Our Student Journey \| Veda Scholars | No |
 | `/services` | Services: Five Pillars of Student Support \| Veda Scholars | Separator only |

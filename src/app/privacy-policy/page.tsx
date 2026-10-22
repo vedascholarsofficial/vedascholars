@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
                                     Veda Scholars ("we," "our," or "us") is dedicated to guiding students from education to employment.
                                     We respect your privacy and are committed to protecting the personal information you share with us.
                                     This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website
-                                    or engage with our consultancy services, including university admissions, career counselling, and recruitment support.
+                                    or engage with our services, including university admissions, career counselling, and recruitment support.
                                 </p>
                             </section>
 
@@ -93,7 +93,7 @@ export default function PrivacyPolicyPage() {
                             <section>
                                 <h2 className="text-2xl font-bold text-primary mb-4">7. International Data Transfers</h2>
                                 <p>
-                                    As an international consultancy operating in India, the UK, the UAE, and beyond, your information may be transferred to
+                                    As an international organisation operating in India, the UK, the UAE, and beyond, your information may be transferred to
                                     — and maintained on — computers located outside of your state, province, country, or other governmental jurisdiction
                                     where the data protection laws may differ. By submitting your information, you consent to this transfer, ensuring appropriate
                                     safeguards are in place.
